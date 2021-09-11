@@ -55,12 +55,12 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-  color: red;
+  color: purple;
 }
 
 /* selected link */
 a:active {
-  color: red;
+  color: purple;
 }
 
 :root {
@@ -191,7 +191,30 @@ p {
   font-family: "Georgia";
   font-size: 15px;
   padding-bottom: 0.5em;
-  padding-top: 1em;
+  padding-top: 0.5em;
+}
+
+th, td {
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align:center;
+  vertical-align:middle;
+  align-items: center;
+  margin-left:auto;
+  margin-right:auto;
+  }
+
+table {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+button {
+  font-size: 15px;
+}
+
+.v {
+  font-variant: small-caps;
 }
 
 </style>
@@ -250,15 +273,31 @@ Jorge Cardiel (UNAM: CDMX, Mexico)<br>
 </div>
 </div>
 
-
-
-    <!--
       <div class="col3">
-
-         <a href="3.html"><img src="g31.jpg" alt="3" class="portada"></a>
-    </col>
+      <table>
+        <caption><h4>Further Resources:</h4></caption>
+        <tr>
+          <th>Author</th>
+          <th>Title</th>
+          <th>Year</th>
+          </tr>
+          <tr>
+          <td>
+            <span class="v">Stout</span>, Dietrich.
+            </td>
+          <td>
+                   <a href="https://scholarblogs.emory.edu/stoutlab/files/2017/12/Stout-Sci-American-2015.pdf" target="_blank">Tales of a Stone Age Scientist</a>
+</td>
+<td>2015</td>
+</tr>
+<tr>
+  <td><span class="v">Agamben</span>, Giorgio.</td>
+  <td><a href="https://www.sup.org/books/title/?id=5305" target="_blank">The Open: Man and Animal</a></td>
+<td>2003</td>
+  </tr>
+</table>
     </div>
--->
+
         <!-- <div class="col3">
       <a href="4.html"><img src="" alt="4" class="portada"></a>
     </col>
@@ -285,6 +324,9 @@ Partiendo de la definición de la cibernética como ciencia que estudia el contr
 -->
 
 </body>
-<footer><h2 class="end">Jorge Cardiel (UNAM: CDMX, Mexico) <a href="mailto: jorgecardiel@comunidad.unam.mx">jorgecardiel@comunidad.unam.mx</a></h2></footer>
+<footer><h2 class="end">Jorge Cardiel (UNAM: CDMX, Mexico): <a href="mailto: jorgecardiel@comunidad.unam.mx" target="_blank">jorgecardiel@comunidad.unam.mx</a><br>
+Tools Used: <button onclick="window.open('https://cmap.ihmc.us', '_blank');">Cmap</button>
+</h2>
+</footer>
 
 </html>
