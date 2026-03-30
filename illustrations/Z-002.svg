@@ -90,14 +90,26 @@
     0%   { opacity: 0.35; }
     100% { opacity: 1; }
   }
+  #power-led-button {
+    cursor: pointer;
+  }
   #schema-hand {
     transform-box: fill-box;
     transform-origin: center;
     animation: hand-nudge 1.2s ease-in-out infinite alternate;
   }
+  #read-hand {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: hand-nudge-read 1.25s ease-in-out infinite alternate;
+  }
   @keyframes hand-nudge {
     0%   { transform: translateX(0px); opacity: 0.72; }
     100% { transform: translateX(-3px); opacity: 1; }
+  }
+  @keyframes hand-nudge-read {
+    0%   { transform: translateX(0px); opacity: 0.72; }
+    100% { transform: translateX(3px); opacity: 1; }
   }
 </style>
 
@@ -216,10 +228,17 @@
   <!-- Tuning needle — sweeps -->
   <rect id="needle" x="186" y="110" width="4" height="14" fill="#c9a84c"/>
 
-  <!-- Power indicator — pulses -->
-  <g id="power-led">
-    <rect x="164" y="132" width="8" height="8" fill="#d4310a"/>
-    <rect x="165" y="133" width="2" height="2" fill="#e85d2c"/>
+  <!-- Power indicator — pulses and starts reading in book cover -->
+  <g id="power-led-button" onclick="startBookReading()">
+    <rect x="152" y="126" width="26" height="22" fill="transparent" pointer-events="all"/>
+    <g id="power-led">
+      <rect x="164" y="132" width="8" height="8" fill="#d4310a"/>
+      <rect x="165" y="133" width="2" height="2" fill="#e85d2c"/>
+    </g>
+  </g>
+  <g id="read-hand" aria-hidden="true">
+    <text x="152" y="141" fill="#7c3158" opacity="0.65" font-size="16" font-family="Georgia, serif">☞</text>
+    <text x="151" y="140" fill="#f4ead9" font-size="16" font-family="Georgia, serif">☞</text>
   </g>
 
   <!-- Volume knob -->
