@@ -81,6 +81,15 @@
     0%   { opacity: 0.6; }
     100% { opacity: 1; }
   }
+  /* Schema dot — amber pulsing indicator, clickable */
+  #schema-dot {
+    cursor: pointer;
+    animation: schema-pulse 1.6s ease-in-out infinite alternate;
+  }
+  @keyframes schema-pulse {
+    0%   { opacity: 0.35; }
+    100% { opacity: 1; }
+  }
 </style>
 
   <!-- El Muzak — Radio fantasma, Castlevania/Weimar broadcast -->
@@ -213,6 +222,12 @@
   <rect x="196" y="132" width="10" height="10" fill="#252522"/>
   <rect x="200" y="129" width="2" height="4" fill="#c9a84c"/>
   <rect x="198" y="133" width="4" height="4" fill="#1a1a18"/>
+
+  <!-- Schema dot — clickable amber indicator, opens diagram modal -->
+  <g id="schema-dot" onclick="showDiagramModal()" style="cursor:pointer">
+    <rect x="208" y="133" width="6" height="6" fill="#c9a84c"/>
+    <rect x="209" y="134" width="2" height="2" fill="#e8c97a"/>
+  </g>
 
   <!-- Brand label strip -->
   <rect x="164" y="144" width="48" height="8" fill="#141412"/>

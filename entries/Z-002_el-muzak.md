@@ -5,10 +5,15 @@ date: 25 de marzo de 2026
 location: Tlalpan, CDMX
 excerpt: El Muzak es una música dirigida de manera inmediata a la percepción, a esa zona en la que el arte ya no se ofrece solamente como forma, sino como impronta hacia la sensibilidad.
 links: [Z-001]
+diagram: diagrams/forma-mercancia.png
 ---
 El Muzak es una música dirigida de manera inmediata a la percepción, a esa zona en la que el arte ya no se ofrece solamente como forma, sino como impronta hacia la sensibilidad (*Ausdruck* == Expression). Es el tipo ideal de aquello que Luhmann analiza en *El arte de la sociedad*: la irritación sobre la percepción —sobre el SNC (*es tanzt, das ZNS*: Einstürzende Neubauten)— que vuelve posible levantar una *Stimmung* metafísica. Es así como la música *new age* puede producir con una relativa simplicidad técnico-armónica este efecto sobre las conciencias. Lo sorprendente es que esa simplicidad no la debilita: la vuelve ubicua, *wie die Luft*. La Muzak se hace medio, como el agua o como el aire, como el ciberespacio. *¿Puede ser lo digital también un medio?* Las formaciones serían: informática, cibernética... los franceses dicen *numérisation* y *mondialisation*.
 
 La música de elevador, escuchada con atención, eleva al escucha. Lo conduce, a través de sus superficies pulidas y sus acordes sin conflicto, hacia reinos cristalinos cristianos o paganos; en todo caso, hacia un umbral metafísico. Incluso la música aparentemente más funcional conserva este resto originario (*Ursprungsüberbleibsel*) cultual. Al asumir la forma (*Gestalt*) de la mercancía, no ha terminado de olvidar su antiguo parentesco con el rito.
+
+<figure class="reading-diagram">
+<img src="diagrams/forma-mercancia.png" alt="Cómo las cosas toman la forma de la mercancía">
+</figure>
 
 Poner atención a la irritación: eso define el estado del escucha atento. No la inmersión romántica, no el abandono ingenuo, sino la vigilancia del punto en que algo nos toca y nos desvía. Ahí la escucha deja de ser sincronización y se vuelve atención: verdadera *epoché*. Como bien lo identifica Mladen Dólar en su libro sobre la voz como *objeto a*, la voz nunca coincide del todo con lo que comunica: arrastra siempre un excedente, una protuberancia, una pequeña insistencia de lo no asimilado. También el Muzak, cuando se le escucha de cerca, deja oír ese excedente: no solo acompaña el espacio, lo transforma, lo transfigura. Puede causar *resonancia* y dirigir al escucha hacia una *asimilación transformadora* (H. Rosa). (*Anwervandlung*)
 

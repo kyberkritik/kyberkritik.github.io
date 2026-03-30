@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="ballard">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,24 +13,180 @@
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #0a0a0a;
-    --bg-card: #111111;
-    --bg-card-hover: #1a1a1a;
-    --fg: #e8e6e1;
-    --fg-dim: #8a8780;
-    --fg-muted: #5a5854;
-    --accent: #d4310a;
-    --accent-warm: #e85d2c;
-    --accent-gold: #c9a84c;
-    --accent-cold: #2a6f97;
-    --border: #2a2a28;
-    --border-light: #3a3a38;
+    --bg: #151114;
+    --bg-card: #1f181c;
+    --bg-card-hover: #2a2025;
+    --fg: #f0e6d8;
+    --fg-dim: #ccb9aa;
+    --fg-muted: #8f7d76;
+    --accent: #b85185;
+    --accent-warm: #d2614e;
+    --accent-gold: #a39058;
+    --accent-cold: #66724f;
+    --accent-violet: #5a3275;
+    --chrome-bright: #f4ead9;
+    --chrome-mid: #cab19b;
+    --chrome-dark: #5a4345;
+    --border: #45373c;
+    --border-light: #5f4c51;
     --font-body: 'Source Serif 4', 'Georgia', serif;
     --font-sans: 'Inter', -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     --line-height: 1.72;
     --letter-spacing: 0.01em;
     --max-read: 38rem;
+    --ambient-a: rgba(184, 81, 133, 0.12);
+    --ambient-b: rgba(103, 114, 79, 0.14);
+    --ambient-c: rgba(244, 234, 217, 0.03);
+    --selection-fg: #fff;
+    --header-border: rgba(240, 230, 216, 0.12);
+    --header-start: rgba(29, 21, 25, 0.96);
+    --header-end: rgba(18, 13, 16, 0.94);
+    --header-inner-line: rgba(244, 234, 217, 0.05);
+    --header-glow-a: rgba(184, 81, 133, 0.13);
+    --header-glow-b: rgba(103, 114, 79, 0.14);
+    --header-glow-c: rgba(244, 234, 217, 0.06);
+    --ornament-frame: rgba(202, 177, 155, 0.22);
+    --ornament-start: rgba(31, 23, 28, 0.94);
+    --ornament-end: rgba(18, 13, 16, 0.98);
+    --ornament-inner-line: rgba(244, 234, 217, 0.06);
+    --ornament-grid: rgba(244, 234, 217, 0.04);
+    --ornament-bloom-a: rgba(184, 81, 133, 0.15);
+    --ornament-bloom-b: rgba(163, 144, 88, 0.18);
+    --ornament-filter: none;
+    --card-start: rgba(31, 24, 28, 0.98);
+    --card-end: rgba(23, 18, 21, 0.98);
+    --card-overlay-a: rgba(184, 81, 133, 0.1);
+    --card-overlay-b: rgba(163, 144, 88, 0.1);
+    --reading-nav-bg: rgba(21, 17, 20, 0.9);
+    --reader-page-bg: rgba(26, 19, 23, 0.84);
+    --reader-page-border: rgba(202, 177, 155, 0.12);
+    --reader-page-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+    --surface-illustration: #120d10;
+    --popup-bg: #1a1418;
+    --popup-shadow: rgba(0, 0, 0, 0.6);
+    --side-bg: #171115;
+    --footer-bg: rgba(23, 18, 21, 0.72);
+    --diagram-modal-bg: rgba(0, 0, 0, 0.92);
+    --reader-rail-bg: rgba(19, 15, 18, 0.72);
+    --reader-rail-border: rgba(202, 177, 155, 0.16);
+    --reader-rail-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+  }
+
+  html[data-theme="ballard"] {
+    color-scheme: dark;
+  }
+
+  html[data-theme="paper"] {
+    color-scheme: light;
+    --bg: #f8f4ed;
+    --bg-card: #fffdfa;
+    --bg-card-hover: #f3eee7;
+    --fg: #101010;
+    --fg-dim: #4f4a44;
+    --fg-muted: #7a736b;
+    --accent: #161616;
+    --accent-warm: #5f5950;
+    --accent-gold: #8a7a68;
+    --accent-cold: #7f8573;
+    --accent-violet: #6b6470;
+    --chrome-bright: #fffdf7;
+    --chrome-mid: #d3c7b9;
+    --chrome-dark: #8f8376;
+    --border: #d8cdc1;
+    --border-light: #c5b9ac;
+    --ambient-a: rgba(20, 18, 17, 0.035);
+    --ambient-b: rgba(138, 122, 104, 0.07);
+    --ambient-c: rgba(255, 255, 255, 0.58);
+    --selection-fg: #fff;
+    --header-border: rgba(16, 16, 16, 0.12);
+    --header-start: rgba(249, 246, 239, 0.96);
+    --header-end: rgba(241, 236, 226, 0.94);
+    --header-inner-line: rgba(16, 16, 16, 0.06);
+    --header-glow-a: rgba(16, 16, 16, 0.03);
+    --header-glow-b: rgba(138, 122, 104, 0.05);
+    --header-glow-c: rgba(255, 255, 255, 0.44);
+    --ornament-frame: rgba(16, 16, 16, 0.12);
+    --ornament-start: rgba(255, 252, 246, 0.96);
+    --ornament-end: rgba(238, 232, 222, 0.96);
+    --ornament-inner-line: rgba(16, 16, 16, 0.04);
+    --ornament-grid: rgba(16, 16, 16, 0.05);
+    --ornament-bloom-a: rgba(16, 16, 16, 0.05);
+    --ornament-bloom-b: rgba(138, 122, 104, 0.08);
+    --ornament-filter: saturate(0.58) brightness(1.1) contrast(0.92);
+    --card-start: rgba(255, 253, 249, 0.98);
+    --card-end: rgba(245, 240, 233, 0.98);
+    --card-overlay-a: rgba(16, 16, 16, 0.05);
+    --card-overlay-b: rgba(138, 122, 104, 0.06);
+    --reading-nav-bg: rgba(248, 244, 237, 0.94);
+    --reader-page-bg: rgba(255, 253, 249, 0.92);
+    --reader-page-border: rgba(16, 16, 16, 0.09);
+    --reader-page-shadow: 0 16px 38px rgba(84, 72, 58, 0.12);
+    --surface-illustration: #f2ece3;
+    --popup-bg: #fffaf3;
+    --popup-shadow: rgba(59, 51, 43, 0.12);
+    --side-bg: #f7f2eb;
+    --footer-bg: rgba(246, 241, 233, 0.76);
+    --diagram-modal-bg: rgba(242, 237, 228, 0.97);
+    --reader-rail-bg: rgba(255, 251, 243, 0.82);
+    --reader-rail-border: rgba(16, 16, 16, 0.1);
+    --reader-rail-shadow: 0 10px 24px rgba(84, 72, 58, 0.12);
+  }
+
+  html[data-theme="night"] {
+    color-scheme: dark;
+    --bg: #040608;
+    --bg-card: #0a0e12;
+    --bg-card-hover: #11161d;
+    --fg: #eef7ff;
+    --fg-dim: #a8b7cb;
+    --fg-muted: #667286;
+    --accent: #39efff;
+    --accent-warm: #ff5aa2;
+    --accent-gold: #ffd76b;
+    --accent-cold: #46ffb5;
+    --accent-violet: #7b6fff;
+    --chrome-bright: #f2fbff;
+    --chrome-mid: #9bcce6;
+    --chrome-dark: #304056;
+    --border: #1f2b38;
+    --border-light: #314456;
+    --ambient-a: rgba(57, 239, 255, 0.12);
+    --ambient-b: rgba(123, 111, 255, 0.12);
+    --ambient-c: rgba(255, 90, 162, 0.05);
+    --selection-fg: #050608;
+    --header-border: rgba(238, 247, 255, 0.1);
+    --header-start: rgba(5, 8, 12, 0.96);
+    --header-end: rgba(3, 4, 8, 0.95);
+    --header-inner-line: rgba(57, 239, 255, 0.08);
+    --header-glow-a: rgba(57, 239, 255, 0.12);
+    --header-glow-b: rgba(123, 111, 255, 0.12);
+    --header-glow-c: rgba(255, 90, 162, 0.06);
+    --ornament-frame: rgba(57, 239, 255, 0.16);
+    --ornament-start: rgba(8, 11, 16, 0.94);
+    --ornament-end: rgba(2, 4, 8, 0.98);
+    --ornament-inner-line: rgba(57, 239, 255, 0.08);
+    --ornament-grid: rgba(238, 247, 255, 0.05);
+    --ornament-bloom-a: rgba(57, 239, 255, 0.18);
+    --ornament-bloom-b: rgba(255, 90, 162, 0.16);
+    --ornament-filter: saturate(1.18) contrast(1.05) brightness(0.92) hue-rotate(8deg);
+    --card-start: rgba(10, 14, 18, 0.98);
+    --card-end: rgba(6, 10, 14, 0.98);
+    --card-overlay-a: rgba(57, 239, 255, 0.08);
+    --card-overlay-b: rgba(255, 90, 162, 0.08);
+    --reading-nav-bg: rgba(4, 6, 8, 0.94);
+    --reader-page-bg: rgba(8, 11, 16, 0.88);
+    --reader-page-border: rgba(57, 239, 255, 0.1);
+    --reader-page-shadow: 0 18px 42px rgba(0, 0, 0, 0.38);
+    --surface-illustration: #020406;
+    --popup-bg: #090d13;
+    --popup-shadow: rgba(0, 0, 0, 0.72);
+    --side-bg: #070b10;
+    --footer-bg: rgba(4, 6, 8, 0.78);
+    --diagram-modal-bg: rgba(0, 0, 0, 0.96);
+    --reader-rail-bg: rgba(7, 10, 15, 0.82);
+    --reader-rail-border: rgba(57, 239, 255, 0.14);
+    --reader-rail-shadow: 0 12px 28px rgba(0, 0, 0, 0.34);
   }
 
   html {
@@ -39,29 +195,42 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  @media (min-width: 1400px) { html { font-size: 18px; } }
+  @media (min-width: 1800px) { html { font-size: 20px; } }
+  @media (min-width: 2400px) { html { font-size: 22px; } }
+
   body {
-    background: var(--bg);
+    background:
+      radial-gradient(circle at 12% 0%, var(--ambient-a), transparent 24%),
+      radial-gradient(circle at 85% 4%, var(--ambient-b), transparent 28%),
+      linear-gradient(180deg, var(--ambient-c), transparent 18%),
+      var(--bg);
     color: var(--fg);
     font-family: var(--font-body);
     line-height: var(--line-height);
     letter-spacing: var(--letter-spacing);
     min-height: 100vh;
     overflow-x: hidden;
+    transition: background 0.32s ease, color 0.32s ease;
   }
 
   ::selection {
     background: var(--accent);
-    color: #fff;
+    color: var(--selection-fg);
   }
 
   /* ═══════════════════════════════════════
      HEADER — Weimar broadsheet style
      ═══════════════════════════════════════ */
   .site-header {
-    border-bottom: 3px solid var(--fg);
+    border-bottom: 1px solid var(--header-border);
     padding: 2.4rem 2rem 1.6rem;
     position: relative;
     overflow: hidden;
+    background:
+      linear-gradient(180deg, var(--header-start), var(--header-end)),
+      var(--bg);
+    box-shadow: inset 0 -1px 0 var(--header-inner-line);
   }
 
   .site-header::before {
@@ -69,7 +238,59 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 4px;
-    background: var(--accent);
+    background: linear-gradient(90deg, var(--accent), var(--accent-cold), var(--accent-violet));
+  }
+
+  .site-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 14% 24%, var(--header-glow-a), transparent 24%),
+      radial-gradient(circle at 82% 28%, var(--header-glow-b), transparent 28%),
+      linear-gradient(115deg, var(--header-glow-c), transparent 38%);
+    pointer-events: none;
+  }
+
+  .site-header,
+  .header-ornament,
+  .header-ornament-svg,
+  .zettel-card,
+  .reading-overlay,
+  .reading-nav,
+  .reading-main,
+  .reading-illustration,
+  .ref-popup,
+  .side-panel,
+  .side-panel-header,
+  .site-footer,
+  .diagram-modal,
+  .reader-rail,
+  .theme-pixel {
+    transition:
+      background 0.32s ease,
+      background-color 0.32s ease,
+      border-color 0.32s ease,
+      color 0.32s ease,
+      box-shadow 0.32s ease,
+      filter 0.32s ease;
+  }
+
+  .header-shell {
+    max-width: 1800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+    gap: 2rem;
+    align-items: end;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-copy {
+    max-width: 54rem;
+    position: relative;
+    z-index: 1;
   }
 
   .header-date {
@@ -93,7 +314,16 @@
   }
 
   .header-title span.mercury {
-    color: var(--accent);
+    background: linear-gradient(112deg,
+      var(--chrome-bright) 4%,
+      var(--chrome-mid) 28%,
+      var(--accent) 52%,
+      var(--accent-warm) 76%,
+      var(--accent-cold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 
   .header-subtitle {
@@ -121,6 +351,648 @@
   .header-author strong {
     color: var(--fg-dim);
     font-weight: 400;
+  }
+
+  .header-ornament {
+    --parallax-x: 0;
+    --parallax-y: 0;
+    min-height: 250px;
+    position: relative;
+    border: 1px solid var(--ornament-frame);
+    border-radius: 1rem;
+    overflow: hidden;
+    background: linear-gradient(160deg, var(--ornament-start), var(--ornament-end));
+    box-shadow:
+      inset 0 1px 0 var(--ornament-inner-line),
+      0 20px 48px rgba(0,0,0,0.34);
+  }
+
+  .header-ornament::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(var(--ornament-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--ornament-grid) 1px, transparent 1px);
+    background-size: 26px 26px;
+    opacity: 0.12;
+    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.8), transparent 90%);
+    mask-image: linear-gradient(180deg, rgba(0,0,0,0.8), transparent 90%);
+    pointer-events: none;
+  }
+
+  .header-ornament::after {
+    content: '';
+    position: absolute;
+    left: -8%;
+    right: -8%;
+    bottom: 8%;
+    height: 38%;
+    background: linear-gradient(90deg,
+      transparent,
+      var(--ornament-bloom-a),
+      var(--ornament-bloom-b),
+      transparent);
+    filter: blur(30px);
+    animation: panelSweep 10s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  .header-ornament-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+    position: relative;
+    z-index: 1;
+    filter: var(--ornament-filter);
+  }
+
+  .pinball-layer {
+    transform: translate(calc(var(--parallax-x) * -14px), calc(var(--parallax-y) * -9px));
+    transition: transform 0.45s ease;
+  }
+
+  .mechanism-layer {
+    transform: translate(calc(var(--parallax-x) * 12px), calc(var(--parallax-y) * 8px));
+    transition: transform 0.45s ease;
+  }
+
+  .hud-layer {
+    transform: translate(calc(var(--parallax-x) * 7px), calc(var(--parallax-y) * 5px));
+    transition: transform 0.45s ease;
+  }
+
+  .playfield-shadow {
+    fill: rgba(0, 0, 0, 0.38);
+    filter: blur(18px);
+  }
+
+  .cabinet-frame {
+    fill: rgba(33, 24, 28, 0.96);
+    stroke: rgba(244, 234, 217, 0.14);
+    stroke-width: 2;
+  }
+
+  .cabinet-liner {
+    fill: rgba(19, 14, 17, 0.92);
+    stroke: rgba(202, 177, 155, 0.18);
+    stroke-width: 1.5;
+  }
+
+  .playfield-body {
+    fill: #151412;
+    stroke: rgba(244, 234, 217, 0.18);
+    stroke-width: 1.4;
+  }
+
+  .playfield-gloss {
+    fill: url(#glassShine);
+    opacity: 0.22;
+  }
+
+  .playfield-panel {
+    opacity: 0.76;
+  }
+
+  .panel-magenta {
+    fill: rgba(184, 81, 133, 0.18);
+  }
+
+  .panel-olive {
+    fill: rgba(103, 114, 79, 0.22);
+  }
+
+  .panel-cream {
+    fill: rgba(244, 234, 217, 0.08);
+  }
+
+  .playfield-title {
+    fill: rgba(244, 234, 217, 0.86);
+    font-family: var(--font-sans);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .playfield-caption {
+    fill: rgba(240, 230, 216, 0.68);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .playfield-mark {
+    fill: rgba(232, 215, 191, 0.52);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .launch-lane,
+  .gear-window,
+  .status-panel {
+    fill: rgba(17, 13, 15, 0.8);
+    stroke: rgba(244, 234, 217, 0.14);
+    stroke-width: 1.2;
+  }
+
+  .gear-window-glow {
+    fill: rgba(184, 81, 133, 0.05);
+  }
+
+  .mercury-route {
+    fill: none;
+    stroke: url(#railChrome);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.46;
+  }
+
+  .lane-rail,
+  .lane-guide,
+  .orbit-guide,
+  .accumulator-tube,
+  .status-arc {
+    fill: none;
+    stroke: url(#railChrome);
+    stroke-width: 3.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.92;
+  }
+
+  .lane-guide {
+    stroke-width: 1.6;
+    opacity: 0.28;
+  }
+
+  .orbit-guide {
+    stroke-width: 1.5;
+    opacity: 0.24;
+  }
+
+  .status-arc {
+    stroke-width: 2.2;
+    opacity: 0.58;
+  }
+
+  .status-tick {
+    stroke: rgba(244, 234, 217, 0.38);
+    stroke-width: 1.3;
+    stroke-linecap: round;
+  }
+
+  .target-bank rect {
+    fill: url(#railChrome);
+    stroke: rgba(31, 24, 28, 0.46);
+    stroke-width: 1;
+  }
+
+  .target-mark {
+    fill: rgba(90, 50, 117, 0.32);
+  }
+
+  .bumper-wrap {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .bumper-ring {
+    fill: rgba(184, 81, 133, 0.04);
+    stroke: rgba(244, 234, 217, 0.18);
+    stroke-width: 4;
+    filter: drop-shadow(0 0 8px rgba(184, 81, 133, 0.1));
+  }
+
+  .bumper-shell {
+    fill: #242420;
+    stroke: rgba(244, 234, 217, 0.2);
+    stroke-width: 1.4;
+  }
+
+  .sling-shot {
+    fill: rgba(90, 50, 117, 0.18);
+    stroke: rgba(244, 234, 217, 0.14);
+    stroke-width: 1.1;
+  }
+
+  .lamp {
+    opacity: 0.18;
+  }
+
+  .lamp-glow {
+    fill: rgba(184, 81, 133, 0.76);
+    filter: blur(7px);
+  }
+
+  .lamp-core {
+    fill: rgba(255, 248, 240, 0.94);
+  }
+
+  .lamp-olive .lamp-glow {
+    fill: rgba(163, 144, 88, 0.68);
+  }
+
+  .lamp-olive .lamp-core {
+    fill: rgba(242, 236, 216, 0.94);
+  }
+
+  .lamp-cream .lamp-glow {
+    fill: rgba(244, 234, 217, 0.58);
+  }
+
+  .flipper-body {
+    fill: #2b2a27;
+    stroke: rgba(244, 234, 217, 0.22);
+    stroke-width: 1.5;
+  }
+
+  .flipper-cap {
+    fill: rgba(19, 14, 17, 0.96);
+    stroke: rgba(202, 177, 155, 0.32);
+    stroke-width: 1.4;
+  }
+
+  .plunger-track {
+    fill: rgba(14, 11, 13, 0.54);
+    stroke: rgba(244, 234, 217, 0.12);
+    stroke-width: 1.2;
+  }
+
+  .plunger-spring {
+    fill: none;
+    stroke: rgba(244, 234, 217, 0.6);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-dasharray: 4 4;
+  }
+
+  .plunger-knob {
+    fill: #2f2d29;
+    stroke: rgba(244, 234, 217, 0.22);
+    stroke-width: 1.2;
+  }
+
+  #pinballMotionPath {
+    fill: none;
+    stroke: none;
+  }
+
+  .pinball-ball-aura {
+    fill: url(#ballAura);
+    opacity: 0.52;
+  }
+
+  .pinball-ball {
+    fill: url(#mercuryChrome);
+    stroke: rgba(244, 234, 217, 0.24);
+    stroke-width: 1.3;
+    filter: drop-shadow(0 0 14px rgba(184, 81, 133, 0.2));
+  }
+
+  .pinball-ball-shine {
+    fill: rgba(255, 255, 255, 0.84);
+  }
+
+  .accumulator-frame {
+    fill: rgba(19, 14, 17, 0.92);
+    stroke: rgba(244, 234, 217, 0.18);
+    stroke-width: 1.4;
+  }
+
+  .accumulator-glass {
+    fill: rgba(244, 234, 217, 0.05);
+    stroke: rgba(244, 234, 217, 0.12);
+    stroke-width: 1;
+  }
+
+  .accumulator-fill {
+    fill: url(#accumulatorMercury);
+  }
+
+  .accumulator-surface {
+    fill: rgba(244, 234, 217, 0.9);
+    opacity: 0.86;
+  }
+
+  .accumulator-scale {
+    fill: none;
+    stroke: rgba(202, 177, 155, 0.34);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+  }
+
+  .accumulator-label,
+  .status-label,
+  .status-subtext,
+  .status-readout {
+    fill: rgba(240, 230, 216, 0.84);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+  }
+
+  .accumulator-label,
+  .status-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+
+  .status-subtext {
+    fill: rgba(176, 156, 149, 0.82);
+    font-size: 8px;
+    letter-spacing: 0.12em;
+  }
+
+  .status-readout {
+    font-size: 18px;
+    letter-spacing: 0.12em;
+  }
+
+  .status-needle {
+    stroke: rgba(244, 234, 217, 0.94);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 4px rgba(244, 234, 217, 0.18));
+  }
+
+  .status-needle-core {
+    fill: rgba(244, 234, 217, 0.84);
+  }
+
+  .pinball-gear {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .gear-body {
+    fill: url(#gearChrome);
+    stroke: rgba(244, 234, 217, 0.22);
+    stroke-width: 2;
+    stroke-linejoin: bevel;
+  }
+
+  .gear-rim {
+    fill: none;
+    stroke: rgba(25, 18, 20, 0.68);
+    stroke-width: 10;
+    stroke-linejoin: bevel;
+  }
+
+  .gear-reflect {
+    fill: rgba(244, 234, 217, 0.16);
+  }
+
+  .gear-core {
+    fill: #1a1418;
+    stroke: rgba(202, 177, 155, 0.4);
+    stroke-width: 2;
+  }
+
+  .gear-core-shine {
+    fill: rgba(244, 234, 217, 0.18);
+  }
+
+  .ornament-star {
+    fill: rgba(244, 234, 217, 0.52);
+  }
+
+  .pixel-sky {
+    fill: #080808;
+  }
+
+  .pixel-band {
+    fill: #0d0d0c;
+  }
+
+  .pixel-brick {
+    fill: #111110;
+  }
+
+  .pixel-column-dark {
+    fill: #141412;
+  }
+
+  .pixel-column-light {
+    fill: #111110;
+  }
+
+  .machine-frame {
+    fill: #1c1c1a;
+  }
+
+  .machine-rim {
+    fill: #2a2a28;
+  }
+
+  .machine-shadow {
+    fill: #0a0a09;
+  }
+
+  .machine-window {
+    fill: #0d0d0b;
+  }
+
+  .machine-slot {
+    fill: #171715;
+  }
+
+  .machine-line {
+    fill: #1f1f1d;
+  }
+
+  .machine-signal {
+    fill: #1a4a6a;
+  }
+
+  .machine-signal-alt {
+    fill: #2a6f97;
+  }
+
+  .machine-signal-deep {
+    fill: #163040;
+  }
+
+  .machine-amber {
+    fill: #c9a84c;
+  }
+
+  .machine-amber-soft {
+    fill: #e8c97a;
+  }
+
+  .machine-red {
+    fill: #d2614e;
+  }
+
+  .machine-red-soft {
+    fill: #f0a092;
+  }
+
+  .machine-label {
+    fill: rgba(240, 230, 216, 0.42);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .mast-body {
+    fill: #3a3a38;
+  }
+
+  .mast-rung {
+    fill: #2a2a28;
+  }
+
+  .feedback-dot {
+    fill: #1c1c1a;
+  }
+
+  .calligram-trace {
+    fill: none;
+    stroke: rgba(244, 234, 217, 0.12);
+    stroke-width: 2;
+    stroke-linecap: square;
+    stroke-dasharray: 6 6;
+    opacity: 0.78;
+  }
+
+  .signal-ring {
+    animation: signalPulse 2.2s step-end infinite;
+  }
+
+  .signal-ring-b {
+    animation-delay: 0.55s;
+  }
+
+  .signal-ring-c {
+    animation-delay: 1.1s;
+  }
+
+  .antenna-tip {
+    animation: antennaBlink 2.4s step-end infinite;
+  }
+
+  @keyframes signalPulse {
+    0% { opacity: 0.12; }
+    14% { opacity: 1; }
+    48% { opacity: 0.4; }
+    100% { opacity: 0.1; }
+  }
+
+  @keyframes antennaBlink {
+    0%, 42% { opacity: 1; }
+    45%, 52% { opacity: 0; }
+    55%, 100% { opacity: 1; }
+  }
+
+  @keyframes panelSweep {
+    from { transform: translateX(-4%); }
+    to { transform: translateX(6%); }
+  }
+
+  @media (max-width: 920px) {
+    .header-shell {
+      grid-template-columns: 1fr;
+      gap: 1.4rem;
+    }
+
+    .header-ornament {
+      min-height: 220px;
+    }
+
+    .header-ornament-svg {
+      min-height: 220px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .site-header {
+      padding: 2rem 1rem 1.2rem;
+    }
+
+    .header-ornament {
+      min-height: 190px;
+      border-radius: 0.85rem;
+    }
+
+    .header-ornament-svg {
+      min-height: 190px;
+    }
+
+    .reading-nav {
+      padding: 0.8rem 1rem;
+    }
+
+    .reading-container {
+      padding: 1.25rem 0.9rem 5rem;
+    }
+
+    .reading-main {
+      padding: 1.05rem;
+      border-radius: 0.95rem;
+    }
+
+    .reader-rail {
+      top: auto;
+      bottom: 0.9rem;
+      right: 0.9rem;
+      left: auto;
+      transform: none;
+      flex-direction: row;
+      align-items: center;
+      padding: 0.35rem 0.45rem;
+      border-radius: 0.9rem;
+      width: auto;
+      height: auto;
+      max-height: none;
+    }
+  }
+
+  @media (orientation: portrait) and (max-width: 1100px) {
+    .reader-rail {
+      top: auto;
+      right: 0.9rem;
+      bottom: 0.9rem;
+      left: auto;
+      transform: none;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.5rem;
+      border-radius: 0.95rem;
+      width: auto;
+      height: auto;
+      max-height: none;
+    }
+
+    .theme-pixel {
+      flex: 0 0 auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .header-ornament::after {
+      animation: none;
+    }
+
+    .signal-ring,
+    .antenna-tip {
+      animation: none;
+    }
+
+    .pinball-layer,
+    .mechanism-layer,
+    .hud-layer {
+      transition: none;
+      transform: none;
+    }
   }
 
   /* ═══════════════════════════════════════
@@ -154,7 +1026,7 @@
      ZETTEL CARD
      ═══════════════════════════════════════ */
   .zettel-card {
-    background: var(--bg-card);
+    background: linear-gradient(180deg, var(--card-start), var(--card-end));
     border: 1px solid var(--border);
     padding: 1.4rem 1.5rem;
     cursor: pointer;
@@ -175,6 +1047,18 @@
     transition: opacity 0.2s ease;
   }
 
+  .zettel-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, var(--card-overlay-a), transparent 45%),
+      linear-gradient(320deg, var(--card-overlay-b), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+
   .zettel-card:hover {
     background: var(--bg-card-hover);
     border-color: var(--border-light);
@@ -182,6 +1066,10 @@
   }
 
   .zettel-card:hover::before {
+    opacity: 1;
+  }
+
+  .zettel-card:hover::after {
     opacity: 1;
   }
 
@@ -237,7 +1125,11 @@
   .reading-overlay {
     position: fixed;
     inset: 0;
-    background: var(--bg);
+    background:
+      radial-gradient(circle at 12% 0%, var(--ambient-a), transparent 26%),
+      radial-gradient(circle at 88% 8%, var(--ambient-b), transparent 30%),
+      linear-gradient(180deg, var(--ambient-c), transparent 22%),
+      var(--bg);
     z-index: 100;
     overflow-y: auto;
     opacity: 0;
@@ -253,7 +1145,7 @@
   .reading-nav {
     position: sticky;
     top: 0;
-    background: var(--bg);
+    background: var(--reading-nav-bg);
     border-bottom: 1px solid var(--border);
     padding: 0.9rem 2rem;
     display: flex;
@@ -298,12 +1190,19 @@
   .reading-main {
     max-width: var(--max-read);
     width: 100%;
+    position: relative;
+    padding: clamp(1.45rem, 1.1rem + 1vw, 2.25rem);
+    background: var(--reader-page-bg);
+    border: 1px solid var(--reader-page-border);
+    border-radius: 1.1rem;
+    box-shadow: var(--reader-page-shadow), inset 0 1px 0 var(--header-inner-line);
+    backdrop-filter: blur(7px);
   }
 
   .reading-illustration {
     margin-bottom: 2.4rem;
     border: 1px solid var(--border);
-    background: #080808;
+    background: var(--surface-illustration);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -380,9 +1279,9 @@
   .ref-popup {
     position: fixed;
     z-index: 200;
-    background: #141412;
+    background: var(--popup-bg);
     border: 1px solid var(--border-light);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    box-shadow: 0 12px 40px var(--popup-shadow);
     max-width: 400px;
     width: 90vw;
     opacity: 0;
@@ -467,7 +1366,7 @@
     width: 42vw;
     max-width: 560px;
     height: 100vh;
-    background: #0e0e0c;
+    background: var(--side-bg);
     border-left: 2px solid var(--accent);
     z-index: 150;
     overflow-y: auto;
@@ -482,7 +1381,7 @@
   .side-panel-header {
     position: sticky;
     top: 0;
-    background: #0e0e0c;
+    background: var(--side-bg);
     padding: 0.9rem 1.5rem;
     border-bottom: 1px solid var(--border);
     display: flex;
@@ -542,10 +1441,297 @@
   ::-webkit-scrollbar-thumb:hover { background: var(--fg-muted); }
 
   /* ═══════════════════════════════════════
+     FONT SIZE CONTROLS
+     ═══════════════════════════════════════ */
+  .font-size-controls {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+  }
+
+  .font-btn {
+    font-family: var(--font-mono);
+    color: var(--fg-muted);
+    background: none;
+    border: 1px solid var(--border);
+    width: 1.8rem;
+    height: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    padding: 0;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .font-btn:hover {
+    color: var(--fg);
+    border-color: var(--border-light);
+  }
+
+  .font-btn.font-decrease { font-size: 0.65rem; }
+  .font-btn.font-increase { font-size: 0.85rem; }
+
+  /* ═══════════════════════════════════════
+     WIDE SCREEN READING (portrait / scroll)
+     ═══════════════════════════════════════ */
+  @media (min-width: 900px) {
+    .reading-body {
+      text-align: justify;
+      hyphens: auto;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .reading-main { max-width: min(52rem, 92vw); }
+    .reading-body { font-size: 1.1rem; }
+  }
+
+  /* ═══════════════════════════════════════
+     BOOK MODE — landscape paginated layout
+     ═══════════════════════════════════════ */
+
+  /* ── Scroll mode defaults ── */
+
+  /* Cover (illustration + diagram): normal block in scroll mode */
+  .book-cover {
+    margin-bottom: 2rem;
+  }
+
+  .book-cover .reading-illustration {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--surface-illustration);
+    padding: 1.5rem;
+    max-height: 320px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .book-cover .reading-illustration svg {
+    width: 100%; max-height: 280px; height: auto;
+  }
+
+  /* In scroll mode the cover diagram is hidden (it stays in reading-body) */
+  .book-cover .cover-diagram { display: none; }
+
+  /* Inline diagram in body (scroll mode) */
+  .reading-diagram {
+    break-inside: avoid;
+    margin: 2rem auto;
+    text-align: center;
+    max-width: 40rem;
+  }
+
+  .reading-diagram img {
+    width: 100%; max-width: 100%; display: block;
+  }
+
+  /* Stage (text content): normal block in scroll mode */
+  .book-stage { position: relative; }
+
+  .book-spread { position: relative; }
+
+  /* Text content: no columns in scroll mode */
+  .book-content { }
+
+  /* Folio and click zones hidden by default */
+  .book-folio {
+    display: none;
+    height: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--fg-muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .book-dots { display: flex; gap: 5px; align-items: center; }
+
+  .book-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--border-light);
+    transition: background 0.2s;
+  }
+
+  .book-dot.active { background: var(--fg-dim); }
+
+  .book-click {
+    display: none;
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 15%;
+    z-index: 5;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .book-click:hover { opacity: 1; }
+  .book-click-prev { left: 0;  justify-content: flex-start; padding-left: 1rem; }
+  .book-click-next { right: 0; justify-content: flex-end;   padding-right: 1rem; }
+
+  .book-click-prev::after,
+  .book-click-next::after {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--fg-muted);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    width: 2rem; height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .book-click-prev::after { content: '←'; }
+  .book-click-next::after { content: '→'; }
+
+  /* ── Active book mode ── */
+
+  .reading-overlay.book-mode {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reading-overlay.book-mode .reading-nav {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .reading-overlay.book-mode .reading-container {
+    flex: 1;
+    padding: 0;
+    display: flex;
+    overflow: hidden;
+    gap: 0;
+  }
+
+  .reading-overlay.book-mode .reading-main {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    position: relative; /* cover and stage are absolute inside */
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  /* Cover: full-screen spread showing centered illustration */
+  .reading-overlay.book-mode .book-cover {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: var(--bg);
+    transition: opacity 0.3s;
+    z-index: 2;
+  }
+
+  .reading-overlay.book-mode .book-cover.book-hidden {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .reading-overlay.book-mode .book-cover .reading-illustration {
+    flex: 0 0 auto;
+    max-width: min(90%, calc(80vh * 1.6));
+    max-height: 80vh;
+    margin: 0;
+    border: 1px solid var(--border);
+    background: var(--surface-illustration);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .reading-overlay.book-mode .book-cover .reading-illustration svg {
+    width: 100%; max-height: 72vh; height: auto;
+  }
+
+  /* Text stage: full-screen, overflow hidden for multicol */
+  .reading-overlay.book-mode .book-stage {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 0.3s;
+  }
+
+  .reading-overlay.book-mode .book-stage.book-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .reading-overlay.book-mode .book-spread {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  /* Multicol text content — no column-span elements, text starts at y=0 */
+  .reading-overlay.book-mode .book-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    max-width: none;
+    padding: 2.4rem 2.8rem 2.9rem;
+    text-align: justify;
+    hyphens: auto;
+    transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    column-rule: 1px solid var(--border);
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .reading-overlay.book-mode .book-content p { break-inside: avoid; }
+
+  .reading-overlay.book-mode .reading-meta-block {
+    break-inside: avoid-column;
+  }
+
+  /* Hide inline diagram from body in book mode (it's on the cover) */
+  .reading-overlay.book-mode .reading-body .reading-diagram { display: none; }
+
+  .reading-overlay.book-mode .book-folio { display: flex; }
+  .reading-overlay.book-mode .book-click { display: flex; }
+
+  /* ═══════════════════════════════════════
      FOOTER
      ═══════════════════════════════════════ */
   .site-footer {
     border-top: 1px solid var(--border);
+    background: var(--footer-bg);
+    backdrop-filter: blur(8px);
     padding: 1.5rem 2rem;
     text-align: center;
     font-family: var(--font-mono);
@@ -554,19 +1740,502 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
   }
+
+  /* ═══════════════════════════════════════
+     DIAGRAM MODAL
+     ═══════════════════════════════════════ */
+  .diagram-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--diagram-modal-bg);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .diagram-modal.active {
+    display: flex;
+  }
+
+  .diagram-modal img {
+    max-width: 96vw;
+    max-height: 92vh;
+    object-fit: contain;
+    border: 1px solid var(--border);
+    cursor: default;
+  }
+
+  .diagram-modal-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.4rem;
+    background: none;
+    border: 1px solid var(--border-light);
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .diagram-modal-close:hover {
+    color: var(--fg);
+    border-color: var(--fg-dim);
+  }
+
+  .reader-rail {
+    position: fixed;
+    top: 50%;
+    right: 0.9rem;
+    transform: translateY(-50%);
+    z-index: 320;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 0.45rem;
+    background: var(--reader-rail-bg);
+    border: 1px solid var(--reader-rail-border);
+    border-radius: 999px;
+    box-shadow: var(--reader-rail-shadow);
+    backdrop-filter: blur(12px);
+  }
+
+  .theme-pixel {
+    appearance: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    border-radius: 0.35rem;
+    outline: none;
+    transition:
+      transform 0.18s ease,
+      background 0.32s ease,
+      background-color 0.32s ease,
+      border-color 0.32s ease,
+      box-shadow 0.32s ease;
+  }
+
+  .theme-pixel::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    transform: translate(-50%, -50%);
+    image-rendering: pixelated;
+  }
+
+  .theme-pixel::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border: 1px solid transparent;
+    border-radius: 0.28rem;
+    opacity: 0;
+  }
+
+  .theme-pixel[data-reader-theme="ballard"]::before {
+    background: #b85185;
+    box-shadow:
+      -4px -4px 0 #f4ead9,
+      4px -4px 0 #5a3275,
+      -4px 0 0 #cab19b,
+      4px 0 0 #d2614e,
+      0 4px 0 #a39058,
+      4px 4px 0 #66724f;
+  }
+
+  .theme-pixel[data-reader-theme="paper"]::before {
+    background: #101010;
+    box-shadow:
+      -4px -4px 0 #fffdf7,
+      4px -4px 0 #d3c7b9,
+      -4px 0 0 #f8f4ed,
+      4px 0 0 #8a7a68,
+      0 4px 0 #7f8573,
+      4px 4px 0 #6b6470;
+  }
+
+  .theme-pixel[data-reader-theme="night"]::before {
+    background: #39efff;
+    box-shadow:
+      -4px -4px 0 #f2fbff,
+      4px -4px 0 #7b6fff,
+      -4px 0 0 #040608,
+      4px 0 0 #ff5aa2,
+      0 4px 0 #ffd76b,
+      4px 4px 0 #46ffb5;
+  }
+
+  .theme-pixel:hover {
+    transform: translateY(-1px);
+  }
+
+  .theme-pixel:focus-visible::after,
+  .theme-pixel[aria-pressed="true"]::after {
+    opacity: 1;
+    border-color: var(--accent);
+  }
+
+  .theme-pixel[aria-pressed="true"] {
+    background: rgba(184, 81, 133, 0.12);
+  }
+
+  html[data-theme="paper"] .theme-pixel[aria-pressed="true"] {
+    background: rgba(16, 16, 16, 0.06);
+  }
+
+  html[data-theme="night"] .theme-pixel[aria-pressed="true"] {
+    background: rgba(57, 239, 255, 0.12);
+    box-shadow: 0 0 12px rgba(57, 239, 255, 0.12);
+  }
+
+  @media (orientation: portrait) and (max-width: 1100px) {
+    .reader-rail {
+      top: auto;
+      right: 0.9rem;
+      bottom: 0.9rem;
+      left: auto;
+      transform: none;
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.5rem;
+      width: auto;
+      height: auto;
+      max-width: calc(100vw - 1.8rem);
+      max-height: none;
+      border-radius: 0.95rem;
+    }
+
+    .theme-pixel {
+      flex: 0 0 auto;
+    }
+  }
 </style>
 </head>
 <body>
 
+<div class="reader-rail" aria-label="Selector de tema" role="toolbar">
+  <button class="theme-pixel" type="button" data-reader-theme="ballard" aria-label="Tema Ballard-Suhrkamp" aria-pressed="true" title="Tema Ballard-Suhrkamp"></button>
+  <button class="theme-pixel" type="button" data-reader-theme="night" aria-label="Tema nocturno" aria-pressed="false" title="Tema nocturno"></button>
+  <button class="theme-pixel" type="button" data-reader-theme="paper" aria-label="Tema papel" aria-pressed="false" title="Tema papel"></button>
+</div>
+
 <!-- ═══════════ HEADER ═══════════ -->
 <header class="site-header">
-  <div class="header-date" id="headerDate"></div>
-  <h1 class="header-title">
-    <span class="mercury">Mercurio</span> en los engranajes
-  </h1>
-  <p class="header-subtitle">Fragmentos y latencia de Zettelkasten</p>
-  <div class="header-author">
-    Un proyecto de fragmentos de texto por <strong>J.C. Latenz + Opus 4.6</strong>
+  <div class="header-shell">
+    <div class="header-copy">
+      <div class="header-date" id="headerDate"></div>
+      <h1 class="header-title">
+        <span class="mercury">Mercurio</span> en los engranajes
+      </h1>
+      <p class="header-subtitle">Fragmentos y latencia de Zettelkasten</p>
+      <div class="header-author">
+        Un proyecto de fragmentos de texto por <strong>J.C. Latenz</strong>
+      </div>
+    </div>
+    <div class="header-ornament" id="headerOrnament" aria-hidden="true">
+      <svg class="header-ornament-svg" viewBox="0 0 680 360" shape-rendering="crispEdges" role="presentation">
+        <defs>
+          <linearGradient id="ornamentBase" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1a1217"/>
+            <stop offset="55%" stop-color="#261a21"/>
+            <stop offset="100%" stop-color="#130f13"/>
+          </linearGradient>
+          <linearGradient id="playfieldGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#23181d"/>
+            <stop offset="48%" stop-color="#321f28"/>
+            <stop offset="100%" stop-color="#181216"/>
+          </linearGradient>
+          <linearGradient id="railChrome" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f4ead9"/>
+            <stop offset="28%" stop-color="#d6c0ab"/>
+            <stop offset="54%" stop-color="#8d6e70"/>
+            <stop offset="100%" stop-color="#a39058"/>
+          </linearGradient>
+          <radialGradient id="bumperChrome" cx="34%" cy="28%" r="72%">
+            <stop offset="0%" stop-color="#fff5e8"/>
+            <stop offset="38%" stop-color="#d37a8e"/>
+            <stop offset="84%" stop-color="#6b394f"/>
+            <stop offset="100%" stop-color="#2b1b22"/>
+          </radialGradient>
+          <radialGradient id="ballAura" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#f4ead9" stop-opacity="0.9"/>
+            <stop offset="55%" stop-color="#b85185" stop-opacity="0.42"/>
+            <stop offset="100%" stop-color="#b85185" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="mercuryChrome" cx="34%" cy="26%" r="74%">
+            <stop offset="0%" stop-color="#fffdf8"/>
+            <stop offset="20%" stop-color="#f0dcc8"/>
+            <stop offset="54%" stop-color="#cb8b8e"/>
+            <stop offset="80%" stop-color="#714955"/>
+            <stop offset="100%" stop-color="#2b1b22"/>
+          </radialGradient>
+          <linearGradient id="accumulatorMercury" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#f0e6d8"/>
+            <stop offset="35%" stop-color="#b85185"/>
+            <stop offset="72%" stop-color="#d2614e"/>
+            <stop offset="100%" stop-color="#66724f"/>
+          </linearGradient>
+          <linearGradient id="glassShine" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+            <stop offset="45%" stop-color="#ffffff" stop-opacity="0.03"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+          </linearGradient>
+          <clipPath id="gearWindowClip">
+            <rect x="492" y="148" width="92" height="88"/>
+          </clipPath>
+          <clipPath id="accumulatorClip">
+            <rect x="104" y="136" width="24" height="132"/>
+          </clipPath>
+          <symbol id="gearPixel" viewBox="0 0 160 160">
+            <path class="gear-body" fill-rule="evenodd" d="M56 0H104V20H132V48H152V96H132V124H104V144H56V124H28V96H8V48H28V20H56ZM62 42H98V54H110V66H122V94H110V106H98V118H62V106H50V94H38V66H50V54H62Z"/>
+            <path class="gear-rim" d="M62 20H98V32H122V58H134V86H122V112H98V124H62V112H38V86H26V58H38V32H62Z"/>
+            <path class="gear-reflect" d="M56 0H104V20H72V124H56V96H28V48H56Z"/>
+            <rect class="gear-core" x="66" y="66" width="28" height="28"/>
+            <rect class="gear-core-shine" x="72" y="72" width="8" height="8"/>
+            <rect class="gear-core-shine" x="84" y="72" width="8" height="8" opacity="0.42"/>
+          </symbol>
+        </defs>
+
+        <rect width="680" height="360" class="pixel-sky"/>
+
+        <g class="pinball-layer">
+          <ellipse class="playfield-shadow" cx="340" cy="318" rx="268" ry="18"/>
+          <path class="cabinet-frame" d="M68 28H612V48H628V312H612V332H68V312H52V48H68Z"/>
+          <path class="cabinet-liner" d="M84 44H596V60H612V296H596V316H84V296H68V60H84Z"/>
+          <path class="playfield-body" d="M104 60H576V84H592V276H576V300H104V276H88V84H104Z"/>
+
+          <rect class="pixel-band" x="104" y="60" width="488" height="40"/>
+          <g class="pixel-brick">
+            <rect x="116" y="68" width="52" height="8"/>
+            <rect x="172" y="68" width="52" height="8"/>
+            <rect x="228" y="68" width="52" height="8"/>
+            <rect x="284" y="68" width="52" height="8"/>
+            <rect x="340" y="68" width="52" height="8"/>
+            <rect x="396" y="68" width="52" height="8"/>
+            <rect x="452" y="68" width="52" height="8"/>
+            <rect x="508" y="68" width="60" height="8"/>
+            <rect x="116" y="82" width="24" height="8"/>
+            <rect x="144" y="82" width="52" height="8"/>
+            <rect x="200" y="82" width="52" height="8"/>
+            <rect x="256" y="82" width="52" height="8"/>
+            <rect x="312" y="82" width="52" height="8"/>
+            <rect x="368" y="82" width="52" height="8"/>
+            <rect x="424" y="82" width="52" height="8"/>
+            <rect x="480" y="82" width="52" height="8"/>
+            <rect x="536" y="82" width="32" height="8"/>
+          </g>
+
+          <rect class="pixel-column-dark" x="104" y="60" width="20" height="240"/>
+          <rect class="pixel-column-light" x="104" y="60" width="12" height="240"/>
+          <rect class="pixel-column-dark" x="556" y="60" width="20" height="240"/>
+          <rect class="pixel-column-light" x="564" y="60" width="12" height="240"/>
+
+          <path class="playfield-panel panel-magenta" d="M132 120H264V236H188V268H132Z"/>
+          <path class="playfield-panel panel-olive" d="M282 120H476V192H438V236H282Z"/>
+          <path class="playfield-panel panel-cream" d="M214 250H496V284H214Z"/>
+          <path class="playfield-gloss" d="M128 108H552V124H404V136H246V124H128Z"/>
+
+          <path class="calligram-trace" d="M174 112H238V88H342V122H452V156H520V212H452V248H338V288H242V240H154V152H174"/>
+          <path class="calligram-trace" d="M340 64V88"/>
+
+          <rect class="mast-body" x="338" y="76" width="4" height="44"/>
+          <rect class="mast-rung" x="326" y="84" width="28" height="4"/>
+          <rect class="mast-rung" x="330" y="94" width="20" height="4"/>
+          <g class="antenna-tip">
+            <rect class="machine-red" x="336" y="68" width="8" height="8"/>
+            <rect class="machine-red-soft" x="338" y="64" width="4" height="4"/>
+          </g>
+
+          <g class="signal-ring signal-ring-a machine-signal">
+            <rect x="324" y="48" width="8" height="8"/>
+            <rect x="348" y="48" width="8" height="8"/>
+            <rect x="308" y="60" width="8" height="8"/>
+            <rect x="364" y="60" width="8" height="8"/>
+            <rect x="300" y="76" width="8" height="8"/>
+            <rect x="372" y="76" width="8" height="8"/>
+          </g>
+          <g class="signal-ring signal-ring-b machine-signal-alt">
+            <rect x="324" y="24" width="8" height="8"/>
+            <rect x="348" y="24" width="8" height="8"/>
+            <rect x="304" y="36" width="8" height="8"/>
+            <rect x="368" y="36" width="8" height="8"/>
+            <rect x="288" y="52" width="8" height="8"/>
+            <rect x="384" y="52" width="8" height="8"/>
+            <rect x="280" y="68" width="8" height="8"/>
+            <rect x="392" y="68" width="8" height="8"/>
+          </g>
+          <g class="signal-ring signal-ring-c machine-signal-deep">
+            <rect x="316" y="8" width="8" height="8"/>
+            <rect x="356" y="8" width="8" height="8"/>
+            <rect x="288" y="20" width="8" height="8"/>
+            <rect x="384" y="20" width="8" height="8"/>
+            <rect x="264" y="36" width="8" height="8"/>
+            <rect x="408" y="36" width="8" height="8"/>
+            <rect x="248" y="60" width="8" height="8"/>
+            <rect x="424" y="60" width="8" height="8"/>
+            <rect x="248" y="84" width="8" height="8"/>
+            <rect x="424" y="84" width="8" height="8"/>
+          </g>
+
+          <g>
+            <rect class="machine-frame" x="186" y="136" width="260" height="112"/>
+            <rect class="machine-rim" x="186" y="136" width="260" height="8"/>
+            <rect class="machine-rim" x="186" y="136" width="8" height="112"/>
+            <rect class="machine-shadow" x="438" y="144" width="8" height="104"/>
+            <rect class="machine-shadow" x="186" y="240" width="252" height="8"/>
+
+            <rect class="machine-window" x="206" y="156" width="84" height="60"/>
+            <g class="machine-slot">
+              <rect x="214" y="164" width="68" height="8"/>
+              <rect x="214" y="176" width="68" height="4"/>
+              <rect x="214" y="184" width="68" height="4"/>
+              <rect x="214" y="192" width="68" height="4"/>
+              <rect x="214" y="200" width="68" height="8"/>
+            </g>
+            <g class="machine-line">
+              <rect x="222" y="168" width="8" height="36"/>
+              <rect x="238" y="168" width="8" height="36"/>
+              <rect x="254" y="168" width="8" height="36"/>
+              <rect x="270" y="168" width="8" height="36"/>
+            </g>
+
+            <rect class="machine-window" x="308" y="156" width="98" height="24"/>
+            <g class="machine-line">
+              <rect x="316" y="160" width="4" height="16"/>
+              <rect x="330" y="160" width="4" height="16"/>
+              <rect x="344" y="160" width="4" height="16"/>
+              <rect x="358" y="160" width="4" height="16"/>
+              <rect x="372" y="160" width="4" height="16"/>
+              <rect x="386" y="160" width="4" height="16"/>
+            </g>
+
+            <rect class="machine-window" x="308" y="188" width="118" height="18"/>
+            <g class="machine-line">
+              <rect x="316" y="194" width="12" height="6"/>
+              <rect x="334" y="194" width="12" height="6"/>
+              <rect x="352" y="194" width="12" height="6"/>
+              <rect x="370" y="194" width="12" height="6"/>
+              <rect x="388" y="194" width="12" height="6"/>
+              <rect x="406" y="194" width="12" height="6"/>
+            </g>
+
+            <rect class="machine-slot" x="308" y="214" width="48" height="12"/>
+            <rect class="machine-slot" x="370" y="214" width="16" height="12"/>
+            <rect class="machine-slot" x="394" y="214" width="16" height="12"/>
+            <rect class="machine-frame" x="250" y="248" width="132" height="12"/>
+          </g>
+
+          <path class="mercury-route" d="M174 112H238V88H342V122H452V156H520V212H452V248H338V288H242V240H154V152H238"/>
+
+          <path class="sling-shot" d="M214 268H250V284H226V292H214Z"/>
+          <path class="sling-shot" d="M430 268H466V292H454V284H430Z"/>
+
+          <g id="flipperLeft" transform="translate(280 292) rotate(-24)">
+            <rect class="flipper-body" x="-2" y="-6" width="76" height="12"/>
+            <rect class="flipper-cap" x="-14" y="-10" width="12" height="20"/>
+          </g>
+          <g id="flipperRight" transform="translate(400 292) rotate(24)">
+            <rect class="flipper-body" x="-74" y="-6" width="76" height="12"/>
+            <rect class="flipper-cap" x="2" y="-10" width="12" height="20"/>
+          </g>
+
+          <rect class="gear-window" x="492" y="148" width="92" height="88"/>
+          <rect class="gear-window-glow" x="492" y="148" width="92" height="88"/>
+
+          <rect class="plunger-track" x="566" y="246" width="12" height="58"/>
+          <path class="plunger-spring" d="M572 296V252"/>
+          <circle id="plungerKnob" class="plunger-knob" cx="572" cy="300" r="8"/>
+
+          <path id="pinballMotionPath" d="M572 292L572 112L520 112L520 156L452 156L452 122L342 122L342 88L238 88L238 152L154 152L154 240L242 240L242 288L338 288L338 248L452 248L452 212L520 212L520 272L572 272"/>
+        </g>
+
+        <g class="mechanism-layer" clip-path="url(#gearWindowClip)">
+          <g id="pinballGearLarge" class="pinball-gear" data-base="translate(524 192) scale(0.28)" data-speed="0.055">
+            <use href="#gearPixel" x="-80" y="-80" width="160" height="160"/>
+          </g>
+          <g id="pinballGearSmall" class="pinball-gear" data-base="translate(562 220) scale(0.2)" data-speed="-0.082">
+            <use href="#gearPixel" x="-80" y="-80" width="160" height="160"/>
+          </g>
+        </g>
+
+        <g class="hud-layer">
+          <g transform="translate(0 0)">
+            <rect class="accumulator-frame" x="90" y="120" width="52" height="164"/>
+            <rect class="accumulator-glass" x="104" y="136" width="24" height="132"/>
+            <g clip-path="url(#accumulatorClip)">
+              <rect id="accumulatorFill" class="accumulator-fill" x="104" y="184" width="24" height="84"/>
+              <rect id="accumulatorSurface" class="accumulator-surface" x="104" y="180" width="24" height="4"/>
+            </g>
+            <path class="accumulator-scale" d="M132 148H142M132 172H142M132 196H142M132 220H142M132 244H142M132 268H142"/>
+          </g>
+
+          <g transform="translate(292 196)">
+            <rect class="status-panel" x="0" y="0" width="132" height="44"/>
+            <text id="headerSpeedReadout" class="status-readout" x="12" y="28">142</text>
+            <path class="status-arc" d="M80 32A22 22 0 0 1 118 16"/>
+            <line class="status-tick" x1="86" y1="30" x2="90" y2="27"/>
+            <line class="status-tick" x1="98" y1="20" x2="102" y2="18"/>
+            <line class="status-tick" x1="110" y1="16" x2="114" y2="16"/>
+            <line id="statusNeedle" class="status-needle" x1="96" y1="32" x2="112" y2="18"/>
+            <circle class="status-needle-core" cx="96" cy="32" r="3.4"/>
+          </g>
+
+          <g id="bumperA" class="bumper-wrap" transform="translate(214 176)">
+            <rect class="bumper-ring" x="-18" y="-18" width="36" height="36"/>
+            <rect class="bumper-shell" x="-10" y="-10" width="20" height="20"/>
+          </g>
+          <g id="bumperB" class="bumper-wrap" transform="translate(342 130)">
+            <rect class="bumper-ring" x="-16" y="-16" width="32" height="32"/>
+            <rect class="bumper-shell" x="-9" y="-9" width="18" height="18"/>
+          </g>
+          <g id="bumperC" class="bumper-wrap" transform="translate(452 186)">
+            <rect class="bumper-ring" x="-20" y="-20" width="40" height="40"/>
+            <rect class="bumper-shell" x="-12" y="-12" width="24" height="24"/>
+          </g>
+
+          <g class="lamp lamp-cream" id="lampA" data-x="238" data-y="88" transform="translate(238 88)">
+            <rect class="lamp-glow" x="-10" y="-10" width="20" height="20"/>
+            <rect class="lamp-core" x="-3" y="-3" width="6" height="6"/>
+          </g>
+          <g class="lamp" id="lampD" data-x="520" data-y="112" transform="translate(520 112)">
+            <rect class="lamp-glow" x="-10" y="-10" width="20" height="20"/>
+            <rect class="lamp-core" x="-3" y="-3" width="6" height="6"/>
+          </g>
+          <g class="lamp lamp-olive" id="lampE" data-x="154" data-y="240" transform="translate(154 240)">
+            <rect class="lamp-glow" x="-10" y="-10" width="20" height="20"/>
+            <rect class="lamp-core" x="-3" y="-3" width="6" height="6"/>
+          </g>
+          <g class="lamp lamp-cream" id="lampF" data-x="338" data-y="248" transform="translate(338 248)">
+            <rect class="lamp-glow" x="-10" y="-10" width="20" height="20"/>
+            <rect class="lamp-core" x="-3" y="-3" width="6" height="6"/>
+          </g>
+          <g class="lamp lamp-olive" id="lampH" data-x="520" data-y="212" transform="translate(520 212)">
+            <rect class="lamp-glow" x="-12" y="-12" width="24" height="24"/>
+            <rect class="lamp-core" x="-4" y="-4" width="8" height="8"/>
+          </g>
+
+          <g id="headerPinballBall" transform="translate(572 292)">
+            <circle class="pinball-ball-aura" r="19"/>
+            <circle class="pinball-ball" r="7.5"/>
+            <circle class="pinball-ball-shine" cx="-2.6" cy="-2.8" r="2.2"/>
+          </g>
+        </g>
+      </svg>
+    </div>
   </div>
 </header>
 
@@ -578,6 +2247,10 @@
   <nav class="reading-nav">
     <button class="reading-back" onclick="closeReading()">&larr; Volver</button>
     <span class="reading-entry-id" id="readingEntryId"></span>
+    <div class="font-size-controls">
+      <button class="font-btn font-decrease" onclick="adjustFontSize(-1)" title="Reducir texto">A−</button>
+      <button class="font-btn font-increase" onclick="adjustFontSize(+1)" title="Ampliar texto">A+</button>
+    </div>
   </nav>
   <div class="reading-container">
     <article class="reading-main" id="readingMain"></article>
@@ -605,8 +2278,14 @@
 
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer class="site-footer">
-  Mercurio en los engranajes &mdash; J.C. Latenz + Opus 4.6 &mdash; Zettelkasten &mdash; CDMX &mdash; 2026
+  Mercurio en los engranajes &mdash; J.C. Latenz &mdash; Zettelkasten &mdash; CDMX &mdash; 2026
 </footer>
+
+<!-- ═══════════ DIAGRAM MODAL ═══════════ -->
+<div class="diagram-modal" id="diagramModal" onclick="hideDiagramModal()">
+  <button class="diagram-modal-close" onclick="hideDiagramModal()">Cerrar &times;</button>
+  <img id="diagramModalImg" src="" alt="Diagrama" onclick="event.stopPropagation()">
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
 <script>
@@ -629,6 +2308,43 @@ const ENTRY_IDS = [
   'Z-002_el-muzak'
 ];
 let ZETTELS = [];
+const THEME_STORAGE_KEY = 'readerTheme';
+const READER_THEMES = new Set(['ballard', 'paper', 'night']);
+
+function getSavedTheme() {
+  try {
+    const saved = localStorage.getItem(THEME_STORAGE_KEY);
+    return READER_THEMES.has(saved) ? saved : 'ballard';
+  } catch {
+    return 'ballard';
+  }
+}
+
+function storeTheme(theme) {
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch {
+    // Ignore storage failures and keep the session theme only.
+  }
+}
+
+function applyTheme(theme) {
+  const nextTheme = READER_THEMES.has(theme) ? theme : 'ballard';
+  document.documentElement.dataset.theme = nextTheme;
+  document.querySelectorAll('.theme-pixel').forEach(button => {
+    button.setAttribute('aria-pressed', button.dataset.readerTheme === nextTheme ? 'true' : 'false');
+  });
+  storeTheme(nextTheme);
+}
+
+function initThemeSelector() {
+  applyTheme(getSavedTheme());
+  document.querySelectorAll('.theme-pixel').forEach(button => {
+    button.addEventListener('click', () => {
+      applyTheme(button.dataset.readerTheme);
+    });
+  });
+}
 
 /* ── Frontmatter parser ─────────────────────────────────── */
 function parseFrontmatter(text) {
@@ -655,13 +2371,13 @@ function parseWikilinks(text) {
 /* ── Default illustration fallback ─────────────────────── */
 function defaultIllustration() {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" shape-rendering="crispEdges">
-    <rect width="320" height="200" fill="#080808"/>
-    <rect x="144" y="84" width="32" height="32" fill="#1a1a18"/>
-    <rect x="136" y="92" width="8" height="16" fill="#2a2a28"/>
-    <rect x="176" y="92" width="8" height="16" fill="#2a2a28"/>
-    <rect x="152" y="76" width="16" height="8" fill="#2a2a28"/>
-    <rect x="152" y="116" width="16" height="8" fill="#2a2a28"/>
-    <rect x="156" y="92" width="8" height="8" fill="#d4310a"/>
+    <rect width="320" height="200" fill="#151114"/>
+    <rect x="144" y="84" width="32" height="32" fill="#2a2025"/>
+    <rect x="136" y="92" width="8" height="16" fill="#45373c"/>
+    <rect x="176" y="92" width="8" height="16" fill="#45373c"/>
+    <rect x="152" y="76" width="16" height="8" fill="#45373c"/>
+    <rect x="152" y="116" width="16" height="8" fill="#45373c"/>
+    <rect x="156" y="92" width="8" height="8" fill="#b85185"/>
   </svg>`;
 }
 
@@ -696,7 +2412,8 @@ async function loadEntry(id) {
       excerpt:      fm.excerpt || cleanBody.replace(/<[^>]*>/g,'').slice(0, 220) + '…',
       body:         bodyHtml,
       links,
-      illustration: svgText
+      illustration: svgText,
+      diagram:      fm.diagram || ''
     };
   } catch (err) {
     console.warn(`[Zettelkasten] No se pudo cargar ${id}:`, err);
@@ -744,27 +2461,47 @@ function openReading(id) {
   const main    = document.getElementById('readingMain');
   document.getElementById('readingEntryId').textContent = z.id;
 
+  currentDiagram = z.diagram || '';
+
   main.innerHTML = `
-    <div class="reading-illustration">${z.illustration}</div>
-    <div class="reading-meta-block">
-      <h1 class="reading-title">${z.title}</h1>
-      <div class="reading-info">
-        <span>${z.date}</span>
-        <span>${z.location}</span>
-        <span>J.C. Latenz</span>
-      </div>
+    <div class="book-cover" id="bookCover">
+      <div class="reading-illustration">${z.illustration}</div>
     </div>
-    <div class="reading-body">${z.body}</div>
+    <div class="book-stage" id="bookStage">
+      <div class="book-spread" id="bookSpread">
+        <div class="book-content" id="bookContent">
+          <div class="reading-meta-block">
+            <h1 class="reading-title">${z.title}</h1>
+            <div class="reading-info">
+              <span>${z.date}</span>
+              <span>${z.location}</span>
+              <span>J.C. Latenz</span>
+            </div>
+          </div>
+          <div class="reading-body">${z.body}</div>
+        </div>
+      </div>
+      <div class="book-click book-click-prev" onclick="bookPrev()"></div>
+      <div class="book-click book-click-next" onclick="bookNext()"></div>
+    </div>
+    <div class="book-folio" id="bookFolio">
+      <span id="bookPageLabel"></span>
+      <div class="book-dots" id="bookDots"></div>
+      <span id="bookTitleLabel"></span>
+    </div>
   `;
 
   overlay.classList.add('active');
   overlay.scrollTop = 0;
   document.body.style.overflow = 'hidden';
+  applyFontSize();
+  setupBookReader();
   bindZettelLinks(main);
 }
 
 function closeReading() {
-  document.getElementById('readingOverlay').classList.remove('active');
+  const overlay = document.getElementById('readingOverlay');
+  overlay.classList.remove('active', 'book-mode');
   document.body.style.overflow = '';
   closeSidePanel();
   hideRefPopup();
@@ -894,21 +2631,321 @@ function setHeaderDate() {
     `${d.getDate()} de ${meses[d.getMonth()]} de ${d.getFullYear()}`;
 }
 
+/* ── HEADER ORNAMENT ────────────────────────────────────── */
+function initHeaderOrnament() {
+  const ornament = document.getElementById('headerOrnament');
+  if (!ornament) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (prefersReducedMotion.matches) return;
+
+  const updateParallax = event => {
+    const rect = ornament.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width - 0.5).toFixed(3);
+    const y = ((event.clientY - rect.top) / rect.height - 0.5).toFixed(3);
+    ornament.style.setProperty('--parallax-x', x);
+    ornament.style.setProperty('--parallax-y', y);
+  };
+
+  ornament.addEventListener('pointermove', updateParallax);
+  ornament.addEventListener('pointerleave', () => {
+    ornament.style.setProperty('--parallax-x', '0');
+    ornament.style.setProperty('--parallax-y', '0');
+  });
+
+  const motionPath = document.getElementById('pinballMotionPath');
+  const ball = document.getElementById('headerPinballBall');
+  const fill = document.getElementById('accumulatorFill');
+  const surface = document.getElementById('accumulatorSurface');
+  const speedReadout = document.getElementById('headerSpeedReadout');
+  const statusNeedle = document.getElementById('statusNeedle');
+  const plungerKnob = document.getElementById('plungerKnob');
+  const flipperLeft = document.getElementById('flipperLeft');
+  const flipperRight = document.getElementById('flipperRight');
+
+  if (!motionPath || !ball || !fill || !surface || !speedReadout || !statusNeedle || !plungerKnob || !flipperLeft || !flipperRight) return;
+
+  const lamps = Array.from(ornament.querySelectorAll('.lamp')).map(el => ({
+    el,
+    x: parseFloat(el.dataset.x || '0'),
+    y: parseFloat(el.dataset.y || '0')
+  }));
+
+  const bumpers = [
+    { el: document.getElementById('bumperA'), x: 214, y: 176 },
+    { el: document.getElementById('bumperB'), x: 342, y: 130 },
+    { el: document.getElementById('bumperC'), x: 452, y: 186 }
+  ].filter(item => item.el);
+
+  const gears = Array.from(ornament.querySelectorAll('.pinball-gear')).map(el => ({
+    el,
+    base: el.dataset.base || '',
+    speed: parseFloat(el.dataset.speed || '0.05')
+  }));
+
+  const totalLength = motionPath.getTotalLength();
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+  const tankTop = 136;
+  const tankBottom = 268;
+  const tankHeight = tankBottom - tankTop;
+  let distance = 0;
+  let lastTime = performance.now();
+
+  const speedFor = (u, now) => {
+    if (u < 0.08) return 340;
+    if (u < 0.2) return 168 + 18 * Math.sin(now * 0.006);
+    if (u < 0.38) return 242 + 22 * Math.sin(now * 0.014);
+    if (u < 0.54) return 182 + 16 * Math.cos(now * 0.01);
+    if (u < 0.74) return 214 + 28 * Math.sin(now * 0.012);
+    if (u < 0.9) return 156 + 14 * Math.cos(now * 0.008);
+    return 296;
+  };
+
+  const animate = now => {
+    const dt = Math.min((now - lastTime) / 1000, 0.03);
+    lastTime = now;
+
+    const u = distance / totalLength;
+    const speed = speedFor(u, now);
+    distance = (distance + speed * dt) % totalLength;
+
+    const point = motionPath.getPointAtLength(distance);
+    ball.setAttribute('transform', `translate(${point.x.toFixed(1)} ${point.y.toFixed(1)})`);
+
+    const power = clamp((speed - 140) / 210, 0, 1);
+    const fillRatio = clamp(0.88 - power * 0.58 + 0.04 * Math.sin(now * 0.0038), 0.16, 0.92);
+    const fillHeight = tankHeight * fillRatio;
+    const fillY = tankBottom - fillHeight;
+    fill.setAttribute('y', fillY.toFixed(1));
+    fill.setAttribute('height', fillHeight.toFixed(1));
+    if (surface.tagName.toLowerCase() === 'rect') {
+      surface.setAttribute('y', Math.max(tankTop, fillY - 4).toFixed(1));
+    } else {
+      surface.setAttribute('cy', fillY.toFixed(1));
+    }
+
+    speedReadout.textContent = `${Math.round(speed)}`;
+    statusNeedle.setAttribute('transform', `rotate(${(-76 + power * 152).toFixed(2)} 96 32)`);
+
+    const plungerTravel = u < 0.06 ? 10 * (1 - u / 0.06) : 0;
+    plungerKnob.setAttribute('cy', (300 - plungerTravel).toFixed(1));
+
+    const leftKick = clamp(1 - Math.hypot(point.x - 280, point.y - 292) / 108, 0, 1);
+    const rightKick = clamp(1 - Math.hypot(point.x - 400, point.y - 292) / 108, 0, 1);
+    flipperLeft.setAttribute('transform', `translate(280 292) rotate(${(-24 + leftKick * 11).toFixed(2)})`);
+    flipperRight.setAttribute('transform', `translate(400 292) rotate(${(24 - rightKick * 11).toFixed(2)})`);
+
+    lamps.forEach((lamp, idx) => {
+      const dist = Math.hypot(point.x - lamp.x, point.y - lamp.y);
+      const hit = clamp(1 - dist / 88, 0, 1);
+      const pulse = 0.08 + 0.05 * Math.sin(now * 0.005 + idx * 0.8);
+      const scale = 1 + hit * 0.12;
+      lamp.el.style.opacity = (0.12 + pulse + hit * 0.56).toFixed(3);
+      lamp.el.setAttribute('transform', `translate(${lamp.x} ${lamp.y}) scale(${scale.toFixed(3)})`);
+    });
+
+    bumpers.forEach((bumper, idx) => {
+      const dist = Math.hypot(point.x - bumper.x, point.y - bumper.y);
+      const glow = clamp(1 - dist / 92, 0, 1);
+      const scale = 1 + glow * 0.05 + 0.01 * Math.sin(now * 0.01 + idx);
+      bumper.el.setAttribute('transform', `translate(${bumper.x} ${bumper.y}) scale(${scale.toFixed(3)})`);
+    });
+
+    gears.forEach((gear, idx) => {
+      const angle = now * gear.speed * (0.42 + power * 0.92);
+      gear.el.setAttribute('transform', `${gear.base} rotate(${(angle + idx * 18).toFixed(2)})`);
+    });
+
+    requestAnimationFrame(animate);
+  };
+
+  requestAnimationFrame(animate);
+}
+
 /* ── KEYBOARD SHORTCUTS ─────────────────────────────────── */
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
-    if (document.getElementById('sidePanel').classList.contains('active')) {
+    if (document.getElementById('diagramModal').classList.contains('active')) {
+      hideDiagramModal();
+    } else if (document.getElementById('sidePanel').classList.contains('active')) {
       closeSidePanel();
     } else if (document.getElementById('readingOverlay').classList.contains('active')) {
       closeReading();
     }
     hideRefPopup();
   }
+  if (document.getElementById('readingOverlay').classList.contains('book-mode')) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); bookNext(); }
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); bookPrev(); }
+  }
 });
+
+/* ── DIAGRAM MODAL ──────────────────────────────────────── */
+let currentDiagram = '';
+
+function showDiagramModal() {
+  if (!currentDiagram) return;
+  const modal = document.getElementById('diagramModal');
+  const img   = document.getElementById('diagramModalImg');
+  img.src = currentDiagram;
+  modal.classList.add('active');
+}
+
+function hideDiagramModal() {
+  document.getElementById('diagramModal').classList.remove('active');
+}
+
+/* ── FONT SIZE CONTROLS ─────────────────────────────────── */
+const FONT_SIZES = [0.9, 1.05, 1.18, 1.35, 1.52]; // rem values
+let fontSizeIdx = parseInt(localStorage.getItem('readingFontIdx') || '2'); // default: index 2
+
+function applyFontSize() {
+  // Apply directly to .reading-body so it overrides any CSS rem-based font-size
+  document.querySelectorAll('.reading-body').forEach(el => {
+    el.style.fontSize = FONT_SIZES[fontSizeIdx] + 'rem';
+  });
+}
+
+function adjustFontSize(delta) {
+  fontSizeIdx = Math.max(0, Math.min(FONT_SIZES.length - 1, fontSizeIdx + delta));
+  localStorage.setItem('readingFontIdx', fontSizeIdx);
+  applyFontSize();
+  // Recalculate book layout if active (font size changes column count)
+  if (document.getElementById('readingOverlay').classList.contains('book-mode')) {
+    setupBookReader();
+  }
+}
+
+/* ── BOOK MODE ────────────────────────────────────────────── */
+let bookPage = 0;
+let bookTotalPages = 1;
+let bookSpreadWidth = 0;
+let bookStepWidth = 0;
+
+function isBookMode() {
+  // Landscape and wide enough for two columns
+  return window.innerWidth >= 900 && window.innerWidth > window.innerHeight;
+}
+
+function setupBookReader() {
+  const overlay = document.getElementById('readingOverlay');
+  const stage   = document.getElementById('bookStage');
+  const spread  = document.getElementById('bookSpread');
+  const content = document.getElementById('bookContent');
+
+  if (!stage || !spread || !content) return;
+
+  if (!isBookMode()) {
+    overlay.classList.remove('book-mode');
+    spread.style.cssText = '';
+    content.style.cssText = '';
+    bookSpreadWidth = 0;
+    bookStepWidth = 0;
+    return;
+  }
+
+  overlay.classList.add('book-mode');
+
+  requestAnimationFrame(() => {
+    const stageW = stage.clientWidth;
+    const stageH = stage.clientHeight;
+    const rootFs = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const clampValue = (value, min, max) => Math.max(min, Math.min(max, value));
+    const basePadX = Math.round(clampValue(stageW * 0.04, rootFs * 2.1, rootFs * 4.4));
+    const padTop = Math.round(clampValue(stageH * 0.05, rootFs * 1.5, rootFs * 3));
+    const padBottom = Math.round(clampValue(stageH * 0.065, rootFs * 2, rootFs * 3.6));
+    const gap = Math.round(clampValue(rootFs * 3, 26, 56));
+    const pageInset = Math.round(clampValue(rootFs * 1.4, 18, 34));
+    const usableW = stageW - basePadX * 2 - pageInset * 2;
+    const minColW = Math.round(rootFs * 20);
+    const maxColW = Math.round(rootFs * 28);
+    const colW = clampValue(Math.floor((usableW - gap) / 2), minColW, maxColW);
+    const spreadCoreWidth = colW * 2 + gap + pageInset * 2;
+    const spreadHeight = stageH;
+
+    spread.style.width = spreadCoreWidth + 'px';
+    spread.style.height = spreadHeight + 'px';
+    content.style.width = spreadCoreWidth + 'px';
+    content.style.height = spreadHeight + 'px';
+    content.style.left = '0px';
+    content.style.padding = `${padTop}px ${pageInset}px ${padBottom}px`;
+    content.style.columnWidth = `${colW}px`;
+    content.style.columnGap = `${gap}px`;
+    content.style.columnFill = 'auto';
+
+    requestAnimationFrame(() => {
+      bookSpreadWidth = spreadCoreWidth;
+      bookStepWidth = 2 * (colW + gap);
+      const columnCount = Math.max(1, Math.ceil((content.scrollWidth - pageInset * 2 + gap) / (colW + gap)));
+      const textSpreads = Math.max(1, Math.ceil(columnCount / 2));
+      bookTotalPages = 1 + textSpreads;
+      bookPage = Math.min(bookPage, bookTotalPages - 1);
+      updateBookDisplay();
+    });
+  });
+}
+
+function updateBookDisplay() {
+  const content = document.getElementById('bookContent');
+  const stage   = document.getElementById('bookStage');
+  const cover   = document.getElementById('bookCover');
+  if (!content || !stage) return;
+
+  if (document.getElementById('readingOverlay').classList.contains('book-mode')) {
+    const onCover = bookPage === 0;
+    if (cover) cover.classList.toggle('book-hidden', !onCover);
+    stage.classList.toggle('book-hidden', onCover);
+    if (onCover) {
+      content.style.transform = 'translateX(0px)';
+    } else {
+      const stepWidth = bookStepWidth || bookSpreadWidth || stage.clientWidth || stage.offsetWidth;
+      content.style.transform = `translateX(${-(bookPage - 1) * stepWidth}px)`;
+    }
+  }
+
+  const label = document.getElementById('bookPageLabel');
+  const dots  = document.getElementById('bookDots');
+  const right = document.getElementById('bookTitleLabel');
+
+  if (label) label.textContent = `${bookPage + 1} / ${bookTotalPages}`;
+  if (right)  right.textContent = document.getElementById('readingEntryId')?.textContent || '';
+
+  if (dots) {
+    const n = Math.min(bookTotalPages, 20);
+    dots.innerHTML = Array.from({length: n}, (_, i) =>
+      `<span class="book-dot${i === bookPage ? ' active' : ''}"></span>`
+    ).join('');
+  }
+}
+
+function bookNext() {
+  if (bookPage < bookTotalPages - 1) { bookPage++; updateBookDisplay(); }
+}
+
+function bookPrev() {
+  if (bookPage > 0) { bookPage--; updateBookDisplay(); }
+}
+
+/* ── Recalculate on resize ──────────────────────────────── */
+window.addEventListener('resize', () => {
+  if (document.getElementById('readingOverlay').classList.contains('active')) {
+    setupBookReader();
+  }
+});
+
+if (document.fonts?.ready) {
+  document.fonts.ready.then(() => {
+    if (document.getElementById('readingOverlay').classList.contains('active')) {
+      setupBookReader();
+    }
+  });
+}
 
 /* ── INIT — async entry loading ─────────────────────────── */
 async function init() {
+  initThemeSelector();
   setHeaderDate();
+  initHeaderOrnament();
 
   const grid = document.getElementById('zettelGrid');
   grid.innerHTML = `<div style="color:var(--fg-muted);font-family:var(--font-mono);

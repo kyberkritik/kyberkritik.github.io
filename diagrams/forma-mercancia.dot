@@ -1,0 +1,149 @@
+digraph forma_mercancia {
+
+  graph [
+    bgcolor="#0a0a0a"
+    pad="1.4"
+    nodesep="1.2"
+    ranksep="2.2"
+    fontname="Courier"
+    fontsize="52"
+    fontcolor="#3a3a38"
+    label="CÓMO LAS COSAS TOMAN LA FORMA DE LA MERCANCÍA"
+    labelloc="t"
+    rankdir="LR"
+    splines="polyline"
+  ]
+
+  node [
+    fontname="Courier"
+    fontsize="52"
+    margin="0.55,0.35"
+    penwidth="2.5"
+    style="filled"
+    shape="box"
+  ]
+
+  edge [
+    fontname="Courier"
+    fontsize="38"
+    fontcolor="#5a5854"
+    color="#3a3a38"
+    penwidth="2.2"
+    arrowsize="1.4"
+  ]
+
+  /* ─── ORIGEN ─── */
+
+  uso [
+    label="VALOR DE USO\ngoce · rito · Stimmung"
+    fillcolor="#0b1a27"
+    fontcolor="#4a9cc9"
+    color="#2a6f97"
+  ]
+
+  trabajo [
+    label="TRABAJO CONCRETO\nel músico · el Ursprung"
+    fillcolor="#0b1a27"
+    fontcolor="#4a9cc9"
+    color="#2a6f97"
+  ]
+
+  /* ─── ABSTRACCIÓN ─── */
+
+  abstraccion [
+    label="ABSTRACCIÓN\ndel trabajo\nborramiento\ndel origen"
+    fillcolor="#111111"
+    fontcolor="#8a8780"
+    color="#3a3a38"
+    shape="ellipse"
+    style="filled,dashed"
+    fontsize="46"
+  ]
+
+  /* ─── EQUIVALENTE ─── */
+
+  dinero [
+    label="EQUIVALENTE\nGENERAL\nel dinero"
+    fillcolor="#1c1500"
+    fontcolor="#c9a84c"
+    color="#c9a84c"
+    shape="diamond"
+    fontsize="46"
+  ]
+
+  /* ─── FORMA MERCANCÍA (nodo central) ─── */
+
+  mercancia [
+    label="FORMA — MERCANCÍA\nGestalt der Ware\n────────────────────────\nvalor de uso + valor de cambio\ncristalizado en la cosa"
+    fillcolor="#2a0800"
+    fontcolor="#ff7a56"
+    color="#d4310a"
+    penwidth="4.0"
+    margin="0.7,0.45"
+    fontsize="54"
+  ]
+
+  /* ─── INSTANCIAS ─── */
+
+  muzak [
+    label="EL MUZAK\nsonido → atmósfera\ngesto → gramática\ndel entorno"
+    fillcolor="#131313"
+    fontcolor="#e8e6e1"
+    color="#5a5854"
+    penwidth="2.8"
+    fontsize="48"
+  ]
+
+  vanguardia [
+    label="LA VANGUARDIA\nirrupción → decorado\ndisonancia → Schein\nde la mercancía"
+    fillcolor="#111111"
+    fontcolor="#8a8780"
+    color="#3a3a38"
+    fontsize="48"
+  ]
+
+  /* ─── FETICHISMO ─── */
+
+  fetiche [
+    label="FETICHISMO\nlas relaciones entre personas\naparecen como\nrelaciones entre cosas"
+    fillcolor="#0a0a0a"
+    fontcolor="#5a5854"
+    color="#2a2a28"
+    style="dashed,filled"
+    penwidth="1.5"
+    shape="ellipse"
+    fontsize="46"
+  ]
+
+  /* ─── INFRAESTRUCTURA ─── */
+
+  infra [
+    label="INFRAESTRUCTURA\nINVISIBLE\n────────────\nse retira de la escena\ncuando más organiza\n\n\"still functioning\nas a living ruin\""
+    fillcolor="#0a0a0a"
+    fontcolor="#3a3a38"
+    color="#1e1e1c"
+    style="dashed,filled"
+    fontsize="42"
+    penwidth="1.0"
+  ]
+
+  /* ─── CONEXIONES ─── */
+
+  uso      -> abstraccion  [ label="  borramiento" ]
+  trabajo  -> abstraccion  [ label="  borramiento" ]
+  abstraccion -> mercancia
+  dinero   -> mercancia    [ label="  medida\n  universal" dir=both arrowsize=1.0 ]
+
+  mercancia -> muzak       [ label="  instancia\n  sonora" ]
+  mercancia -> vanguardia  [ label="  instancia\n  visual" ]
+
+  muzak     -> fetiche     [ style=dashed color="#2a2a28" penwidth=1.5 ]
+  vanguardia -> fetiche    [ style=dashed color="#2a2a28" penwidth=1.5 ]
+  fetiche   -> infra       [ style=dashed color="#1e1e1c" arrowsize=0.9 penwidth=1.2 ]
+
+  /* ─── RANKS ─── */
+
+  { rank=same; uso; trabajo }
+  { rank=same; muzak; vanguardia }
+  { rank=same; mercancia; dinero }
+}
