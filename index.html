@@ -1211,6 +1211,10 @@
     overflow: hidden;
   }
 
+  .reading-diagram img.zoomable {
+    cursor: zoom-in;
+  }
+
   .reading-illustration svg {
     width: 100%;
     max-height: 280px;
@@ -1536,6 +1540,8 @@
 
   .book-spread { position: relative; }
 
+  .book-aside { display: none; }
+
   /* Text content: no columns in scroll mode */
   .book-content { }
 
@@ -1641,7 +1647,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: clamp(1rem, 1.6vw, 1.8rem);
     background: var(--bg);
     transition: opacity 0.3s;
     z-index: 2;
@@ -1655,12 +1661,13 @@
 
   .reading-overlay.book-mode .book-cover .reading-illustration {
     flex: 0 0 auto;
-    max-width: min(90%, calc(80vh * 1.6));
-    max-height: 80vh;
+    width: min(96%, calc(88vh * 1.68));
+    max-width: none;
+    max-height: 88vh;
     margin: 0;
     border: 1px solid var(--border);
     background: var(--surface-illustration);
-    padding: 1.5rem;
+    padding: clamp(1rem, 1.3vw, 1.6rem);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1668,7 +1675,7 @@
   }
 
   .reading-overlay.book-mode .book-cover .reading-illustration svg {
-    width: 100%; max-height: 72vh; height: auto;
+    width: 100%; max-height: 82vh; height: auto;
   }
 
   /* Text stage: full-screen, overflow hidden for multicol */
@@ -1694,6 +1701,97 @@
     height: 100%;
     overflow: hidden;
     margin: 0 auto;
+  }
+
+  .reading-overlay.book-mode .book-aside {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 1.05rem;
+    z-index: 8;
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.28s ease, transform 0.28s ease;
+  }
+
+  .reading-overlay.book-mode .book-aside.book-aside-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-10px);
+  }
+
+  .book-aside-card {
+    appearance: none;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 0;
+    background: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .book-aside-card:hover {
+    transform: translateY(-1px);
+    opacity: 0.94;
+  }
+
+  .book-aside-preview {
+    cursor: default;
+  }
+
+  .book-aside-preview:hover {
+    transform: none;
+    opacity: 1;
+  }
+
+  .book-aside-card:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .book-aside-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  .book-aside-media {
+    border: 1px solid transparent;
+    border-radius: 0;
+    background: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .book-aside-illustration .book-aside-media {
+    min-height: 8.8rem;
+  }
+
+  .book-aside-diagram .book-aside-media {
+    min-height: 6.8rem;
+  }
+
+  .book-aside-media svg,
+  .book-aside-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 15rem;
+  }
+
+  .book-aside-media svg {
+    pointer-events: none;
   }
 
   /* Multicol text content — no column-span elements, text starts at y=0 */
@@ -1752,6 +1850,7 @@
     background: var(--diagram-modal-bg);
     align-items: center;
     justify-content: center;
+    padding: 1.1rem;
     cursor: pointer;
   }
 
@@ -1759,32 +1858,91 @@
     display: flex;
   }
 
+  .diagram-modal-shell {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    cursor: default;
+  }
+
+  .diagram-modal-viewport {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+  }
+
   .diagram-modal img {
-    max-width: 96vw;
-    max-height: 92vh;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: calc(100vw - 2.2rem);
+    max-height: calc(100vh - 2.2rem);
+    margin: auto;
+    border: none;
     object-fit: contain;
-    border: 1px solid var(--border);
     cursor: default;
   }
 
   .diagram-modal-close {
     position: absolute;
-    top: 1.2rem;
-    right: 1.4rem;
-    background: none;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    width: 2.5rem;
+    height: 2.5rem;
     border: 1px solid var(--border-light);
-    color: var(--fg-muted);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.18);
+    color: var(--fg);
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    padding: 0.3rem 0.7rem;
+    font-size: 1.2rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    text-transform: uppercase;
   }
 
   .diagram-modal-close:hover {
-    color: var(--fg);
     border-color: var(--fg-dim);
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 640px) {
+    .diagram-modal {
+      padding: 0.75rem;
+    }
+
+    .diagram-modal-shell {
+      width: 100%;
+      height: 100%;
+    }
+
+    .diagram-modal img {
+      max-width: calc(100vw - 1.5rem);
+      max-height: calc(100vh - 1.5rem);
+    }
+
+    .diagram-modal-close {
+      top: 0.7rem;
+      right: 0.7rem;
+      width: 2.25rem;
+      height: 2.25rem;
+    }
   }
 
   .reader-rail {
@@ -2283,8 +2441,12 @@
 
 <!-- ═══════════ DIAGRAM MODAL ═══════════ -->
 <div class="diagram-modal" id="diagramModal" onclick="hideDiagramModal()">
-  <button class="diagram-modal-close" onclick="hideDiagramModal()">Cerrar &times;</button>
-  <img id="diagramModalImg" src="" alt="Diagrama" onclick="event.stopPropagation()">
+  <button class="diagram-modal-close" type="button" aria-label="Cerrar esquema" onclick="event.stopPropagation(); hideDiagramModal()">×</button>
+  <div class="diagram-modal-shell" onclick="event.stopPropagation()">
+    <div class="diagram-modal-viewport" id="diagramModalViewport">
+      <img id="diagramModalImg" src="" alt="Esquema ampliado">
+    </div>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
@@ -2432,6 +2594,32 @@ function bindZettelLinks(container) {
   });
 }
 
+function bindZoomableMedia(container, entry) {
+  container.querySelectorAll('.reading-diagram img').forEach(image => {
+    image.classList.add('zoomable');
+    image.setAttribute('role', 'button');
+    image.setAttribute('tabindex', '0');
+
+    const openDiagramImage = () => {
+      const src = image.currentSrc || image.getAttribute('src');
+      if (!src) return;
+      openDiagramModal(src, image.alt || `Esquema de ${entry.title}`, `Esquema — ${entry.id}`, { wide: true });
+    };
+
+    image.addEventListener('click', event => {
+      event.stopPropagation();
+      openDiagramImage();
+    });
+
+    image.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openDiagramImage();
+      }
+    });
+  });
+}
+
 /* ── RENDER GRID ────────────────────────────────────────── */
 function renderGrid() {
   const grid = document.getElementById('zettelGrid');
@@ -2468,6 +2656,20 @@ function openReading(id) {
       <div class="reading-illustration">${z.illustration}</div>
     </div>
     <div class="book-stage" id="bookStage">
+      <div class="book-aside book-aside-hidden" id="bookAside">
+        <div class="book-aside-card book-aside-preview book-aside-illustration">
+          <span class="book-aside-kicker">Radio</span>
+          <span class="book-aside-media">${z.illustration}</span>
+        </div>
+        ${z.diagram ? `
+          <button class="book-aside-card book-aside-diagram" type="button" onclick="showDiagramModal()">
+            <span class="book-aside-kicker">Esquema</span>
+            <span class="book-aside-media">
+              <img src="${z.diagram}" alt="Esquema de ${z.title}">
+            </span>
+          </button>
+        ` : ''}
+      </div>
       <div class="book-spread" id="bookSpread">
         <div class="book-content" id="bookContent">
           <div class="reading-meta-block">
@@ -2497,6 +2699,7 @@ function openReading(id) {
   applyFontSize();
   setupBookReader();
   bindZettelLinks(main);
+  bindZoomableMedia(main, z);
 }
 
 function closeReading() {
@@ -2774,6 +2977,9 @@ document.addEventListener('keydown', e => {
     }
     hideRefPopup();
   }
+  if (document.getElementById('diagramModal').classList.contains('active')) {
+    return;
+  }
   if (document.getElementById('readingOverlay').classList.contains('book-mode')) {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); bookNext(); }
     if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); bookPrev(); }
@@ -2782,17 +2988,26 @@ document.addEventListener('keydown', e => {
 
 /* ── DIAGRAM MODAL ──────────────────────────────────────── */
 let currentDiagram = '';
-
-function showDiagramModal() {
-  if (!currentDiagram) return;
+function openDiagramModal(src, alt = 'Esquema ampliado') {
+  if (!src) return;
   const modal = document.getElementById('diagramModal');
-  const img   = document.getElementById('diagramModalImg');
-  img.src = currentDiagram;
+  const img = document.getElementById('diagramModalImg');
+  if (!modal || !img) return;
+
+  img.alt = alt;
+  img.src = src;
   modal.classList.add('active');
 }
 
+function showDiagramModal() {
+  openDiagramModal(currentDiagram, 'Esquema ampliado');
+}
+
 function hideDiagramModal() {
-  document.getElementById('diagramModal').classList.remove('active');
+  const modal = document.getElementById('diagramModal');
+  const img = document.getElementById('diagramModalImg');
+  if (modal) modal.classList.remove('active');
+  if (img) img.src = '';
 }
 
 /* ── FONT SIZE CONTROLS ─────────────────────────────────── */
@@ -2821,6 +3036,7 @@ let bookPage = 0;
 let bookTotalPages = 1;
 let bookSpreadWidth = 0;
 let bookStepWidth = 0;
+let bookAsideReady = false;
 
 function isBookMode() {
   // Landscape and wide enough for two columns
@@ -2830,6 +3046,7 @@ function isBookMode() {
 function setupBookReader() {
   const overlay = document.getElementById('readingOverlay');
   const stage   = document.getElementById('bookStage');
+  const aside   = document.getElementById('bookAside');
   const spread  = document.getElementById('bookSpread');
   const content = document.getElementById('bookContent');
 
@@ -2837,10 +3054,15 @@ function setupBookReader() {
 
   if (!isBookMode()) {
     overlay.classList.remove('book-mode');
+    if (aside) {
+      aside.classList.add('book-aside-hidden');
+      aside.style.cssText = '';
+    }
     spread.style.cssText = '';
     content.style.cssText = '';
     bookSpreadWidth = 0;
     bookStepWidth = 0;
+    bookAsideReady = false;
     return;
   }
 
@@ -2862,6 +3084,12 @@ function setupBookReader() {
     const colW = clampValue(Math.floor((usableW - gap) / 2), minColW, maxColW);
     const spreadCoreWidth = colW * 2 + gap + pageInset * 2;
     const spreadHeight = stageH;
+    const sideSlack = Math.max(0, Math.floor((stageW - spreadCoreWidth) / 2));
+    const asideInset = Math.round(clampValue(rootFs * 0.9, 14, 22));
+    const asideMinWidth = Math.round(clampValue(rootFs * 11.5, 176, 220));
+    const asideMaxWidth = Math.round(clampValue(rootFs * 17, 240, 300));
+    const asideWidth = Math.floor(Math.min(asideMaxWidth, sideSlack - asideInset * 2));
+    const canShowAside = Boolean(aside) && asideWidth >= asideMinWidth;
 
     spread.style.width = spreadCoreWidth + 'px';
     spread.style.height = spreadHeight + 'px';
@@ -2872,6 +3100,19 @@ function setupBookReader() {
     content.style.columnWidth = `${colW}px`;
     content.style.columnGap = `${gap}px`;
     content.style.columnFill = 'auto';
+
+    if (aside) {
+      if (canShowAside) {
+        aside.style.width = `${asideWidth}px`;
+        aside.style.left = `${Math.max(asideInset, Math.floor((sideSlack - asideWidth) / 2))}px`;
+        aside.style.top = `${Math.max(asideInset, padTop)}px`;
+      } else {
+        aside.style.cssText = '';
+      }
+      bookAsideReady = canShowAside;
+    } else {
+      bookAsideReady = false;
+    }
 
     requestAnimationFrame(() => {
       bookSpreadWidth = spreadCoreWidth;
@@ -2886,15 +3127,18 @@ function setupBookReader() {
 }
 
 function updateBookDisplay() {
+  const overlay = document.getElementById('readingOverlay');
   const content = document.getElementById('bookContent');
   const stage   = document.getElementById('bookStage');
+  const aside   = document.getElementById('bookAside');
   const cover   = document.getElementById('bookCover');
   if (!content || !stage) return;
 
-  if (document.getElementById('readingOverlay').classList.contains('book-mode')) {
+  if (overlay.classList.contains('book-mode')) {
     const onCover = bookPage === 0;
     if (cover) cover.classList.toggle('book-hidden', !onCover);
     stage.classList.toggle('book-hidden', onCover);
+    if (aside) aside.classList.toggle('book-aside-hidden', onCover || !bookAsideReady);
     if (onCover) {
       content.style.transform = 'translateX(0px)';
     } else {
