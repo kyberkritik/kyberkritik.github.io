@@ -224,7 +224,7 @@
      ═══════════════════════════════════════ */
   .site-header {
     border-bottom: 1px solid var(--header-border);
-    padding: 2.4rem 2rem 1.6rem;
+    padding: 1.7rem 2rem 0.95rem;
     position: relative;
     overflow: hidden;
     background:
@@ -280,15 +280,16 @@
     max-width: 1800px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-    gap: 2rem;
-    align-items: end;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);
+    gap: 1rem;
+    align-items: start;
     position: relative;
     z-index: 1;
   }
 
   .header-copy {
-    max-width: 54rem;
+    max-width: 62rem;
+    padding-right: 0.4rem;
     position: relative;
     z-index: 1;
   }
@@ -300,7 +301,7 @@
     color: var(--fg-dim);
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.45rem;
   }
 
   .header-title {
@@ -331,7 +332,7 @@
     font-size: 0.82rem;
     font-weight: 300;
     color: var(--fg-dim);
-    margin-top: 0.7rem;
+    margin-top: 0.5rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
@@ -342,8 +343,8 @@
     color: var(--fg-muted);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    margin-top: 1.2rem;
-    padding-top: 0.8rem;
+    margin-top: 0.95rem;
+    padding-top: 0.65rem;
     border-top: 1px solid var(--border);
     display: inline-block;
   }
@@ -356,56 +357,39 @@
   .header-ornament {
     --parallax-x: 0;
     --parallax-y: 0;
-    min-height: 250px;
+    min-height: 160px;
+    width: 100%;
     position: relative;
-    border: 1px solid var(--ornament-frame);
-    border-radius: 1rem;
-    overflow: hidden;
-    background: linear-gradient(160deg, var(--ornament-start), var(--ornament-end));
-    box-shadow:
-      inset 0 1px 0 var(--ornament-inner-line),
-      0 20px 48px rgba(0,0,0,0.34);
+    justify-self: end;
+    align-self: start;
+    pointer-events: none;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    background: none;
+    box-shadow: none;
+    opacity: 0.58;
+    -webkit-mask-image: radial-gradient(circle at 52% 48%, rgba(0,0,0,0.98) 34%, rgba(0,0,0,0.72) 58%, transparent 82%);
+    mask-image: radial-gradient(circle at 52% 48%, rgba(0,0,0,0.98) 34%, rgba(0,0,0,0.72) 58%, transparent 82%);
   }
 
   .header-ornament::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(var(--ornament-grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--ornament-grid) 1px, transparent 1px);
-    background-size: 26px 26px;
-    opacity: 0.12;
-    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.8), transparent 90%);
-    mask-image: linear-gradient(180deg, rgba(0,0,0,0.8), transparent 90%);
-    pointer-events: none;
+    display: none;
   }
 
   .header-ornament::after {
-    content: '';
-    position: absolute;
-    left: -8%;
-    right: -8%;
-    bottom: 8%;
-    height: 38%;
-    background: linear-gradient(90deg,
-      transparent,
-      var(--ornament-bloom-a),
-      var(--ornament-bloom-b),
-      transparent);
-    filter: blur(30px);
-    animation: panelSweep 10s ease-in-out infinite alternate;
-    pointer-events: none;
+    display: none;
   }
 
   .header-ornament-svg {
     display: block;
     width: 100%;
     height: 100%;
-    min-height: 250px;
+    min-height: 160px;
     position: relative;
     z-index: 1;
-    filter: var(--ornament-filter);
+    filter: var(--ornament-filter) saturate(0.88) blur(0.55px);
+    opacity: 0.88;
   }
 
   .pinball-layer {
@@ -898,31 +882,47 @@
 
   @media (max-width: 920px) {
     .header-shell {
-      grid-template-columns: 1fr;
-      gap: 1.4rem;
+      display: block;
     }
 
     .header-ornament {
-      min-height: 220px;
+      position: absolute;
+      top: -0.15rem;
+      right: -0.35rem;
+      width: min(38vw, 240px);
+      min-height: 120px;
+      opacity: 0.44;
     }
 
     .header-ornament-svg {
-      min-height: 220px;
+      min-height: 120px;
+    }
+
+    .header-copy {
+      max-width: none;
+      padding-right: min(42vw, 14rem);
     }
   }
 
   @media (max-width: 640px) {
     .site-header {
-      padding: 2rem 1rem 1.2rem;
+      padding: 1.45rem 1rem 0.9rem;
     }
 
     .header-ornament {
-      min-height: 190px;
-      border-radius: 0.85rem;
+      top: 0;
+      right: -0.45rem;
+      width: min(42vw, 180px);
+      min-height: 92px;
+      opacity: 0.34;
     }
 
     .header-ornament-svg {
-      min-height: 190px;
+      min-height: 92px;
+    }
+
+    .header-copy {
+      padding-right: min(42vw, 8.8rem);
     }
 
     .reading-nav {
@@ -1012,7 +1012,7 @@
      ZETTELKASTEN GRID
      ═══════════════════════════════════════ */
   .zettel-grid {
-    padding: 2rem;
+    padding: 1.35rem 2rem 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.2rem;
@@ -1030,7 +1030,7 @@
   @media (max-width: 600px) {
     .zettel-grid {
       grid-template-columns: 1fr;
-      padding: 1rem;
+      padding: 0.9rem 1rem 1.25rem;
       gap: 1rem;
     }
   }
@@ -2731,20 +2731,16 @@ function openReading(id) {
       <button class="book-click book-click-next" id="bookCoverNext" type="button" aria-label="Empezar lectura" title="Empezar lectura" onclick="bookNext()"></button>
     </div>
     <div class="book-stage" id="bookStage">
-      <div class="book-aside book-aside-hidden" id="bookAside">
-        <div class="book-aside-card book-aside-preview book-aside-illustration">
-          <span class="book-aside-kicker">Radio</span>
-          <span class="book-aside-media">${z.illustration}</span>
-        </div>
-        ${z.diagram ? `
+      ${z.diagram ? `
+        <div class="book-aside book-aside-hidden" id="bookAside">
           <button class="book-aside-card book-aside-diagram" type="button" onclick="showDiagramModal()">
             <span class="book-aside-kicker">Esquema</span>
             <span class="book-aside-media">
               <img src="${z.diagram}" alt="Esquema de ${z.title}">
             </span>
           </button>
-        ` : ''}
-      </div>
+        </div>
+      ` : ''}
       <div class="book-spread" id="bookSpread">
         <div class="book-content" id="bookContent">
           <div class="reading-meta-block">
