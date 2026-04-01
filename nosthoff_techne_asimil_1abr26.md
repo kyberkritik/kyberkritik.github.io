@@ -105,7 +105,7 @@ INVISIBILIDAD DE LO TÉCNICO (Nosthoff / Latour)
 - Marx, K. (1844). *Zur Kritik der Hegelschen Rechtsphilosophie. Einleitung*.
 - Maturana, H. & Varela, F. (1972). *De máquinas y seres vivos: Autopoiesis, la organización de lo vivo*. Editorial Universitaria.
 - Nassehi, A. (2019). *Muster: Theorie der digitalen Gesellschaft*. C.H. Beck.
-- Nosthoff, A.-L. (pp. 12–13). [Referencia del libro físico, marcador naranja].
+- Nosthoff, A.-V. *Kybernetik und Kritik*. Suhrkamp, pp. 12–13.
 - Plessner, H. (1928). *Die Stufen des Organischen und der Mensch*. De Gruyter.
 - Rosa, H. (2016). *Resonanz: Eine Soziologie der Weltbeziehung*. Suhrkamp.
 - Uexküll, J. von (1934). *Streifzüge durch die Umwelten von Tieren und Menschen*. Springer.
