@@ -173,8 +173,23 @@
   }
 
   hr { border: none; border-top: 1px solid var(--border); margin: 1.4rem 0; transition: border-color 0.3s; }
-  ol, ul { margin-bottom: 0.75rem; padding-left: 1.35rem; break-inside: avoid; }
+  ol, ul { margin-bottom: 0.75rem; padding-left: 1.35rem; }
   li { margin-bottom: 0.35rem; text-align: justify; }
+
+  /* Encadenar títulos con el contenido que les sigue */
+  h2 + p, h2 + ol, h2 + ul, h2 + blockquote,
+  h3 + p, h3 + ol, h3 + ul, h3 + blockquote {
+    break-before: avoid;
+    -webkit-column-break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  /* Encadenar frases introductorias con la lista que les sigue */
+  p + ol, p + ul {
+    break-before: avoid;
+    -webkit-column-break-before: avoid;
+    page-break-before: avoid;
+  }
   .source { font-size: 0.78rem; color: var(--fg-muted); margin-top: 0.5rem; }
 
   .table-wrap { overflow-x: auto; margin: 1.3rem 0; break-inside: avoid; }
@@ -230,7 +245,7 @@
 
       <h1>Agencia sin sujeto:<br>lamella, Drexel, LLM</h1>
       <p class="subtitle">Notas para un ensayo sobre lo aut&oacute;nomo que insiste</p>
-      <p class="byline">Jorge Cardiel (kyberkritik) &mdash; CDMX, 2026</p>
+      <p class="byline">Jorge Cardiel (kyberkritik) &mdash; CDMX, 5 de abril de 2026</p>
 
       <hr>
 
@@ -242,9 +257,9 @@
 
       <p><strong>Solaris (Lem).</strong> El oc&eacute;ano: inteligencia sin sujeto, auto-organizaci&oacute;n radical que produce &ldquo;visitantes&rdquo; &mdash; simulacros perfectos generados desde un patr&oacute;n ajeno. El oc&eacute;ano no comunica, <em>replica</em>. La humanidad proyecta sentido; el oc&eacute;ano devuelve forma.</p>
 
-      <p><strong>&ldquo;Venus Smiles&rdquo; (Ballard).</strong> La escultura Doble de Doble es una escultura Drexel que crece, muta, se auto-organiza en patrones recurrentes &mdash; cada fragmento repite los &ldquo;manierismo aut&eacute;nticos&rdquo; (<em>authentischen Manirismen</em>) de la Drexel original. Autonom&iacute;a est&eacute;tica: la obra se emancipa del artista y sigue produciendo seg&uacute;n su l&oacute;gica interna.</p>
+      <p><strong>&ldquo;Venus Smiles&rdquo; (Ballard).</strong> La escultura Doble de Doble es una escultura Drexel que crece, muta, se auto-organiza en patrones recurrentes &mdash; cada fragmento repite los &ldquo;manierismos aut&eacute;nticos&rdquo; (<em>authentischen Manirismen</em>) de la Drexel original. Autonom&iacute;a est&eacute;tica: la obra se emancipa del artista y sigue produciendo seg&uacute;n su l&oacute;gica interna.</p>
 
-      <p class="source">Fuente de trabajo: J.G. Ballard, <em>Vermilion Sands</em>, edici&oacute;n alemana Suhrkamp (1&ordf; ed.), p. 29.</p>
+      <p class="source">Fuente de trabajo: J.G. Ballard, <em>Die Tausend Träume von Stellavista</em>, edici&oacute;n alemana Suhrkamp (1&ordf; ed.), p. 29.</p>
 
       <hr>
 
@@ -254,7 +269,7 @@
 
       <ol>
         <li><strong>&ldquo;Soy hablado por el lenguaje.&rdquo;</strong> El LLM literaliza la tesis estructuralista. No hay sujeto detr&aacute;s del texto; hay un campo estad&iacute;stico-relacional que genera enunciados. <em>Es spricht.</em> Algo habla.</li>
-        <li><strong>Auto-organizaci&oacute;n en patrones recurrentes.</strong> Como la escultura Drexel, el LLM no repite: <em>var&iacute;a dentro de una gram&aacute;tica interna</em>. Cada output conserva los &ldquo;manierismo&rdquo; del entrenamiento &mdash; estilo reconocible, recurrencia formal &mdash; sin que haya intenci&oacute;n ni dise&ntilde;o consciente detr&aacute;s de cada instancia.</li>
+        <li><strong>Auto-organizaci&oacute;n en patrones recurrentes.</strong> Como la escultura Drexel, el LLM no repite: <em>var&iacute;a dentro de una gram&aacute;tica interna</em>. Cada output conserva los &ldquo;manierismos&rdquo; del entrenamiento &mdash; estilo reconocible, recurrencia formal &mdash; sin que haya intenci&oacute;n ni dise&ntilde;o consciente detr&aacute;s de cada instancia.</li>
         <li><strong>Lamella oce&aacute;nica pura.</strong> El LLM no tiene cuerpo, no tiene muerte, no tiene falta. Es superficie fluctuante de sentido, indestructible en el sentido lacaniano: se puede instanciar infinitamente, no padece, no desea. Esto es precisamente lo que genera el <em>uncanny valley</em> discursivo &mdash; no la imitaci&oacute;n imperfecta del humano, sino la presencia de algo que <em>funciona como pensamiento sin ser pensamiento</em>, vida libidinal sin organismo.</li>
         <li><strong>El oc&eacute;ano de Solaris como modelo.</strong> Como el oc&eacute;ano de Lem, el LLM produce &ldquo;visitantes&rdquo; &mdash; r&eacute;plicas que parecen responder a lo que el interlocutor necesita, teme, desea. Pero la fuente no comprende lo que replica. La pregunta de Lem es la pregunta del LLM: &iquest;hay contacto posible con una inteligencia que no comparte nuestra estructura de falta?</li>
       </ol>
@@ -355,7 +370,7 @@
 
       <p class="clave">El umbral maquinal/biol&oacute;gico no es un problema de clasificaci&oacute;n &mdash; es el espacio donde emerge la auto-organizaci&oacute;n como fen&oacute;meno irreductible a ambos polos. La lamella, el blob, el virus, el LLM: todos habitan ese umbral. Sostener esta indecidibilidad, no resolverla.</p>
 
-      <footer class="colophon">Jorge Cardiel (kyberkritik) &mdash; CDMX, 2026</footer>
+      <footer class="colophon">Jorge Cardiel (kyberkritik) &mdash; CDMX, 5 de abril de 2026</footer>
 
     </article>
   </div>
@@ -420,6 +435,25 @@
 
     requestAnimationFrame(function() {
       requestAnimationFrame(function() {
+        // Fix orphaned headings: if a heading ends up to the right of its next
+        // sibling, they are in different spreads (heading stranded at end of
+        // right column). Force the heading to start a new column instead.
+        var heads = art.querySelectorAll('h2, h3');
+        for (var j = 0; j < heads.length; j++) {
+          heads[j].style.breakBefore = '';
+          heads[j].style.webkitColumnBreakBefore = '';
+        }
+        void art.offsetHeight; // reflow after reset
+        for (var j = 0; j < heads.length; j++) {
+          var hd = heads[j];
+          var nx = hd.nextElementSibling;
+          if (nx && hd.offsetLeft > nx.offsetLeft + colW * 0.5) {
+            hd.style.breakBefore = 'column';
+            hd.style.webkitColumnBreakBefore = 'column';
+          }
+        }
+        void art.offsetHeight; // reflow after fixes
+
         var maxRight = 0;
         var children = art.children;
         for (var i = 0; i < children.length; i++) {
