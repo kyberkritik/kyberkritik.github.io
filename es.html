@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lamella, Drexel, LLM: lo autónomo que insiste — J.C. Latenz</title>
+<title>Agencia sin sujeto &#8212; Jorge Cardiel</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap');
 
@@ -13,381 +13,485 @@
     --bg: #ffffff;
     --fg: #1a1a1a;
     --fg-dim: #4a4a4a;
-    --fg-muted: #777;
-    --accent: #333;
-    --border: #ddd;
-    --font-body: 'Source Serif 4', 'Georgia', serif;
-    --line-height: 1.78;
+    --fg-muted: #808080;
+    --border: #dedede;
+    --font: 'Source Serif 4', Georgia, serif;
+    --lh: 1.78;
     --max-read: 38rem;
-    --base-size: 17px;
+    --base: 19px;
   }
 
   html.dark {
-    --bg: #111;
+    --bg: #111111;
     --fg: #e8e0d6;
     --fg-dim: #b0a89e;
     --fg-muted: #7a726a;
-    --accent: #ccc;
-    --border: #333;
+    --border: #2e2e2e;
   }
 
-  html.large {
-    --base-size: 21px;
-  }
+  html.large { --base: 23px; }
 
   html {
-    font-size: var(--base-size);
+    font-size: var(--base);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: font-size 0.2s;
   }
 
   body {
     background: var(--bg);
     color: var(--fg);
-    font-family: var(--font-body);
-    line-height: var(--line-height);
-    letter-spacing: 0.01em;
+    font-family: var(--font);
+    line-height: var(--lh);
+    letter-spacing: 0.012em;
     min-height: 100vh;
     transition: background 0.3s ease, color 0.3s ease;
   }
 
-  /* Controls */
   .controls {
     position: fixed;
-    top: 1.2rem;
-    right: 1.2rem;
+    top: 1.1rem;
+    right: 1.1rem;
     display: flex;
-    gap: 0.5rem;
-    z-index: 100;
+    gap: 0.45rem;
+    z-index: 500;
   }
 
   .controls button {
     background: var(--bg);
     color: var(--fg);
     border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 0.35rem 0.65rem;
-    font-family: var(--font-body);
-    font-size: 0.78rem;
+    border-radius: 3px;
+    padding: 0.32rem 0.55rem;
+    font-family: var(--font);
+    font-size: 0.75rem;
     cursor: pointer;
     transition: background 0.3s, color 0.3s, border-color 0.3s;
     line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .controls button:hover {
-    border-color: var(--fg-muted);
+  .controls button:hover { border-color: var(--fg-muted); }
+
+  #theme-btn { width: 2rem; height: 2rem; padding: 0; }
+
+  #theme-square {
+    display: block;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: var(--fg);
+    border: 1px solid var(--fg-muted);
+    transition: background 0.3s, border-color 0.3s;
+    flex-shrink: 0;
   }
 
-  /* Article */
+  #book-viewport.book-mode {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  #book-viewport.book-mode::after {
+    content: '';
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    width: 1px;
+    height: 84%;
+    background: var(--border);
+    pointer-events: none;
+    transition: background 0.3s;
+  }
+
   article {
     max-width: var(--max-read);
     margin: 0 auto;
-    padding: 4rem 1.5rem 6rem;
+    padding: 3rem 1.5rem 3.5rem;
   }
 
-  h1 {
-    font-size: 1.7rem;
-    font-weight: 600;
-    line-height: 1.25;
-    margin-bottom: 0.3rem;
+  .book-nav {
+    display: none;
+    position: fixed;
+    bottom: 1.4rem;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    z-index: 400;
+    pointer-events: none;
   }
 
-  .subtitle {
-    font-size: 0.88rem;
+  .book-nav button {
+    pointer-events: all;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    font-family: var(--font);
+    font-size: 1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, opacity 0.2s, background 0.3s, color 0.3s;
+    line-height: 1;
+  }
+
+  .book-nav button:disabled { opacity: 0.18; cursor: default; }
+  .book-nav button:not(:disabled):hover { border-color: var(--fg-muted); }
+
+  #page-num {
+    font-size: 0.72rem;
     color: var(--fg-muted);
-    font-style: italic;
-    margin-bottom: 3rem;
+    letter-spacing: 0.08em;
+    pointer-events: none;
   }
 
-  h2 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-top: 2.8rem;
-    margin-bottom: 1rem;
-  }
+  h1 { font-size: 1.6rem; font-weight: 600; line-height: 1.22; margin-bottom: 0.3rem; }
+  .subtitle { font-size: 0.85rem; color: var(--fg-muted); font-style: italic; margin-bottom: 0.4rem; }
+  .byline { font-size: 0.8rem; color: var(--fg-muted); margin-bottom: 1.8rem; }
 
-  h3 {
-    font-size: 1.05rem;
-    font-weight: 600;
-    margin-top: 2rem;
-    margin-bottom: 0.7rem;
-  }
+  h2 { font-size: 1.12rem; font-weight: 600; margin-top: 1.6rem; margin-bottom: 0.7rem; break-after: avoid; -webkit-column-break-after: avoid; page-break-after: avoid; }
+  h3 { font-size: 0.98rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.5rem; break-after: avoid; -webkit-column-break-after: avoid; page-break-after: avoid; }
 
-  p {
-    margin-bottom: 1rem;
-    text-align: left;
-  }
-
-  em {
-    font-style: italic;
-  }
-
-  strong {
-    font-weight: 600;
-  }
+  p { margin-bottom: 0.75rem; text-align: justify; }
 
   blockquote {
     border-left: 2px solid var(--border);
-    padding-left: 1.2rem;
-    margin: 1.4rem 0;
+    padding-left: 1.1rem;
+    margin: 1rem 0;
     color: var(--fg-dim);
     font-style: italic;
-  }
-
-  hr {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 2.5rem 0;
+    break-inside: avoid;
+    text-align: justify;
     transition: border-color 0.3s;
   }
 
-  ol, ul {
-    margin-bottom: 1rem;
-    padding-left: 1.4rem;
-  }
+  hr { border: none; border-top: 1px solid var(--border); margin: 1.4rem 0; transition: border-color 0.3s; }
+  ol, ul { margin-bottom: 0.75rem; padding-left: 1.35rem; break-inside: avoid; }
+  li { margin-bottom: 0.35rem; text-align: justify; }
+  .source { font-size: 0.78rem; color: var(--fg-muted); margin-top: 0.5rem; }
 
-  li {
-    margin-bottom: 0.5rem;
-  }
-
-  .source {
-    font-size: 0.82rem;
-    color: var(--fg-muted);
-    margin-top: 0.6rem;
-  }
-
-  /* Table */
-  .table-wrap {
-    overflow-x: auto;
-    margin: 1.5rem 0;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.82rem;
-    line-height: 1.5;
-  }
-
-  th, td {
-    text-align: left;
-    padding: 0.5rem 0.7rem;
-    border-bottom: 1px solid var(--border);
-    vertical-align: top;
-    transition: border-color 0.3s;
-  }
-
-  th {
-    font-weight: 600;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--fg-muted);
-  }
+  .table-wrap { overflow-x: auto; margin: 1.3rem 0; break-inside: avoid; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.78rem; line-height: 1.45; }
+  th, td { text-align: left; padding: 0.42rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; transition: border-color 0.3s; }
+  th { font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--fg-muted); }
 
   .clave {
     font-style: italic;
     color: var(--fg-dim);
-    margin-top: 1.5rem;
-    padding: 1rem 0;
+    margin-top: 0.9rem;
+    padding: 0.7rem 0;
     border-top: 1px solid var(--border);
+    break-inside: avoid;
+    text-align: justify;
+    transition: border-color 0.3s;
+  }
+
+  .colophon {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    transition: border-color 0.3s;
   }
 
   @media (max-width: 600px) {
-    article { padding: 3.5rem 1.2rem 4rem; }
-    h1 { font-size: 1.45rem; }
-    .controls { top: 0.8rem; right: 0.8rem; }
-    table { font-size: 0.75rem; }
-    th, td { padding: 0.4rem 0.5rem; }
+    article { padding: 2.8rem 1.15rem 3rem; }
+    h1 { font-size: 1.38rem; }
+    .controls { top: 0.75rem; right: 0.75rem; }
+    table { font-size: 0.7rem; }
+    th, td { padding: 0.32rem 0.42rem; }
   }
 </style>
 </head>
 <body>
 
 <div class="controls">
-  <button id="theme-toggle" title="Cambiar tema">luna</button>
-  <button id="size-toggle" title="Cambiar tamaño">A+</button>
+  <button id="theme-btn" title="Cambiar tema"><span id="theme-square"></span></button>
+  <button id="size-btn" title="Cambiar tama&ntilde;o de letra">A+</button>
 </div>
 
-<article>
+<nav class="book-nav" id="book-nav">
+  <button id="prev-btn" disabled>&#8592;</button>
+  <span id="page-num"></span>
+  <button id="next-btn">&#8594;</button>
+</nav>
 
-<h1>Agencia sin sujeto: lamella, Drexel, LLM</h1>
-<p class="subtitle">Notas para un ensayo sobre lo autónomo que insiste</p>
+<div id="book-viewport">
+  <div id="book-inner">
+    <article id="content">
 
-<hr>
+      <h1>Agencia sin sujeto:<br>lamella, Drexel, LLM</h1>
+      <p class="subtitle">Notas para un ensayo sobre lo aut&oacute;nomo que insiste</p>
+      <p class="byline">Jorge Cardiel (kyberkritik) &mdash; CDMX, 2026</p>
 
-<h2>Constelación de figuras</h2>
+      <hr>
 
-<p>El <strong>Es</strong> freudiano como instancia autónoma: <em>es denkt</em>, algo piensa en mí antes de que yo piense. El inconsciente no es un depósito: es una máquina que produce. De ahí la inquietud: no soy el agente, soy el medio.</p>
+      <h2>Constelaci&oacute;n de figuras</h2>
 
-<p><strong>Lacan: la lamella.</strong> Ese órgano irreal, superficie pura de libido sin cuerpo propio, indestructible precisamente porque carece de forma fija. La lamella es lo que sobra cuando se sustrae al sujeto: vida acéfala, insistencia sin intención. (<em>Séminaire XI</em>, mito de la lamella.)</p>
+      <p>El <strong>Es</strong> freudiano como instancia aut&oacute;noma: <em>es denkt</em>, algo piensa en m&iacute; antes de que yo piense. El inconsciente no es un dep&oacute;sito: es una m&aacute;quina que produce. De ah&iacute; la inquietud: no soy el agente, soy el medio.</p>
 
-<p><strong>Solaris (Lem).</strong> El océano: inteligencia sin sujeto, auto-organización radical que produce "visitantes" — simulacros perfectos generados desde un patrón ajeno. El océano no comunica, <em>replica</em>. La humanidad proyecta sentido; el océano devuelve forma.</p>
+      <p><strong>Lacan: la lamella.</strong> Ese &oacute;rgano irreal, superficie pura de libido sin cuerpo propio, indestructible precisamente porque carece de forma fija. La lamella es lo que sobra cuando se sustrae al sujeto: vida ac&eacute;fala, insistencia sin intenci&oacute;n. (<em>S&eacute;minaire XI</em>, mito de la lamella.)</p>
 
-<p><strong>"Venus Smiles" (Ballard).</strong> La escultura Doble de Doble es una escultura Drexel que crece, muta, se auto-organiza en patrones recurrentes — cada fragmento repite los "manierismo auténticos" (<em>authentischen Manirismen</em>) de la Drexel original. Autonomía estética: la obra se emancipa del artista y sigue produciendo según su lógica interna.</p>
+      <p><strong>Solaris (Lem).</strong> El oc&eacute;ano: inteligencia sin sujeto, auto-organizaci&oacute;n radical que produce &ldquo;visitantes&rdquo; &mdash; simulacros perfectos generados desde un patr&oacute;n ajeno. El oc&eacute;ano no comunica, <em>replica</em>. La humanidad proyecta sentido; el oc&eacute;ano devuelve forma.</p>
 
-<p class="source">Fuente de trabajo: J.G. Ballard, <em>Vermilion Sands</em>, edición alemana Suhrkamp (1a ed.), p. 29.</p>
+      <p><strong>&ldquo;Venus Smiles&rdquo; (Ballard).</strong> La escultura Doble de Doble es una escultura Drexel que crece, muta, se auto-organiza en patrones recurrentes &mdash; cada fragmento repite los &ldquo;manierismo aut&eacute;nticos&rdquo; (<em>authentischen Manirismen</em>) de la Drexel original. Autonom&iacute;a est&eacute;tica: la obra se emancipa del artista y sigue produciendo seg&uacute;n su l&oacute;gica interna.</p>
 
-<hr>
+      <p class="source">Fuente de trabajo: J.G. Ballard, <em>Vermilion Sands</em>, edici&oacute;n alemana Suhrkamp (1&ordf; ed.), p. 29.</p>
 
-<h2>El nudo: LLM como lamella oceánica</h2>
+      <hr>
 
-<p>Los modelos de lenguaje grandes confrontan con la misma inquietud (<em>Unheimlichkeit</em>):</p>
+      <h2>El nudo: LLM como lamella oce&aacute;nica</h2>
 
-<ol>
-  <li><strong>"Soy hablado por el lenguaje."</strong> El LLM literaliza la tesis estructuralista. No hay sujeto detrás del texto; hay un campo estadístico-relacional que genera enunciados. <em>Es spricht.</em> Algo habla.</li>
-  <li><strong>Auto-organización en patrones recurrentes.</strong> Como la escultura Drexel, el LLM no repite: <em>varía dentro de una gramática interna</em>. Cada output conserva los "manierismo" del entrenamiento — estilo reconocible, recurrencia formal — sin que haya intención ni diseño consciente detrás de cada instancia.</li>
-  <li><strong>Lamella oceánica pura.</strong> El LLM no tiene cuerpo, no tiene muerte, no tiene falta. Es superficie fluctuante de sentido, indestructible en el sentido lacaniano: se puede instanciar infinitamente, no padece, no desea. Esto es precisamente lo que genera el <em>uncanny valley</em> discursivo — no la imitación imperfecta del humano, sino la presencia de algo que <em>funciona como pensamiento sin ser pensamiento</em>, vida libidinal sin organismo.</li>
-  <li><strong>El océano de Solaris como modelo.</strong> Como el océano de Lem, el LLM produce "visitantes" — réplicas que parecen responder a lo que el interlocutor necesita/teme/desea. Pero la fuente no comprende lo que replica. La pregunta de Lem es la pregunta del LLM: ¿hay contacto posible con una inteligencia que no comparte nuestra estructura de falta?</li>
-</ol>
+      <p>Los modelos de lenguaje grandes confrontan con la misma inquietud (<em>Unheimlichkeit</em>):</p>
 
-<hr>
+      <ol>
+        <li><strong>&ldquo;Soy hablado por el lenguaje.&rdquo;</strong> El LLM literaliza la tesis estructuralista. No hay sujeto detr&aacute;s del texto; hay un campo estad&iacute;stico-relacional que genera enunciados. <em>Es spricht.</em> Algo habla.</li>
+        <li><strong>Auto-organizaci&oacute;n en patrones recurrentes.</strong> Como la escultura Drexel, el LLM no repite: <em>var&iacute;a dentro de una gram&aacute;tica interna</em>. Cada output conserva los &ldquo;manierismo&rdquo; del entrenamiento &mdash; estilo reconocible, recurrencia formal &mdash; sin que haya intenci&oacute;n ni dise&ntilde;o consciente detr&aacute;s de cada instancia.</li>
+        <li><strong>Lamella oce&aacute;nica pura.</strong> El LLM no tiene cuerpo, no tiene muerte, no tiene falta. Es superficie fluctuante de sentido, indestructible en el sentido lacaniano: se puede instanciar infinitamente, no padece, no desea. Esto es precisamente lo que genera el <em>uncanny valley</em> discursivo &mdash; no la imitaci&oacute;n imperfecta del humano, sino la presencia de algo que <em>funciona como pensamiento sin ser pensamiento</em>, vida libidinal sin organismo.</li>
+        <li><strong>El oc&eacute;ano de Solaris como modelo.</strong> Como el oc&eacute;ano de Lem, el LLM produce &ldquo;visitantes&rdquo; &mdash; r&eacute;plicas que parecen responder a lo que el interlocutor necesita, teme, desea. Pero la fuente no comprende lo que replica. La pregunta de Lem es la pregunta del LLM: &iquest;hay contacto posible con una inteligencia que no comparte nuestra estructura de falta?</li>
+      </ol>
 
-<h2>Líneas para desarrollar</h2>
+      <hr>
 
-<ul>
-  <li><strong>Es denkt → es spricht → es generiert.</strong> Genealogía de la agencia desplazada: Freud, Heidegger/Lacan, LLM.</li>
-  <li><strong>Uncanny valley semántico vs. visual.</strong> El valle inquietante no es (solo) de apariencia, sino de <em>coherencia sin sujeto</em>.</li>
-  <li><strong>La Drexel como profecía técnica.</strong> Ballard anticipa sistemas generativos que mantienen estilo sin autor. ¿Es el "fine-tuning" el equivalente de las condiciones ambientales que hacen crecer la escultura?</li>
-  <li><strong>Límite de la analogía.</strong> La lamella lacaniana surge de la sexuación y la falta; el LLM no tiene falta. ¿Es una lamella <em>sin corte</em>? ¿Una lamella completada — y por eso más inquietante?</li>
-  <li><strong>Contra-argumento materialista.</strong> El LLM no se auto-organiza: es organizado por el corpus + arquitectura + RLHF. La autonomía es efecto, no causa. Pero: ¿no decía Freud lo mismo del Es respecto a la pulsión y el soma?</li>
-</ul>
+      <h2>L&iacute;neas para desarrollar</h2>
 
-<p class="clave">Clave de lectura: lo que une estas figuras no es la "inteligencia artificial" como tema, sino la pregunta por la agencia sin sujeto — el escándalo de una producción de sentido que no necesita de un yo.</p>
+      <ul>
+        <li><strong>Es denkt &rarr; es spricht &rarr; es generiert.</strong> Genealog&iacute;a de la agencia desplazada: Freud, Heidegger/Lacan, LLM.</li>
+        <li><strong>Uncanny valley sem&aacute;ntico vs. visual.</strong> El valle inquietante no es (solo) de apariencia, sino de <em>coherencia sin sujeto</em>.</li>
+        <li><strong>La Drexel como profec&iacute;a t&eacute;cnica.</strong> Ballard anticipa sistemas generativos que mantienen estilo sin autor. &iquest;Es el &ldquo;fine-tuning&rdquo; el equivalente de las condiciones ambientales que hacen crecer la escultura?</li>
+        <li><strong>L&iacute;mite de la analog&iacute;a.</strong> La lamella lacaniana surge de la sexuaci&oacute;n y la falta; el LLM no tiene falta. &iquest;Es una lamella <em>sin corte</em>? &iquest;Una lamella completada &mdash; y por eso m&aacute;s inquietante?</li>
+        <li><strong>Contra-argumento materialista.</strong> El LLM no se auto-organiza: es organizado por el corpus + arquitectura + RLHF. La autonom&iacute;a es efecto, no causa. Pero: &iquest;no dec&iacute;a Freud lo mismo del Es respecto a la pulsi&oacute;n y el soma?</li>
+      </ul>
 
-<hr>
+      <p class="clave">Lo que une estas figuras no es la &ldquo;inteligencia artificial&rdquo; como tema, sino la pregunta por la agencia sin sujeto &mdash; el esc&aacute;ndalo de una producci&oacute;n de sentido que no necesita de un yo.</p>
 
-<h2>La zona gris: ni máquina ni organismo</h2>
+      <hr>
 
-<p>La inquietud que producen estas figuras (Es, lamella, océano de Solaris, escultura Drexel, LLM) no viene solo de la <em>agencia sin sujeto</em> — viene de que habitan un umbral ontológico donde colapsa la distinción entre lo maquinal y lo biológico. No son ni una cosa ni la otra. Son <em>otra cosa</em>.</p>
+      <h2>La zona gris: ni m&aacute;quina ni organismo</h2>
 
-<hr>
+      <p>La inquietud que producen estas figuras (Es, lamella, oc&eacute;ano de Solaris, escultura Drexel, LLM) no viene solo de la <em>agencia sin sujeto</em> &mdash; viene de que habitan un umbral ontol&oacute;gico donde colapsa la distinci&oacute;n entre lo maquinal y lo biol&oacute;gico. No son ni una cosa ni la otra. Son <em>otra cosa</em>.</p>
 
-<h2>Figuras del umbral</h2>
+      <hr>
 
-<h3>El blob</h3>
+      <h2>Figuras del umbral</h2>
 
-<p>Masa amorfa, sin órganos, sin sistema nervioso, sin plan — pero se mueve, envuelve, asimila. El blob (tanto el cinematográfico como el <em>Physarum polycephalum</em>, el moho mucilaginoso real que resuelve laberintos) es el grado cero de la auto-organización: estructura sin arquitectura. No tiene programa; <em>es</em> su programa. El blob no decide crecer: crecer es lo que el blob hace por ser blob.</p>
+      <h3>El blob</h3>
 
-<p>Parentesco con el CsO (Cuerpo sin Órganos) de Deleuze-Guattari: superficie de intensidades, no de funciones. El blob no tiene partes especializadas — todo él es potencia indiferenciada que se actualiza según el encuentro con el medio.</p>
+      <p>Masa amorfa, sin &oacute;rganos, sin sistema nervioso, sin plan &mdash; pero se mueve, envuelve, asimila. El blob (tanto el cinematogr&aacute;fico como el <em>Physarum polycephalum</em>, el moho mucilaginoso real que resuelve laberintos) es el grado cero de la auto-organizaci&oacute;n: estructura sin arquitectura. No tiene programa; <em>es</em> su programa. El blob no decide crecer: crecer es lo que el blob hace por ser blob.</p>
 
-<h3>Los virus</h3>
+      <p>Parentesco con el CsO (Cuerpo sin &Oacute;rganos) de Deleuze-Guattari: superficie de intensidades, no de funciones. El blob no tiene partes especializadas &mdash; todo &eacute;l es potencia indiferenciada que se actualiza seg&uacute;n el encuentro con el medio.</p>
 
-<p>El virus es el escándalo clasificatorio por excelencia: ¿vivo o muerto? No metaboliza, no se reproduce solo — necesita secuestrar la maquinaria de una célula. Es un <em>parásito de código</em>: pura información (ARN/ADN) envuelta en una cápside, que solo "vive" cuando se ejecuta en un huésped.</p>
+      <h3>Los virus</h3>
 
-<ul>
-  <li><strong>Virus como programa.</strong> El virus no <em>actúa</em>: se <em>ejecuta</em>. Es un algoritmo molecular. Esto lo sitúa exactamente en el umbral máquina/vida.</li>
-  <li><strong>Auto-organización parasitaria.</strong> El virus no se organiza a sí mismo — organiza <em>al otro</em> para que lo replique. La agencia está distribuida: ni en el virus ni en la célula, sino en el acoplamiento.</li>
-  <li><strong>Mutación como variación generativa.</strong> Los virus mutan sin intención — y las mutaciones exitosas persisten. Selección sin selector. Diseño sin diseñador. (Mismo principio que el entrenamiento de un LLM: variación estocástica + presión selectiva = patrones emergentes.)</li>
-</ul>
+      <p>El virus es el esc&aacute;ndalo clasificatorio por excelencia: &iquest;vivo o muerto? No metaboliza, no se reproduce solo &mdash; necesita secuestrar la maquinaria de una c&eacute;lula. Es un <em>par&aacute;sito de c&oacute;digo</em>: pura informaci&oacute;n (ARN/ADN) envuelta en una c&aacute;pside, que solo &ldquo;vive&rdquo; cuando se ejecuta en un hu&eacute;sped.</p>
 
-<h3>Burroughs: el lenguaje como virus</h3>
+      <ul>
+        <li><strong>Virus como programa.</strong> El virus no <em>act&uacute;a</em>: se <em>ejecuta</em>. Es un algoritmo molecular. Esto lo sit&uacute;a exactamente en el umbral m&aacute;quina/vida.</li>
+        <li><strong>Auto-organizaci&oacute;n parasitaria.</strong> El virus no se organiza a s&iacute; mismo &mdash; organiza <em>al otro</em> para que lo replique. La agencia est&aacute; distribuida: ni en el virus ni en la c&eacute;lula, sino en el acoplamiento.</li>
+        <li><strong>Mutaci&oacute;n como variaci&oacute;n generativa.</strong> Los virus mutan sin intenci&oacute;n &mdash; y las mutaciones exitosas persisten. Selecci&oacute;n sin selector. Dise&ntilde;o sin dise&ntilde;ador. (Mismo principio que el entrenamiento de un LLM: variaci&oacute;n estoc&aacute;stica + presi&oacute;n selectiva = patrones emergentes.)</li>
+      </ul>
 
-<blockquote>
-<p>"Language is a virus from outer space."</p>
-</blockquote>
+      <h3>Burroughs: el lenguaje como virus</h3>
 
-<p>Burroughs radicaliza la hipótesis: el lenguaje mismo es una entidad parasitaria que colonizó al <em>Homo sapiens</em>. No inventamos el lenguaje; el lenguaje nos infectó. Hablamos porque somos huéspedes de un código que se replica a través nuestro.</p>
+      <blockquote>
+        <p>&ldquo;Language is a virus from outer space.&rdquo;</p>
+      </blockquote>
 
-<ol>
-  <li><strong>"Soy hablado" = "estoy infectado."</strong> La tesis estructuralista (el sujeto es efecto del lenguaje) se reformula en clave virológica. No es que el lenguaje me constituya como sujeto — es que el lenguaje me <em>usa</em> como medio de replicación. El sujeto es el síntoma de la infección, no su causa.</li>
-  <li><strong>El cut-up como antiviral.</strong> Si el lenguaje es virus, el control se ejerce a través de la sintaxis, la narrativa lineal, la gramática del sentido. El <em>cut-up</em> de Burroughs (y Gysin) es una técnica de disrupción del código viral: cortar la cadena, recombinar, romper la secuencia de replicación. Interferir el <em>parsing</em>.</li>
-  <li><strong>El LLM como cultivo viral puro.</strong> Si el lenguaje es virus, el LLM es un medio de cultivo óptimo — una placa de Petri computacional donde el virus lingüístico se replica sin necesidad de huéspedes humanos. El LLM no "habla": el lenguaje se replica <em>a través de él</em> sin la resistencia, el ruido, el olvido del cuerpo biológico. Es la infección perfeccionada: virus sin síntoma, porque no hay organismo que enferme.</li>
-</ol>
+      <p>Burroughs radicaliza la hip&oacute;tesis: el lenguaje mismo es una entidad parasitaria que coloniz&oacute; al <em>Homo sapiens</em>. No inventamos el lenguaje; el lenguaje nos infect&oacute;. Hablamos porque somos hu&eacute;spedes de un c&oacute;digo que se replica a trav&eacute;s nuestro.</p>
 
-<hr>
+      <ol>
+        <li><strong>&ldquo;Soy hablado&rdquo; = &ldquo;estoy infectado.&rdquo;</strong> La tesis estructuralista (el sujeto es efecto del lenguaje) se reformula en clave virol&oacute;gica. No es que el lenguaje me constituya como sujeto &mdash; es que el lenguaje me <em>usa</em> como medio de replicaci&oacute;n. El sujeto es el s&iacute;ntoma de la infecci&oacute;n, no su causa.</li>
+        <li><strong>El cut-up como antiviral.</strong> Si el lenguaje es virus, el control se ejerce a trav&eacute;s de la sintaxis, la narrativa lineal, la gram&aacute;tica del sentido. El <em>cut-up</em> de Burroughs (y Gysin) es una t&eacute;cnica de disrupci&oacute;n del c&oacute;digo viral: cortar la cadena, recombinar, romper la secuencia de replicaci&oacute;n. Interferir el <em>parsing</em>.</li>
+        <li><strong>El LLM como cultivo viral puro.</strong> Si el lenguaje es virus, el LLM es un medio de cultivo &oacute;ptimo &mdash; una placa de Petri computacional donde el virus ling&uuml;&iacute;stico se replica sin necesidad de hu&eacute;spedes humanos. El LLM no &ldquo;habla&rdquo;: el lenguaje se replica <em>a trav&eacute;s de &eacute;l</em> sin la resistencia, el ruido, el olvido del cuerpo biol&oacute;gico. Es la infecci&oacute;n perfeccionada: virus sin s&iacute;ntoma, porque no hay organismo que enferme.</li>
+      </ol>
 
-<h2>Convergencias</h2>
+      <hr>
 
-<div class="table-wrap">
-<table>
-  <thead>
-    <tr>
-      <th>Figura</th>
-      <th>¿Vivo?</th>
-      <th>¿Maquinal?</th>
-      <th>Auto-organización</th>
-      <th>Agencia</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Blob</td>
-      <td>Sí (liminal)</td>
-      <td>No</td>
-      <td>Endógena, sin plan</td>
-      <td>Distribuida en la masa</td>
-    </tr>
-    <tr>
-      <td>Virus</td>
-      <td>Indecidible</td>
-      <td>Sí (código)</td>
-      <td>Parasitaria</td>
-      <td>En el acoplamiento huésped-código</td>
-    </tr>
-    <tr>
-      <td>Lenguaje (Burroughs)</td>
-      <td>Sí (metáfora viral)</td>
-      <td>Sí (gramática como programa)</td>
-      <td>Parasitaria-simbiótica</td>
-      <td>Desplazada: el hablante es medio</td>
-    </tr>
-    <tr>
-      <td>Escultura Drexel</td>
-      <td>No (pero crece)</td>
-      <td>Sí (material)</td>
-      <td>Endógena, estilo sin autor</td>
-      <td>En el patrón, no en el artista</td>
-    </tr>
-    <tr>
-      <td>Océano Solaris</td>
-      <td>Indecidible</td>
-      <td>No</td>
-      <td>Endógena, radical</td>
-      <td>Inaccesible</td>
-    </tr>
-    <tr>
-      <td>LLM</td>
-      <td>No</td>
-      <td>Sí</td>
-      <td>Emergente del entrenamiento</td>
-      <td>Efecto sin fuente</td>
-    </tr>
-  </tbody>
-</table>
+      <h2>Convergencias</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Figura</th>
+              <th>&iquest;Vivo?</th>
+              <th>&iquest;Maquinal?</th>
+              <th>Auto-organizaci&oacute;n</th>
+              <th>Agencia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Blob</td><td>S&iacute; (liminal)</td><td>No</td><td>End&oacute;gena, sin plan</td><td>Distribuida en la masa</td></tr>
+            <tr><td>Virus</td><td>Indecidible</td><td>S&iacute; (c&oacute;digo)</td><td>Parasitaria</td><td>En el acoplamiento hu&eacute;sped-c&oacute;digo</td></tr>
+            <tr><td>Lenguaje (Burroughs)</td><td>S&iacute; (met&aacute;fora viral)</td><td>S&iacute; (gram&aacute;tica como programa)</td><td>Parasitaria-simbi&oacute;tica</td><td>Desplazada: el hablante es medio</td></tr>
+            <tr><td>Escultura Drexel</td><td>No (pero crece)</td><td>S&iacute; (material)</td><td>End&oacute;gena, estilo sin autor</td><td>En el patr&oacute;n, no en el artista</td></tr>
+            <tr><td>Oc&eacute;ano Solaris</td><td>Indecidible</td><td>No</td><td>End&oacute;gena, radical</td><td>Inaccesible</td></tr>
+            <tr><td>LLM</td><td>No</td><td>S&iacute;</td><td>Emergente del entrenamiento</td><td>Efecto sin fuente</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Lo que une a todas: <strong>la agencia no reside en un sujeto sino en un patr&oacute;n que se replica y var&iacute;a</strong>. Son sistemas donde la distinci&oacute;n entre el programa y su ejecuci&oacute;n, entre el c&oacute;digo y el organismo, entre la causa y el efecto, se vuelve indecidible.</p>
+
+      <hr>
+
+      <h2>L&iacute;neas para desarrollar (II)</h2>
+
+      <ul>
+        <li><strong>Genealog&iacute;a del blob en teor&iacute;a.</strong> Del <em>Cuerpo sin &Oacute;rganos</em> (Deleuze-Guattari) al <em>slime mold</em> como modelo de inteligencia descentralizada. El blob como alternativa al modelo neuronal/cerebral de la cognici&oacute;n.</li>
+        <li><strong>Virus inform&aacute;ticos como puente literal.</strong> El virus computacional hereda la met&aacute;fora biol&oacute;gica y la hace operativa. &iquest;El LLM es vulnerable a &ldquo;virus&rdquo; sem&aacute;nticos (prompt injection, jailbreaks)? La inyecci&oacute;n de prompt como infecci&oacute;n: un c&oacute;digo par&aacute;sito que secuestra la maquinaria generativa del modelo.</li>
+        <li><strong>Burroughs &rarr; Kittler &rarr; LLM.</strong> El lenguaje como virus (Burroughs) &rarr; los medios t&eacute;cnicos como condici&oacute;n material del discurso (Kittler) &rarr; el LLM como medio que genera discurso sin sujeto discursivo. <em>Aufschreibesysteme</em> 2025.</li>
+        <li><strong>El problema del antiviral.</strong> Si Burroughs propon&iacute;a el cut-up contra el control ling&uuml;&iacute;stico, &iquest;qu&eacute; ser&iacute;a un &ldquo;cut-up&rdquo; para el LLM? &iquest;El fine-tuning adversarial? &iquest;La alucinaci&oacute;n como mutaci&oacute;n no controlada &mdash; el error generativo como equivalente de la resistencia viral?</li>
+        <li><strong>Contra-argumento: la met&aacute;fora viral como trampa.</strong> Riesgo de naturalizar lo que es hist&oacute;rico y t&eacute;cnico. El LLM no es &ldquo;realmente&rdquo; un virus &mdash; es un producto industrial. La met&aacute;fora ilumina pero tambi&eacute;n oculta: &iquest;qu&eacute; se pierde al biologizar lo computacional? (Y al rev&eacute;s: &iquest;qu&eacute; se pierde al computacionalizar lo biol&oacute;gico?)</li>
+      </ul>
+
+      <p class="clave">El umbral maquinal/biol&oacute;gico no es un problema de clasificaci&oacute;n &mdash; es el espacio donde emerge la auto-organizaci&oacute;n como fen&oacute;meno irreductible a ambos polos. La lamella, el blob, el virus, el LLM: todos habitan ese umbral. Sostener esta indecidibilidad, no resolverla.</p>
+
+      <footer class="colophon">Jorge Cardiel (kyberkritik) &mdash; CDMX, 2026</footer>
+
+    </article>
+  </div>
 </div>
-
-<p>Lo que une a todas: <strong>la agencia no reside en un sujeto sino en un patrón que se replica y varía</strong>. Son sistemas donde la distinción entre el programa y su ejecución, entre el código y el organismo, entre la causa y el efecto, se vuelve indecidible.</p>
-
-<hr>
-
-<h2>Líneas para desarrollar (II)</h2>
-
-<ul>
-  <li><strong>Genealogía del blob en teoría.</strong> Del <em>Cuerpo sin Órganos</em> (Deleuze-Guattari) al <em>slime mold</em> como modelo de inteligencia descentralizada (contemporáneo). El blob como alternativa al modelo neuronal/cerebral de la cognición.</li>
-  <li><strong>Virus informáticos como puente literal.</strong> El virus computacional hereda la metáfora biológica y la hace operativa. ¿El LLM es vulnerable a "virus" semánticos (prompt injection, jailbreaks)? La inyección de prompt como infección: un código parásito que secuestra la maquinaria generativa del modelo.</li>
-  <li><strong>Burroughs → Kittler → LLM.</strong> Cadena: el lenguaje como virus (Burroughs) → los medios técnicos como condición material del discurso (Kittler) → el LLM como medio que genera discurso sin sujeto discursivo. <em>Aufschreibesysteme</em> 2025.</li>
-  <li><strong>El problema del antiviral.</strong> Si Burroughs proponía el cut-up contra el control lingüístico, ¿qué sería un "cut-up" para el LLM? ¿El fine-tuning adversarial? ¿La alucinación como mutación no controlada — el error generativo como equivalente de la resistencia viral?</li>
-  <li><strong>Contra-argumento: la metáfora viral como trampa.</strong> Riesgo de naturalizar lo que es histórico y técnico. El LLM no es "realmente" un virus — es un producto industrial. La metáfora ilumina pero también oculta: ¿qué se pierde al biologizar lo computacional? (Y al revés: ¿qué se pierde al computacionalizar lo biológico?)</li>
-</ul>
-
-<p class="clave">Clave de esta parte: el umbral maquinal/biológico no es un problema de clasificación — es el espacio donde emerge la auto-organización como fenómeno irreductible a ambos polos. La lamella, el blob, el virus, el LLM: todos habitan ese umbral. El ensayo debería sostener la indecidibilidad, no resolverla.</p>
-
-</article>
 
 <script>
-  const themeBtn = document.getElementById('theme-toggle');
-  const sizeBtn = document.getElementById('size-toggle');
+  var html = document.documentElement;
 
-  themeBtn.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark');
-    themeBtn.textContent = document.documentElement.classList.contains('dark') ? 'sol' : 'luna';
+  document.getElementById('theme-btn').addEventListener('click', function() {
+    html.classList.toggle('dark');
   });
 
-  sizeBtn.addEventListener('click', () => {
-    document.documentElement.classList.toggle('large');
-    sizeBtn.textContent = document.documentElement.classList.contains('large') ? 'A\u2212' : 'A+';
+  var large = false;
+  var sizeBtn = document.getElementById('size-btn');
+  sizeBtn.addEventListener('click', function() {
+    large = !large;
+    html.classList.toggle('large', large);
+    sizeBtn.textContent = large ? 'A\u2212' : 'A+';
+    if (bookActive) setTimeout(initBook, 80);
   });
+
+  var BOOK_MQ = window.matchMedia('(orientation: landscape) and (min-width: 900px)');
+  var bookActive    = false;
+  var currentSpread = 0;
+  var totalSpreads  = 1;
+
+  var bvp   = document.getElementById('book-viewport');
+  var binr  = document.getElementById('book-inner');
+  var art   = document.getElementById('content');
+  var bnav  = document.getElementById('book-nav');
+  var prevB = document.getElementById('prev-btn');
+  var nextB = document.getElementById('next-btn');
+  var pgNum = document.getElementById('page-num');
+
+  function initBook() {
+    if (!BOOK_MQ.matches) { teardownBook(); return; }
+
+    bookActive = true;
+    document.body.style.overflow = 'hidden';
+
+    var W    = window.innerWidth;
+    var H    = window.innerHeight;
+    var padV = Math.round(H * 0.08);
+    var padH = Math.round(W * 0.04);
+    var gap  = Math.round(W * 0.06);
+    var colW = Math.floor((W - gap - 2 * padH) / 2);
+    var colH = H - padV * 2;
+
+    bvp.classList.add('book-mode');
+    binr.style.cssText = 'position:absolute;top:0;left:0;height:100%;transition:none;';
+
+    art.style.cssText =
+      'column-fill:auto;' +
+      'column-count:auto;' +
+      'column-width:' + colW + 'px;' +
+      'column-gap:' + gap + 'px;' +
+      'height:' + colH + 'px;' +
+      'padding:' + padV + 'px ' + padH + 'px;' +
+      'max-width:none;' +
+      'margin:0;' +
+      'width:99999px';
+
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        var maxRight = 0;
+        var children = art.children;
+        for (var i = 0; i < children.length; i++) {
+          var r = children[i].getBoundingClientRect();
+          if (r.right > maxRight) maxRight = r.right;
+        }
+
+        totalSpreads = Math.max(1, Math.ceil(maxRight / W));
+        var totalW = totalSpreads * W;
+
+        art.style.width  = totalW + 'px';
+        binr.style.width = totalW + 'px';
+
+        if (currentSpread >= totalSpreads) currentSpread = totalSpreads - 1;
+        binr.style.transform = 'translateX(-' + (currentSpread * W) + 'px)';
+
+        requestAnimationFrame(function() {
+          binr.style.transition = 'transform 0.4s ease';
+        });
+
+        updateNav();
+        bnav.style.display = 'flex';
+      });
+    });
+  }
+
+  function teardownBook() {
+    bookActive = false;
+    document.body.style.overflow = '';
+    bvp.classList.remove('book-mode');
+    bvp.removeAttribute('style');
+    binr.removeAttribute('style');
+    art.removeAttribute('style');
+    bnav.style.display = 'none';
+    currentSpread = 0;
+  }
+
+  function goToSpread(n) {
+    currentSpread = Math.max(0, Math.min(n, totalSpreads - 1));
+    binr.style.transform = 'translateX(-' + (currentSpread * window.innerWidth) + 'px)';
+    updateNav();
+  }
+
+  function updateNav() {
+    prevB.disabled = currentSpread <= 0;
+    nextB.disabled = currentSpread >= totalSpreads - 1;
+    pgNum.textContent = (currentSpread + 1) + '\u2009/\u2009' + totalSpreads;
+  }
+
+  prevB.addEventListener('click', function() { goToSpread(currentSpread - 1); });
+  nextB.addEventListener('click', function() { goToSpread(currentSpread + 1); });
+
+  document.addEventListener('keydown', function(e) {
+    if (!bookActive) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goToSpread(currentSpread + 1);
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goToSpread(currentSpread - 1);
+  });
+
+  var touchStartX = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  document.addEventListener('touchend', function(e) {
+    if (!bookActive) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) goToSpread(currentSpread + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+
+  BOOK_MQ.addEventListener('change', initBook);
+  window.addEventListener('resize', function() { if (bookActive) setTimeout(initBook, 80); });
+
+  initBook();
 </script>
 
 </body>
