@@ -398,11 +398,11 @@
 
     var W    = window.innerWidth;
     var H    = window.innerHeight;
-    var padV = Math.round(H * 0.08);
-    var padH = Math.round(W * 0.04);
-    var gap  = Math.round(W * 0.06);
+    var padV = Math.round(H * 0.05);
+    var padH = Math.round(W * 0.035);
+    var gap  = Math.round(W * 0.055);
     var colW = Math.floor((W - gap - 2 * padH) / 2);
-    var colH = H - padV * 2;
+    var colH = H;
 
     bvp.classList.add('book-mode');
     binr.style.cssText = 'position:absolute;top:0;left:0;height:100%;transition:none;';
