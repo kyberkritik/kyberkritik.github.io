@@ -192,6 +192,86 @@
   }
   .source { font-size: 0.78rem; color: var(--fg-muted); margin-top: 0.5rem; }
 
+  .inline-note-trigger {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    text-align: inherit;
+    cursor: pointer;
+    border-bottom: 1px dotted var(--fg-muted);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .inline-note-trigger:hover,
+  .inline-note-trigger[aria-expanded="true"] {
+    color: var(--fg-dim);
+    border-bottom-color: var(--fg);
+  }
+
+  .inline-note-popover {
+    position: fixed;
+    z-index: 900;
+    width: min(26rem, calc(100vw - 2rem));
+    padding: 0.95rem 1rem 1rem;
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.16);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(6px);
+    transition: opacity 0.18s ease, transform 0.18s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .inline-note-popover.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .inline-note-title {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  .inline-note-popover p {
+    margin-bottom: 0.55rem;
+    font-size: 0.88rem;
+    line-height: 1.62;
+    text-align: left;
+  }
+
+  .inline-note-popover p:last-child {
+    margin-bottom: 0;
+  }
+
+  .inline-note-reference {
+    margin-top: 0.7rem;
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    text-align: left;
+  }
+
+  .inline-note-reference a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+  }
+
+  .inline-note-reference a:hover {
+    color: var(--fg);
+  }
+
   .table-wrap { overflow-x: auto; margin: 1.3rem 0; break-inside: avoid; }
   table { width: 100%; border-collapse: collapse; font-size: 0.78rem; line-height: 1.45; }
   th, td { text-align: left; padding: 0.42rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; transition: border-color 0.3s; }
@@ -393,8 +473,57 @@
   </div>
 </div>
 
+<div class="inline-note-popover" id="heteronomia-popover" role="dialog" aria-modal="false" aria-labelledby="heteronomia-title">
+  <span class="inline-note-title" id="heteronomia-title">heteronom&iacute;a</span>
+  <p>Heteronom&iacute;a es una forma de acci&oacute;n cuya regla no se da desde dentro, sino desde una relaci&oacute;n exterior que orienta, activa o captura la conducta de otro. No equivale a obediencia consciente: tambi&eacute;n puede operar como inducci&oacute;n material, compatibilidad forzada o programaci&oacute;n del entorno.</p>
+  <p>As&iacute; operan los dispositivos: no act&uacute;an como una causa central soberana, sino modulando los acoplamientos entre sistemas para que una estructura ejecute la l&oacute;gica de otra. En el virus, la c&eacute;lula pone la maquinaria y el c&oacute;digo viral impone la secuencia; en ese acoplamiento, el dispositivo reorganiza capacidades ajenas para producir su propia replicaci&oacute;n.</p>
+  <p class="inline-note-reference">Ver: <a href="https://doi.org/10.26754/ojs_jos/jos.201812082" target="_blank" rel="noopener noreferrer">Barr&oacute;n Pastor, J. C., &amp; Cardiel Herrera, J. (2018). <em>Critical Sociocybernetics: Developing the Concept of Dispositif for an Analysis of Steering Processes Between Social Systems</em>. <em>Journal of Sociocybernetics, 15</em>(1).</a></p>
+</div>
+
 <script>
   var html = document.documentElement;
+  var heteronomiaTrigger = document.getElementById('heteronomia-trigger');
+  var heteronomiaPopover = document.getElementById('heteronomia-popover');
+
+  function closeHeteronomiaPopover() {
+    if (!heteronomiaPopover.classList.contains('active')) return;
+    heteronomiaPopover.classList.remove('active');
+    heteronomiaTrigger.setAttribute('aria-expanded', 'false');
+  }
+
+  function openHeteronomiaPopover() {
+    var rect = heteronomiaTrigger.getBoundingClientRect();
+    var width = Math.min(416, window.innerWidth - 32);
+    var left = Math.min(rect.left, window.innerWidth - width - 16);
+    var belowTop;
+    var aboveTop;
+    var maxTop;
+    var top;
+    left = Math.max(16, left);
+
+    heteronomiaPopover.style.width = width + 'px';
+    heteronomiaPopover.style.left = left + 'px';
+    belowTop = rect.bottom + 12;
+    aboveTop = rect.top - heteronomiaPopover.offsetHeight - 12;
+    maxTop = window.innerHeight - heteronomiaPopover.offsetHeight - 16;
+    top = belowTop <= maxTop ? belowTop : Math.max(16, aboveTop);
+    heteronomiaPopover.style.top = top + 'px';
+    heteronomiaPopover.classList.add('active');
+    heteronomiaTrigger.setAttribute('aria-expanded', 'true');
+  }
+
+  heteronomiaTrigger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (heteronomiaPopover.classList.contains('active')) {
+      closeHeteronomiaPopover();
+    } else {
+      openHeteronomiaPopover();
+    }
+  });
+
+  heteronomiaPopover.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
 
   document.getElementById('theme-btn').addEventListener('click', function() {
     html.classList.toggle('dark');
@@ -403,6 +532,7 @@
   var large = false;
   var sizeBtn = document.getElementById('size-btn');
   sizeBtn.addEventListener('click', function() {
+    closeHeteronomiaPopover();
     large = !large;
     html.classList.toggle('large', large);
     sizeBtn.textContent = large ? 'A\u2212' : 'A+';
@@ -514,6 +644,7 @@
   }
 
   function goToSpread(n) {
+    closeHeteronomiaPopover();
     currentSpread = Math.max(0, Math.min(n, totalSpreads - 1));
     binr.style.transform = 'translateX(-' + (currentSpread * window.innerWidth) + 'px)';
     updateNav();
@@ -529,9 +660,16 @@
   nextB.addEventListener('click', function() { goToSpread(currentSpread + 1); });
 
   document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeHeteronomiaPopover();
     if (!bookActive) return;
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goToSpread(currentSpread + 1);
     else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goToSpread(currentSpread - 1);
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!heteronomiaPopover.classList.contains('active')) return;
+    if (e.target === heteronomiaTrigger || heteronomiaTrigger.contains(e.target)) return;
+    closeHeteronomiaPopover();
   });
 
   var touchStartX = 0;
@@ -545,7 +683,10 @@
   }, { passive: true });
 
   BOOK_MQ.addEventListener('change', initBook);
-  window.addEventListener('resize', function() { if (bookActive) setTimeout(initBook, 80); });
+  window.addEventListener('resize', function() {
+    closeHeteronomiaPopover();
+    if (bookActive) setTimeout(initBook, 80);
+  });
 
   initBook();
 </script>
