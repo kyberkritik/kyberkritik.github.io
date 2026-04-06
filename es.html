@@ -272,6 +272,42 @@
     color: var(--fg);
   }
 
+  .constellation-item {
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .constellation-item::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  .constellation-sprite {
+    display: block;
+    width: min(11rem, 42%);
+    max-width: 12.5rem;
+    height: auto;
+    margin-top: 0.1rem;
+    margin-bottom: 0.7rem;
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.14));
+  }
+
+  .constellation-sprite-right {
+    float: right;
+    margin-left: 1rem;
+  }
+
+  .constellation-sprite-left {
+    float: left;
+    margin-right: 1rem;
+  }
+
+  .constellation-sprite-wide {
+    width: min(12rem, 46%);
+  }
+
   .table-wrap { overflow-x: auto; margin: 1.3rem 0; break-inside: avoid; }
   table { width: 100%; border-collapse: collapse; font-size: 0.78rem; line-height: 1.45; }
   th, td { text-align: left; padding: 0.42rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; transition: border-color 0.3s; }
@@ -303,6 +339,13 @@
     .controls { top: 0.75rem; right: 0.75rem; }
     table { font-size: 0.7rem; }
     th, td { padding: 0.32rem 0.42rem; }
+    .constellation-sprite,
+    .constellation-sprite-wide {
+      float: none;
+      width: min(16rem, 100%);
+      max-width: 100%;
+      margin: 0.35rem auto 0.8rem;
+    }
   }
 
   .back-btn {
@@ -348,13 +391,13 @@
 
       <h2>Constelaci&oacute;n de figuras</h2>
 
-      <p>El <strong>Es</strong> freudiano como instancia aut&oacute;noma: <em>es denkt</em>, algo piensa en m&iacute; antes de que yo piense. El inconsciente no es un dep&oacute;sito: es una m&aacute;quina que produce. De ah&iacute; la inquietud: no soy el agente, soy el medio.</p>
+      <p class="constellation-item"><img class="constellation-sprite constellation-sprite-right" src="assets/images/figures/es-freudiano.png" alt="" decoding="async">El <strong>Es</strong> freudiano como instancia aut&oacute;noma: <em>es denkt</em>, algo piensa en m&iacute; antes de que yo piense. El inconsciente no es un dep&oacute;sito: es una m&aacute;quina que produce. De ah&iacute; la inquietud: no soy el agente, soy el medio.</p>
 
-      <p><strong>Lacan: la lamella.</strong> Ese &oacute;rgano irreal, superficie pura de libido sin cuerpo propio, indestructible precisamente porque carece de forma fija. La lamella es lo que sobra cuando se sustrae al sujeto: vida ac&eacute;fala, insistencia sin intenci&oacute;n. (<em>S&eacute;minaire XI</em>, mito de la lamella.)</p>
+      <p class="constellation-item"><img class="constellation-sprite constellation-sprite-left" src="assets/images/figures/lamella.png" alt="" decoding="async"><strong>Lacan: la lamella.</strong> Ese &oacute;rgano irreal, superficie pura de libido sin cuerpo propio, indestructible precisamente porque carece de forma fija. La lamella es lo que sobra cuando se sustrae al sujeto: vida ac&eacute;fala, insistencia sin intenci&oacute;n. (<em>S&eacute;minaire XI</em>, mito de la lamella.)</p>
 
-      <p><strong>Solaris (Lem).</strong> El oc&eacute;ano: inteligencia sin sujeto, auto-organizaci&oacute;n radical que produce &ldquo;visitantes&rdquo; &mdash; simulacros perfectos generados desde un patr&oacute;n ajeno. El oc&eacute;ano no comunica, <em>replica</em>. La humanidad proyecta sentido; el oc&eacute;ano devuelve forma.</p>
+      <p class="constellation-item"><img class="constellation-sprite constellation-sprite-right constellation-sprite-wide" src="assets/images/figures/solaris.png" alt="" decoding="async"><strong>Solaris (Lem).</strong> El oc&eacute;ano: inteligencia sin sujeto, auto-organizaci&oacute;n radical que produce &ldquo;visitantes&rdquo; &mdash; simulacros perfectos generados desde un patr&oacute;n ajeno. El oc&eacute;ano no comunica, <em>replica</em>. La humanidad proyecta sentido; el oc&eacute;ano devuelve forma.</p>
 
-      <p><strong>&ldquo;Venus Smiles&rdquo; (Ballard).</strong> La escultura Doble de Doble es una escultura Drexel que crece, muta, se auto-organiza en patrones recurrentes &mdash; cada fragmento repite los &ldquo;manierismos aut&eacute;nticos&rdquo; (<em>authentischen Manirismen</em>) de la Drexel original. Autonom&iacute;a est&eacute;tica: la obra se emancipa del artista y sigue produciendo seg&uacute;n su l&oacute;gica interna.</p>
+      <p class="constellation-item"><img class="constellation-sprite constellation-sprite-left" src="assets/images/figures/venus-smiles.png" alt="" decoding="async"><strong>&ldquo;Venus Smiles&rdquo; (Ballard).</strong> La escultura Doble de Doble es una escultura Drexel que crece, muta, se auto-organiza en patrones recurrentes &mdash; cada fragmento repite los &ldquo;manierismos aut&eacute;nticos&rdquo; (<em>authentischen Manirismen</em>) de la Drexel original. Autonom&iacute;a est&eacute;tica: la obra se emancipa del artista y sigue produciendo seg&uacute;n su l&oacute;gica interna.</p>
 
       <p class="source">Fuente de trabajo: J.G. Ballard (1982/1971), <em>Die Tausend Träume von Stellavista</em>, edici&oacute;n alemana Suhrkamp (1&ordf; ed.), p. 29.</p>
 
