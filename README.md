@@ -1,64 +1,74 @@
 # Mercurio en los engranajes
-### Fragmentos y latencia de Zettelkasten — J.C. Latenz
 
-Blog de fragmentos de texto organizado como un Zettelkasten digital. Cada entrada es una ficha de pensamiento con fecha y localización aproximada. Las fichas se conectan entre sí mediante vínculos que al presionarse muestran el pasaje relevante del texto referenciado, sin abandonar la lectura actual.
+Sitio estático publicado en GitHub Pages.
 
 **→ [kyberkritik.github.io](https://kyberkritik.github.io)**
 
----
+## Política del repositorio
 
-## Estructura
+Este repositorio ahora versiona solo lo indispensable para mostrar la página publicada tal como existe en producción.
 
-```
+Se quedan en Git únicamente:
+
+- `index.html`
+- `es.html`
+- `nosthoff.html`
+- `entries/` usados por `index.html`
+- `illustrations/` usadas por `index.html`
+- `diagrams/` que sí aparecen en la lectura pública
+- `images/` que sí aparecen en la interfaz pública
+- `.nojekyll`
+
+No se versionan borradores, notas, variantes descartadas, fuentes intermedias ni materiales de trabajo. Esos archivos se mantienen solo en la máquina local mediante `.gitignore`.
+
+## Archivos solo locales
+
+Actualmente quedan fuera del repositorio:
+
+- `IDEAS.md`
+- `el_muzak_borrador_benjaminiano.md`
+- `nosthoff_techne_asimil_1abr26.md`
+- `entries/Z-002.md`
+- `illustrations/Z-002-arqueologia.svg`
+- `diagrams/forma-mercancia.dot`
+- `images/mercur copy.png`
+- `images/20260405_1844_01kng3xsb2eg5vfxfkf14mexsm.mp4`
+
+Para futuros materiales no públicos, usa `local/` o añade la ruta correspondiente a `.gitignore` antes de versionarla por error.
+
+## Estructura publicada
+
+```text
 /
-├── index.html              — sitio completo (CSS + motor JS)
-├── entries/                — textos en Markdown, editables directamente
-│   └── Z-XXX_titulo.md
-├── illustrations/          — ilustraciones 8-bit pixel art en SVG
-│   └── Z-XXX.svg
-├── IDEAS.md                — ideas pendientes de desarrollo
-└── .nojekyll               — deshabilita Jekyll para que fetch() funcione
+├── index.html
+├── es.html
+├── nosthoff.html
+├── entries/
+│   ├── Z-001_la-estacion-intermedia.md
+│   └── Z-002_el-muzak.md
+├── illustrations/
+│   ├── Z-001.svg
+│   └── Z-002.svg
+├── diagrams/
+│   └── forma-mercancia.png
+├── images/
+│   └── mercur.png
+└── .nojekyll
 ```
 
-## Agregar una entrada
+## Agregar contenido público
 
-1. Crear `entries/Z-XXX_titulo.md` con este frontmatter:
+1. Crear el archivo de entrada en `entries/`.
+2. Crear su ilustración en `illustrations/` si la entrada la necesita.
+3. Añadir el identificador al array `ENTRY_IDS` en `index.html`, o crear una tarjeta en `PAGE_CARDS` si será una página HTML independiente.
+4. Confirmar que cualquier imagen o diagrama nuevo esté referenciado desde una página publicada.
 
-```yaml
----
-id: Z-XXX
-title: Título
-date: DD de mes de AAAA
-location: Ciudad, País
-excerpt: Primera oración o frase que aparece en la tarjeta.
-links: [Z-001, Z-002]
----
-
-Texto en Markdown...
-```
-
-2. Crear `illustrations/Z-XXX.svg` — pixel art 320×200, estética 8-bit Castlevania
-3. Añadir `'Z-XXX_titulo'` al array `ENTRY_IDS` en `index.html`
-
-## Vínculos entre entradas
-
-En el cuerpo del texto se usan WikiLinks:
-
-```
-[[Z-002|la música de elevador]]
-```
-
-Al hacer click aparece un popup con el pasaje exacto del texto referenciado donde aparece el concepto vinculado, con opción de abrir la entrada al lado para lectura paralela.
+Si un archivo no participa directamente en la web visible, no debe entrar al repositorio.
 
 ## Previsualización local
 
-Requiere servidor HTTP (no funciona abriendo el archivo directamente):
+Requiere servidor HTTP:
 
 ```bash
 python -m http.server 8000
-# o usar VS Code Live Server
 ```
-
----
-
-*Influencias: Zettelkasten (Luhmann) · revistas de Weimar (Brecht, Benjamin) · Futurismo italiano · pixel art gótico*
