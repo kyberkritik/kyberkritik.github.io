@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="night">
+<html lang="es" data-theme="mercurio">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mercurio en los engranajes — J.C. Latenz</title>
+<title>Mercurio en los engranajes — Jorge Cardiel</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@300;400&family=Inter:wght@300;400;500;600&display=swap');
 
@@ -71,6 +71,19 @@
     --reader-rail-bg: rgba(19, 15, 18, 0.72);
     --reader-rail-border: rgba(202, 177, 155, 0.16);
     --reader-rail-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+    --texture-thread: rgba(202, 177, 155, 0.04);
+    --texture-fleck: rgba(244, 234, 217, 0.08);
+    --texture-halo-a: rgba(184, 81, 133, 0.1);
+    --texture-halo-b: rgba(103, 114, 79, 0.1);
+    --texture-halo-c: rgba(244, 234, 217, 0.16);
+    --header-grain: rgba(244, 234, 217, 0.04);
+    --header-image-shadow: 0 28px 62px rgba(0, 0, 0, 0.28);
+    --header-image-outline: rgba(202, 177, 155, 0.16);
+    --header-image-filter: sepia(0.12) saturate(0.74) brightness(0.88) contrast(1.02);
+    --header-image-opacity: 0.88;
+    --header-image-sheen: rgba(244, 234, 217, 0.14);
+    --header-plate-start: rgba(31, 23, 28, 0.58);
+    --header-plate-end: rgba(18, 13, 16, 0.78);
   }
 
   html[data-theme="ballard"] {
@@ -131,6 +144,19 @@
     --reader-rail-bg: rgba(248, 241, 232, 0.84);
     --reader-rail-border: rgba(47, 42, 38, 0.1);
     --reader-rail-shadow: 0 10px 24px rgba(84, 72, 58, 0.13);
+    --texture-thread: rgba(47, 42, 38, 0.035);
+    --texture-fleck: rgba(255, 250, 241, 0.22);
+    --texture-halo-a: rgba(143, 124, 101, 0.08);
+    --texture-halo-b: rgba(125, 136, 116, 0.08);
+    --texture-halo-c: rgba(255, 250, 242, 0.5);
+    --header-grain: rgba(47, 42, 38, 0.05);
+    --header-image-shadow: 0 24px 52px rgba(84, 72, 58, 0.12);
+    --header-image-outline: rgba(91, 78, 65, 0.14);
+    --header-image-filter: saturate(0.72) contrast(0.94) brightness(1.06);
+    --header-image-opacity: 0.94;
+    --header-image-sheen: rgba(255, 253, 246, 0.22);
+    --header-plate-start: rgba(251, 247, 239, 0.72);
+    --header-plate-end: rgba(232, 224, 210, 0.86);
   }
 
   html[data-theme="night"] {
@@ -187,6 +213,88 @@
     --reader-rail-bg: rgba(7, 10, 15, 0.82);
     --reader-rail-border: rgba(57, 239, 255, 0.14);
     --reader-rail-shadow: 0 12px 28px rgba(0, 0, 0, 0.34);
+    --texture-thread: rgba(57, 239, 255, 0.035);
+    --texture-fleck: rgba(242, 251, 255, 0.06);
+    --texture-halo-a: rgba(57, 239, 255, 0.12);
+    --texture-halo-b: rgba(123, 111, 255, 0.12);
+    --texture-halo-c: rgba(255, 90, 162, 0.08);
+    --header-grain: rgba(57, 239, 255, 0.05);
+    --header-image-shadow: 0 28px 62px rgba(0, 0, 0, 0.42);
+    --header-image-outline: rgba(57, 239, 255, 0.16);
+    --header-image-filter: sepia(0.16) saturate(0.68) hue-rotate(-10deg) brightness(0.72) contrast(1.1);
+    --header-image-opacity: 0.86;
+    --header-image-sheen: rgba(57, 239, 255, 0.1);
+    --header-plate-start: rgba(8, 11, 16, 0.72);
+    --header-plate-end: rgba(2, 4, 8, 0.9);
+  }
+
+  html[data-theme="mercurio"] {
+    color-scheme: light;
+    --bg: #e9ddc8;
+    --bg-card: #f7ecd8;
+    --bg-card-hover: #eee1c9;
+    --fg: #302922;
+    --fg-dim: #5f5245;
+    --fg-muted: #8d7b67;
+    --accent: #a37b47;
+    --accent-warm: #926149;
+    --accent-gold: #c89c5c;
+    --accent-cold: #7dbbbb;
+    --accent-violet: #6d6458;
+    --chrome-bright: #fff7e8;
+    --chrome-mid: #d0bfa2;
+    --chrome-dark: #6a594b;
+    --border: #cebea4;
+    --border-light: #b79f80;
+    --ambient-a: rgba(163, 123, 71, 0.14);
+    --ambient-b: rgba(125, 187, 187, 0.12);
+    --ambient-c: rgba(249, 240, 221, 0.72);
+    --selection-fg: #fffdf6;
+    --header-border: rgba(91, 73, 48, 0.12);
+    --header-start: rgba(242, 232, 212, 0.97);
+    --header-end: rgba(229, 216, 193, 0.95);
+    --header-inner-line: rgba(91, 73, 48, 0.06);
+    --header-glow-a: rgba(163, 123, 71, 0.12);
+    --header-glow-b: rgba(125, 187, 187, 0.12);
+    --header-glow-c: rgba(255, 248, 232, 0.4);
+    --ornament-frame: rgba(106, 88, 72, 0.16);
+    --ornament-start: rgba(245, 235, 216, 0.95);
+    --ornament-end: rgba(225, 213, 190, 0.96);
+    --ornament-inner-line: rgba(91, 73, 48, 0.05);
+    --ornament-grid: rgba(109, 93, 71, 0.06);
+    --ornament-bloom-a: rgba(163, 123, 71, 0.09);
+    --ornament-bloom-b: rgba(125, 187, 187, 0.11);
+    --ornament-filter: saturate(0.9) contrast(0.98) brightness(1.01);
+    --card-start: rgba(248, 240, 225, 0.98);
+    --card-end: rgba(236, 225, 206, 0.98);
+    --card-overlay-a: rgba(163, 123, 71, 0.06);
+    --card-overlay-b: rgba(125, 187, 187, 0.07);
+    --reading-nav-bg: rgba(241, 233, 217, 0.95);
+    --reader-page-bg: rgba(248, 241, 229, 0.93);
+    --reader-page-border: rgba(91, 73, 48, 0.09);
+    --reader-page-shadow: 0 16px 38px rgba(102, 83, 55, 0.14);
+    --surface-illustration: #eadeca;
+    --popup-bg: #f7eedc;
+    --popup-shadow: rgba(79, 61, 40, 0.16);
+    --side-bg: #efe4cf;
+    --footer-bg: rgba(236, 225, 206, 0.82);
+    --diagram-modal-bg: rgba(235, 224, 205, 0.97);
+    --reader-rail-bg: rgba(247, 239, 225, 0.84);
+    --reader-rail-border: rgba(91, 73, 48, 0.1);
+    --reader-rail-shadow: 0 10px 24px rgba(102, 83, 55, 0.15);
+    --texture-thread: rgba(122, 103, 74, 0.04);
+    --texture-fleck: rgba(255, 248, 230, 0.15);
+    --texture-halo-a: rgba(180, 144, 76, 0.12);
+    --texture-halo-b: rgba(125, 187, 187, 0.11);
+    --texture-halo-c: rgba(255, 246, 225, 0.54);
+    --header-grain: rgba(120, 97, 67, 0.05);
+    --header-image-shadow: 0 28px 60px rgba(98, 73, 48, 0.18);
+    --header-image-outline: rgba(136, 111, 80, 0.18);
+    --header-image-filter: saturate(0.94) contrast(0.98) brightness(1.02);
+    --header-image-opacity: 0.98;
+    --header-image-sheen: rgba(255, 248, 227, 0.2);
+    --header-plate-start: rgba(246, 238, 223, 0.58);
+    --header-plate-end: rgba(228, 213, 189, 0.78);
   }
 
   html {
@@ -203,6 +311,17 @@
     background:
       radial-gradient(circle at 12% 0%, var(--ambient-a), transparent 24%),
       radial-gradient(circle at 85% 4%, var(--ambient-b), transparent 28%),
+      radial-gradient(circle at 52% 10%, var(--texture-halo-a), transparent 24%),
+      radial-gradient(circle at 20% 18%, var(--texture-halo-b), transparent 26%),
+      radial-gradient(circle at 78% 16%, var(--texture-halo-c), transparent 30%),
+      repeating-linear-gradient(90deg,
+        transparent 0 16px,
+        var(--texture-thread) 16px 17px,
+        transparent 17px 39px),
+      repeating-linear-gradient(0deg,
+        transparent 0 22px,
+        var(--texture-fleck) 22px 23px,
+        transparent 23px 48px),
       linear-gradient(180deg, var(--ambient-c), transparent 18%),
       var(--bg);
     color: var(--fg);
@@ -228,6 +347,7 @@
     position: relative;
     overflow: hidden;
     background:
+      radial-gradient(circle at 76% 42%, var(--header-image-sheen), transparent 22%),
       linear-gradient(180deg, var(--header-start), var(--header-end)),
       var(--bg);
     box-shadow: inset 0 -1px 0 var(--header-inner-line);
@@ -248,12 +368,21 @@
     background:
       radial-gradient(circle at 14% 24%, var(--header-glow-a), transparent 24%),
       radial-gradient(circle at 82% 28%, var(--header-glow-b), transparent 28%),
-      linear-gradient(115deg, var(--header-glow-c), transparent 38%);
+      linear-gradient(115deg, var(--header-glow-c), transparent 38%),
+      repeating-linear-gradient(90deg,
+        transparent 0 22px,
+        var(--header-grain) 22px 23px,
+        transparent 23px 49px),
+      repeating-linear-gradient(0deg,
+        transparent 0 18px,
+        var(--header-grain) 18px 19px,
+        transparent 19px 43px);
     pointer-events: none;
   }
 
   .site-header,
   .header-ornament,
+  .header-ornament-image,
   .header-ornament-svg,
   .zettel-card,
   .reading-overlay,
@@ -280,9 +409,9 @@
     max-width: 1800px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);
-    gap: 1rem;
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+    gap: 1.2rem;
+    align-items: center;
     position: relative;
     z-index: 1;
   }
@@ -355,41 +484,62 @@
   }
 
   .header-ornament {
-    --parallax-x: 0;
-    --parallax-y: 0;
-    min-height: 160px;
+    min-height: clamp(220px, 26vw, 390px);
     width: 100%;
     position: relative;
     justify-self: end;
-    align-self: start;
+    align-self: stretch;
     pointer-events: none;
-    border: none;
-    border-radius: 0;
-    overflow: visible;
-    background: none;
-    box-shadow: none;
-    opacity: 0.58;
-    -webkit-mask-image: radial-gradient(circle at 52% 48%, rgba(0,0,0,0.98) 34%, rgba(0,0,0,0.72) 58%, transparent 82%);
-    mask-image: radial-gradient(circle at 52% 48%, rgba(0,0,0,0.98) 34%, rgba(0,0,0,0.72) 58%, transparent 82%);
+    border: 1px solid var(--header-image-outline);
+    border-radius: 2rem;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 40%, var(--header-image-sheen), transparent 36%),
+      linear-gradient(160deg, var(--header-plate-start), var(--header-plate-end));
+    box-shadow: var(--header-image-shadow);
+    opacity: 1;
+    isolation: isolate;
   }
 
   .header-ornament::before {
-    display: none;
+    content: '';
+    position: absolute;
+    inset: 10% 8% 7%;
+    background:
+      radial-gradient(circle at 48% 40%, var(--header-glow-a), transparent 32%),
+      radial-gradient(circle at 68% 56%, var(--header-glow-b), transparent 34%),
+      radial-gradient(circle at 34% 64%, var(--header-image-sheen), transparent 28%);
+    filter: blur(22px);
   }
 
   .header-ornament::after {
-    display: none;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(132deg, rgba(255, 255, 255, 0.16), transparent 34%),
+      linear-gradient(180deg, transparent 58%, rgba(0, 0, 0, 0.05) 100%);
+    opacity: 0.92;
+    pointer-events: none;
   }
 
-  .header-ornament-svg {
+  .header-ornament-image {
     display: block;
     width: 100%;
     height: 100%;
-    min-height: 160px;
+    min-height: clamp(220px, 26vw, 390px);
     position: relative;
     z-index: 1;
-    filter: var(--ornament-filter) saturate(0.88) blur(0.55px);
-    opacity: 0.88;
+    object-fit: contain;
+    object-position: center;
+    padding: 0.85rem 0.95rem 0.65rem;
+    transform: scale(1.02);
+    filter: var(--header-image-filter);
+    opacity: var(--header-image-opacity);
+  }
+
+  .header-ornament-svg {
+    display: none;
   }
 
   .pinball-layer {
@@ -889,18 +1039,20 @@
       position: absolute;
       top: -0.15rem;
       right: -0.35rem;
-      width: min(38vw, 240px);
-      min-height: 120px;
-      opacity: 0.44;
+      width: min(44vw, 320px);
+      min-height: min(36vw, 240px);
+      border-radius: 1.5rem;
+      opacity: 0.94;
     }
 
-    .header-ornament-svg {
-      min-height: 120px;
+    .header-ornament-image {
+      min-height: min(36vw, 240px);
+      padding: 0.55rem 0.55rem 0.4rem;
     }
 
     .header-copy {
       max-width: none;
-      padding-right: min(42vw, 14rem);
+      padding-right: min(48vw, 17rem);
     }
   }
 
@@ -912,17 +1064,19 @@
     .header-ornament {
       top: 0;
       right: -0.45rem;
-      width: min(42vw, 180px);
-      min-height: 92px;
-      opacity: 0.34;
+      width: min(46vw, 220px);
+      min-height: min(40vw, 180px);
+      border-radius: 1.15rem;
+      opacity: 0.92;
     }
 
-    .header-ornament-svg {
-      min-height: 92px;
+    .header-ornament-image {
+      min-height: min(40vw, 180px);
+      padding: 0.45rem 0.45rem 0.35rem;
     }
 
     .header-copy {
-      padding-right: min(42vw, 8.8rem);
+      padding-right: min(46vw, 10rem);
     }
 
     .reading-nav {
@@ -2093,6 +2247,17 @@
       4px 4px 0 #46ffb5;
   }
 
+  .theme-pixel[data-reader-theme="mercurio"]::before {
+    background: #a37b47;
+    box-shadow:
+      -4px -4px 0 #fff7e8,
+      4px -4px 0 #7dbbbb,
+      -4px 0 0 #eadfc8,
+      4px 0 0 #6a594b,
+      0 4px 0 #c89c5c,
+      4px 4px 0 #926149;
+  }
+
   .theme-pixel:hover {
     transform: translateY(-1px);
   }
@@ -2114,6 +2279,11 @@
   html[data-theme="night"] .theme-pixel[aria-pressed="true"] {
     background: rgba(57, 239, 255, 0.12);
     box-shadow: 0 0 12px rgba(57, 239, 255, 0.12);
+  }
+
+  html[data-theme="mercurio"] .theme-pixel[aria-pressed="true"] {
+    background: rgba(163, 123, 71, 0.1);
+    box-shadow: 0 0 12px rgba(163, 123, 71, 0.08);
   }
 
   @media (orientation: portrait) and (max-width: 1100px) {
@@ -2160,7 +2330,8 @@
 <body>
 
 <div class="reader-rail" aria-label="Selector de tema" role="toolbar">
-  <button class="theme-pixel" type="button" data-reader-theme="night" aria-label="Tema nocturno" aria-pressed="true" title="Tema nocturno"></button>
+  <button class="theme-pixel" type="button" data-reader-theme="mercurio" aria-label="Tema mercurial" aria-pressed="true" title="Tema mercurial"></button>
+  <button class="theme-pixel" type="button" data-reader-theme="night" aria-label="Tema nocturno" aria-pressed="false" title="Tema nocturno"></button>
   <button class="theme-pixel" type="button" data-reader-theme="ballard" aria-label="Tema Ballard-Suhrkamp" aria-pressed="false" title="Tema Ballard-Suhrkamp"></button>
   <button class="theme-pixel" type="button" data-reader-theme="paper" aria-label="Tema papel" aria-pressed="false" title="Tema papel"></button>
 </div>
@@ -2175,10 +2346,18 @@
       </h1>
       <p class="header-subtitle">Fragmentos y latencia de Zettelkasten</p>
       <div class="header-author">
-        Un proyecto de fragmentos de texto por <strong>J.C. Latenz</strong>
+        Un proyecto de fragmentos de texto por <strong>Jorge Cardiel</strong>
       </div>
     </div>
     <div class="header-ornament" id="headerOrnament" aria-hidden="true">
+      <img
+        class="header-ornament-image"
+        src="images/mercur.png"
+        width="4608"
+        height="3712"
+        alt=""
+        decoding="async"
+        fetchpriority="high">
       <svg class="header-ornament-svg" viewBox="0 0 680 360" shape-rendering="crispEdges" role="presentation">
         <defs>
           <linearGradient id="ornamentBase" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2510,7 +2689,7 @@
 
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer class="site-footer">
-  Mercurio en los engranajes &mdash; J.C. Latenz &mdash; Zettelkasten &mdash; CDMX &mdash; 2026
+  Mercurio en los engranajes &mdash; Jorge Cardiel (kyberkritik) &mdash; Zettelkasten &mdash; CDMX &mdash; 2026
 </footer>
 
 <!-- ═══════════ DIAGRAM MODAL ═══════════ -->
@@ -2539,33 +2718,55 @@
 
 // Usa el nombre completo del archivo MD (sin extensión).
 // El prefijo Z-XXX se extrae automáticamente para encontrar la ilustración.
+const PAGE_CARDS = [
+  {
+    id: 'Z-003',
+    title: 'La invisibilidad de lo técnico',
+    excerpt: 'Inercia estructural y gubernamentalidad cibernética. Notas sobre Nosthoff, Maschewski y la infraestructura como poder invisible.',
+    date: '1 de abril, 2026',
+    url: 'nosthoff.html'
+  },
+  {
+    id: 'Z-004',
+    title: 'Agencia sin sujeto: lamella, Drexel, LLM',
+    excerpt: 'Notas para un ensayo sobre lo autónomo que insiste. El Es freudiano, la lamella lacaniana, el océano de Solaris y los modelos de lenguaje grandes.',
+    date: '5 de abril, 2026',
+    url: 'es.html'
+  }
+];
 const ENTRY_IDS = [
   'Z-001_la-estacion-intermedia',
   'Z-002_el-muzak'
 ];
 let ZETTELS = [];
+const DEFAULT_THEME = 'mercurio';
 const THEME_STORAGE_KEY = 'readerTheme';
-const READER_THEMES = new Set(['night', 'ballard', 'paper']);
+const THEME_STORAGE_VERSION_KEY = 'readerThemeVersion';
+const THEME_STORAGE_VERSION = 'mercurio-default-v1';
+const READER_THEMES = new Set(['mercurio', 'night', 'ballard', 'paper']);
 
 function getSavedTheme() {
   try {
+    const savedVersion = localStorage.getItem(THEME_STORAGE_VERSION_KEY);
+    if (savedVersion !== THEME_STORAGE_VERSION) return DEFAULT_THEME;
     const saved = localStorage.getItem(THEME_STORAGE_KEY);
-    return READER_THEMES.has(saved) ? saved : 'night';
+    return READER_THEMES.has(saved) ? saved : DEFAULT_THEME;
   } catch {
-    return 'night';
+    return DEFAULT_THEME;
   }
 }
 
 function storeTheme(theme) {
   try {
     localStorage.setItem(THEME_STORAGE_KEY, theme);
+    localStorage.setItem(THEME_STORAGE_VERSION_KEY, THEME_STORAGE_VERSION);
   } catch {
     // Ignore storage failures and keep the session theme only.
   }
 }
 
 function applyTheme(theme) {
-  const nextTheme = READER_THEMES.has(theme) ? theme : 'night';
+  const nextTheme = READER_THEMES.has(theme) ? theme : DEFAULT_THEME;
   document.documentElement.dataset.theme = nextTheme;
   document.querySelectorAll('.theme-pixel').forEach(button => {
     button.setAttribute('aria-pressed', button.dataset.readerTheme === nextTheme ? 'true' : 'false');
@@ -2694,21 +2895,79 @@ function bindZoomableMedia(container, entry) {
   });
 }
 
+function parseSpanishDate(dateText) {
+  if (!dateText) return 0;
+
+  const normalized = dateText
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim();
+
+  const match = normalized.match(/(\d{1,2})\s+de\s+([a-z]+)(?:,|\s+de)?\s+(\d{4})/);
+  if (!match) return 0;
+
+  const monthIndex = {
+    enero: 0,
+    febrero: 1,
+    marzo: 2,
+    abril: 3,
+    mayo: 4,
+    junio: 5,
+    julio: 6,
+    agosto: 7,
+    septiembre: 8,
+    octubre: 9,
+    noviembre: 10,
+    diciembre: 11
+  }[match[2]];
+
+  if (monthIndex == null) return 0;
+  return new Date(Number(match[3]), monthIndex, Number(match[1])).getTime();
+}
+
 /* ── RENDER GRID ────────────────────────────────────────── */
 function renderGrid() {
   const grid = document.getElementById('zettelGrid');
   grid.innerHTML = '';
-  ZETTELS.forEach(z => {
+
+  const items = [
+    ...ZETTELS.map(z => ({
+      id: z.id,
+      title: z.title,
+      excerpt: z.excerpt,
+      date: z.date,
+      sortDate: parseSpanishDate(z.date),
+      meta: `${z.date} &mdash; ${z.location}`,
+      extraMeta: z.links.length ? `<span class="zettel-links-count">${z.links.length} enlace${z.links.length > 1 ? 's' : ''}</span>` : '',
+      onClick: () => openReading(z.id)
+    })),
+    ...PAGE_CARDS.map(p => ({
+      id: p.id,
+      title: p.title,
+      excerpt: p.excerpt,
+      date: p.date,
+      sortDate: parseSpanishDate(p.date),
+      meta: `${p.date} &mdash; CDMX`,
+      extraMeta: '',
+      onClick: () => { window.location.href = p.url; }
+    }))
+  ].sort((a, b) =>
+    b.sortDate - a.sortDate ||
+    b.id.localeCompare(a.id, 'es', { numeric: true })
+  );
+
+  items.forEach(item => {
     const card = document.createElement('div');
     card.className = 'zettel-card';
-    card.onclick = () => openReading(z.id);
+    card.onclick = item.onClick;
     card.innerHTML = `
-      <div class="zettel-id">${z.id}</div>
-      <div class="zettel-card-title">${z.title}</div>
-      <div class="zettel-excerpt">${z.excerpt}</div>
+      <div class="zettel-id">${item.id}</div>
+      <div class="zettel-card-title">${item.title}</div>
+      <div class="zettel-excerpt">${item.excerpt}</div>
       <div class="zettel-meta">
-        <span>${z.date} &mdash; ${z.location}</span>
-        ${z.links.length ? `<span class="zettel-links-count">${z.links.length} enlace${z.links.length > 1 ? 's' : ''}</span>` : ''}
+        <span>${item.meta}</span>
+        ${item.extraMeta}
       </div>
     `;
     grid.appendChild(card);
@@ -2748,7 +3007,7 @@ function openReading(id) {
             <div class="reading-info">
               <span>${z.date}</span>
               <span>${z.location}</span>
-              <span>J.C. Latenz</span>
+              <span>Jorge Cardiel</span>
             </div>
           </div>
           <div class="reading-body">${z.body}</div>
@@ -2907,133 +3166,7 @@ function setHeaderDate() {
 
 /* ── HEADER ORNAMENT ────────────────────────────────────── */
 function initHeaderOrnament() {
-  const ornament = document.getElementById('headerOrnament');
-  if (!ornament) return;
-
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (prefersReducedMotion.matches) return;
-
-  const updateParallax = event => {
-    const rect = ornament.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width - 0.5).toFixed(3);
-    const y = ((event.clientY - rect.top) / rect.height - 0.5).toFixed(3);
-    ornament.style.setProperty('--parallax-x', x);
-    ornament.style.setProperty('--parallax-y', y);
-  };
-
-  ornament.addEventListener('pointermove', updateParallax);
-  ornament.addEventListener('pointerleave', () => {
-    ornament.style.setProperty('--parallax-x', '0');
-    ornament.style.setProperty('--parallax-y', '0');
-  });
-
-  const motionPath = document.getElementById('pinballMotionPath');
-  const ball = document.getElementById('headerPinballBall');
-  const fill = document.getElementById('accumulatorFill');
-  const surface = document.getElementById('accumulatorSurface');
-  const speedReadout = document.getElementById('headerSpeedReadout');
-  const statusNeedle = document.getElementById('statusNeedle');
-  const plungerKnob = document.getElementById('plungerKnob');
-  const flipperLeft = document.getElementById('flipperLeft');
-  const flipperRight = document.getElementById('flipperRight');
-
-  if (!motionPath || !ball || !fill || !surface || !speedReadout || !statusNeedle || !plungerKnob || !flipperLeft || !flipperRight) return;
-
-  const lamps = Array.from(ornament.querySelectorAll('.lamp')).map(el => ({
-    el,
-    x: parseFloat(el.dataset.x || '0'),
-    y: parseFloat(el.dataset.y || '0')
-  }));
-
-  const bumpers = [
-    { el: document.getElementById('bumperA'), x: 214, y: 176 },
-    { el: document.getElementById('bumperB'), x: 342, y: 130 },
-    { el: document.getElementById('bumperC'), x: 452, y: 186 }
-  ].filter(item => item.el);
-
-  const gears = Array.from(ornament.querySelectorAll('.pinball-gear')).map(el => ({
-    el,
-    base: el.dataset.base || '',
-    speed: parseFloat(el.dataset.speed || '0.05')
-  }));
-
-  const totalLength = motionPath.getTotalLength();
-  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
-  const tankTop = 136;
-  const tankBottom = 268;
-  const tankHeight = tankBottom - tankTop;
-  let distance = 0;
-  let lastTime = performance.now();
-
-  const speedFor = (u, now) => {
-    if (u < 0.08) return 340;
-    if (u < 0.2) return 168 + 18 * Math.sin(now * 0.006);
-    if (u < 0.38) return 242 + 22 * Math.sin(now * 0.014);
-    if (u < 0.54) return 182 + 16 * Math.cos(now * 0.01);
-    if (u < 0.74) return 214 + 28 * Math.sin(now * 0.012);
-    if (u < 0.9) return 156 + 14 * Math.cos(now * 0.008);
-    return 296;
-  };
-
-  const animate = now => {
-    const dt = Math.min((now - lastTime) / 1000, 0.03);
-    lastTime = now;
-
-    const u = distance / totalLength;
-    const speed = speedFor(u, now);
-    distance = (distance + speed * dt) % totalLength;
-
-    const point = motionPath.getPointAtLength(distance);
-    ball.setAttribute('transform', `translate(${point.x.toFixed(1)} ${point.y.toFixed(1)})`);
-
-    const power = clamp((speed - 140) / 210, 0, 1);
-    const fillRatio = clamp(0.88 - power * 0.58 + 0.04 * Math.sin(now * 0.0038), 0.16, 0.92);
-    const fillHeight = tankHeight * fillRatio;
-    const fillY = tankBottom - fillHeight;
-    fill.setAttribute('y', fillY.toFixed(1));
-    fill.setAttribute('height', fillHeight.toFixed(1));
-    if (surface.tagName.toLowerCase() === 'rect') {
-      surface.setAttribute('y', Math.max(tankTop, fillY - 4).toFixed(1));
-    } else {
-      surface.setAttribute('cy', fillY.toFixed(1));
-    }
-
-    speedReadout.textContent = `${Math.round(speed)}`;
-    statusNeedle.setAttribute('transform', `rotate(${(-76 + power * 152).toFixed(2)} 96 32)`);
-
-    const plungerTravel = u < 0.06 ? 10 * (1 - u / 0.06) : 0;
-    plungerKnob.setAttribute('cy', (300 - plungerTravel).toFixed(1));
-
-    const leftKick = clamp(1 - Math.hypot(point.x - 280, point.y - 292) / 108, 0, 1);
-    const rightKick = clamp(1 - Math.hypot(point.x - 400, point.y - 292) / 108, 0, 1);
-    flipperLeft.setAttribute('transform', `translate(280 292) rotate(${(-24 + leftKick * 11).toFixed(2)})`);
-    flipperRight.setAttribute('transform', `translate(400 292) rotate(${(24 - rightKick * 11).toFixed(2)})`);
-
-    lamps.forEach((lamp, idx) => {
-      const dist = Math.hypot(point.x - lamp.x, point.y - lamp.y);
-      const hit = clamp(1 - dist / 88, 0, 1);
-      const pulse = 0.08 + 0.05 * Math.sin(now * 0.005 + idx * 0.8);
-      const scale = 1 + hit * 0.12;
-      lamp.el.style.opacity = (0.12 + pulse + hit * 0.56).toFixed(3);
-      lamp.el.setAttribute('transform', `translate(${lamp.x} ${lamp.y}) scale(${scale.toFixed(3)})`);
-    });
-
-    bumpers.forEach((bumper, idx) => {
-      const dist = Math.hypot(point.x - bumper.x, point.y - bumper.y);
-      const glow = clamp(1 - dist / 92, 0, 1);
-      const scale = 1 + glow * 0.05 + 0.01 * Math.sin(now * 0.01 + idx);
-      bumper.el.setAttribute('transform', `translate(${bumper.x} ${bumper.y}) scale(${scale.toFixed(3)})`);
-    });
-
-    gears.forEach((gear, idx) => {
-      const angle = now * gear.speed * (0.42 + power * 0.92);
-      gear.el.setAttribute('transform', `${gear.base} rotate(${(angle + idx * 18).toFixed(2)})`);
-    });
-
-    requestAnimationFrame(animate);
-  };
-
-  requestAnimationFrame(animate);
+  return;
 }
 
 /* ── KEYBOARD SHORTCUTS ─────────────────────────────────── */

@@ -224,9 +224,26 @@
     table { font-size: 0.7rem; }
     th, td { padding: 0.32rem 0.42rem; }
   }
+
+  .back-btn {
+    position: fixed;
+    top: 1.1rem;
+    left: 1.1rem;
+    font-family: var(--font);
+    font-size: 0.72rem;
+    color: var(--fg-muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.3s;
+    z-index: 500;
+  }
+  .back-btn:hover { opacity: 1; color: var(--fg); }
+
 </style>
 </head>
 <body>
+<a class="back-btn" href="index.html">&#8592; índice</a>
 
 <div class="controls">
   <button id="theme-btn" title="Cambiar tema"><span id="theme-square"></span></button>
