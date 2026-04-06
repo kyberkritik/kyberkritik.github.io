@@ -2352,7 +2352,7 @@
     <div class="header-ornament" id="headerOrnament" aria-hidden="true">
       <img
         class="header-ornament-image"
-        src="images/mercur.png"
+        src="assets/images/site/mercur.png"
         width="4608"
         height="3712"
         alt=""
@@ -2708,8 +2708,8 @@
    MERCURIO EN LOS ENGRANAJES — Motor Zettelkasten
    ═══════════════════════════════════════════════════════════
    Para agregar una nueva entrada:
-     1. Crear entries/Z-XXX.md  (ver Z-001.md como modelo)
-     2. Crear illustrations/Z-XXX.svg
+     1. Crear content/entries/Z-XXX_titulo.md  (ver Z-001_la-estacion-intermedia.md como modelo)
+     2. Crear assets/illustrations/Z-XXX.svg
      3. Agregar 'Z-XXX' al array ENTRY_IDS aquí abajo
    ─────────────────────────────────────────────────────────
    Nota: requiere servidor HTTP para previsualizar localmente.
@@ -2825,10 +2825,10 @@ async function loadEntry(id) {
     const svgId = id.match(/^Z-\d+/)?.[0] || id;
 
     const [mdRes, svgRes] = await Promise.all([
-      fetch(`entries/${id}.md`),
-      fetch(`illustrations/${svgId}.svg`)
+      fetch(`content/entries/${id}.md`),
+      fetch(`assets/illustrations/${svgId}.svg`)
     ]);
-    if (!mdRes.ok) throw new Error(`entries/${id}.md not found`);
+    if (!mdRes.ok) throw new Error(`content/entries/${id}.md not found`);
 
     const mdText  = await mdRes.text();
     const svgText = svgRes.ok ? await svgRes.text() : defaultIllustration();

@@ -1,13 +1,3 @@
 .DS_Store
-references/
+**/.DS_Store
 local/
-
-# Material de trabajo solo local
-IDEAS.md
-el_muzak_borrador_benjaminiano.md
-nosthoff_techne_asimil_1abr26.md
-entries/Z-002.md
-illustrations/Z-002-arqueologia.svg
-diagrams/forma-mercancia.dot
-images/mercur copy.png
-images/20260405_1844_01kng3xsb2eg5vfxfkf14mexsm.mp4
