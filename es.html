@@ -362,6 +362,7 @@
     transform: translateX(100%);
     transition: transform 0.24s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     z-index: 950;
+    overflow: hidden;
   }
 
   .comments-panel.active {
@@ -370,6 +371,7 @@
 
   .comments-panel-inner {
     height: 100%;
+    min-height: 0;
     display: flex;
     flex-direction: column;
   }
@@ -382,6 +384,7 @@
     padding: 1.1rem 1.15rem 0.9rem;
     border-bottom: 1px solid var(--border);
     transition: border-color 0.3s;
+    flex-shrink: 0;
   }
 
   .comments-kicker {
@@ -420,9 +423,13 @@
   .comments-panel-body {
     flex: 1;
     min-height: 0;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     padding: 1rem 1.15rem 1.3rem;
   }
 
@@ -439,6 +446,10 @@
 
   .comments-thread {
     flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
     min-height: calc(100vh - 12rem);
     min-height: calc(100dvh - 12rem);
   }
@@ -446,6 +457,7 @@
   .comments-thread iframe {
     display: block;
     width: 100%;
+    max-width: 100%;
     min-height: 100%;
     border: 0;
   }
@@ -467,12 +479,29 @@
     .controls { top: 0.75rem; right: 0.75rem; }
     table { font-size: 0.7rem; }
     th, td { padding: 0.32rem 0.42rem; }
-    .comments-panel { width: 100vw; }
-    .comments-panel-header,
-    .comments-panel-body { padding-inline: 0.95rem; }
+    .comments-panel {
+      width: 100vw;
+      max-width: 100%;
+      border-left: 0;
+      padding-top: env(safe-area-inset-top);
+      padding-right: env(safe-area-inset-right);
+      padding-bottom: env(safe-area-inset-bottom);
+      padding-left: env(safe-area-inset-left);
+    }
+    .comments-panel-header {
+      gap: 0.75rem;
+      padding: 0.95rem 0.95rem 0.8rem;
+    }
+    .comments-panel-body {
+      padding: 0.85rem 0.95rem 1rem;
+    }
+    .comments-close { flex-shrink: 0; }
+    .comments-note {
+      margin-bottom: 0.75rem;
+      font-size: 0.78rem;
+    }
     .comments-thread {
-      min-height: calc(100vh - 10.5rem);
-      min-height: calc(100dvh - 10.5rem);
+      min-height: 16rem;
     }
     .constellation-sprite,
     .constellation-sprite-wide {
@@ -529,7 +558,7 @@
 
       <p class="constellation-item"><img class="constellation-sprite constellation-sprite-right" src="assets/images/figures/es-freudiano.png" alt="" decoding="async">El <strong>Es</strong> freudiano como instancia aut&oacute;noma: <em>es denkt</em>, algo piensa en m&iacute; antes de que yo piense. El inconsciente no es un dep&oacute;sito: es una m&aacute;quina que produce. De ah&iacute; la inquietud: no soy el agente, soy el medio.</p>
 
-      <p class="constellation-item"><img class="constellation-sprite constellation-sprite-left" src="assets/images/figures/lamella.png" alt="" decoding="async"><strong>Lacan: la lamella.</strong> Ese &oacute;rgano irreal, superficie pura de libido sin cuerpo propio, indestructible precisamente porque carece de forma fija. La lamella es lo que sobra cuando se sustrae al sujeto: vida ac&eacute;fala, insistencia sin intenci&oacute;n. (<em>S&eacute;minaire XI</em>, mito de la lamella.)</p>
+      <p class="constellation-item"><img class="constellation-sprite constellation-sprite-left" src="assets/images/figures/lamella.png" alt="" decoding="async"><strong>Lacan: la lamella.</strong> Ese &oacute;rgano irreal, superficie pura de libido sin cuerpo propio, indestructible precisamente porque <button type="button" class="inline-note-trigger" id="lamella-trigger" aria-expanded="false" aria-controls="lamella-popover">carece de forma fija</button>. La lamella es lo que sobra cuando se sustrae al sujeto: vida ac&eacute;fala, insistencia sin intenci&oacute;n. (<em>S&eacute;minaire XI</em>, mito de la lamella.)</p>
 
       <p class="constellation-item"><img class="constellation-sprite constellation-sprite-right constellation-sprite-wide" src="assets/images/figures/solaris.png" alt="" decoding="async"><strong>Solaris (Lem).</strong> El oc&eacute;ano: inteligencia sin sujeto, auto-organizaci&oacute;n radical que produce &ldquo;visitantes&rdquo; &mdash; simulacros perfectos generados desde un patr&oacute;n ajeno. El oc&eacute;ano no comunica, <em>replica</em>. La humanidad proyecta sentido; el oc&eacute;ano devuelve forma.</p>
 
@@ -576,13 +605,13 @@
 
       <h3>El blob</h3>
 
-      <p>Masa amorfa, sin &oacute;rganos, sin sistema nervioso, sin plan &mdash; pero se mueve, envuelve, asimila. El blob (tanto el cinematogr&aacute;fico como el <em>Physarum polycephalum</em>, el moho mucilaginoso real que resuelve laberintos) es el grado cero de la auto-organizaci&oacute;n: estructura sin arquitectura. No tiene programa; <em>es</em> su programa. El blob no decide crecer: crecer es lo que el blob hace por ser blob.</p>
+      <p class="constellation-item"><img class="constellation-sprite constellation-sprite-right constellation-sprite-wide" src="assets/images/figures/blob-sprint.png" alt="" decoding="async">Masa amorfa, sin &oacute;rganos, sin sistema nervioso, sin plan &mdash; pero se mueve, envuelve, asimila. El blob (tanto el cinematogr&aacute;fico como el <em>Physarum polycephalum</em>, el moho mucilaginoso real que resuelve laberintos) es el grado cero de la auto-organizaci&oacute;n: estructura sin arquitectura. No tiene programa; <em>es</em> su programa. El blob no decide crecer: crecer es lo que el blob hace por ser blob.</p>
 
       <p>Parentesco con el CsO (Cuerpo sin &Oacute;rganos) de Deleuze-Guattari: superficie de intensidades, no de funciones. El blob no tiene partes especializadas &mdash; todo &eacute;l es potencia indiferenciada que se actualiza seg&uacute;n el encuentro con el medio.</p>
 
       <h3>Los virus</h3>
 
-      <p>El virus es el esc&aacute;ndalo clasificatorio por excelencia: &iquest;vivo o muerto? No metaboliza, no se reproduce solo &mdash; necesita secuestrar la maquinaria de una c&eacute;lula. Es un <em>par&aacute;sito de c&oacute;digo</em>: pura informaci&oacute;n (ARN/ADN) envuelta en una c&aacute;pside, que solo &ldquo;vive&rdquo; cuando se ejecuta en un hu&eacute;sped.</p>
+      <p class="constellation-item"><img class="constellation-sprite constellation-sprite-left constellation-sprite-wide" src="assets/images/figures/virus-sprint.png" alt="" decoding="async">El virus es el esc&aacute;ndalo clasificatorio por excelencia: &iquest;vivo o muerto? No metaboliza, no se reproduce solo &mdash; necesita secuestrar la maquinaria de una c&eacute;lula. Es un <em>par&aacute;sito de c&oacute;digo</em>: pura informaci&oacute;n (ARN/ADN) envuelta en una c&aacute;pside, que solo &ldquo;vive&rdquo; cuando se ejecuta en un hu&eacute;sped.</p>
 
       <ul>
         <li><strong>Virus como programa.</strong> El virus no <em>act&uacute;a</em>: se <em>ejecuta</em>. Es un algoritmo molecular. Esto lo sit&uacute;a exactamente en el umbral m&aacute;quina/vida.</li>
@@ -596,7 +625,7 @@
         <p>&ldquo;Language is a virus from outer space.&rdquo;</p>
       </blockquote>
 
-      <p>Burroughs radicaliza la hip&oacute;tesis: el lenguaje mismo es una entidad parasitaria que coloniz&oacute; al <em>Homo sapiens</em>. No inventamos el lenguaje; el lenguaje nos infect&oacute;. Hablamos porque somos hu&eacute;spedes de un c&oacute;digo que se replica a trav&eacute;s nuestro.</p>
+      <p class="constellation-item"><img class="constellation-sprite constellation-sprite-right constellation-sprite-wide" src="assets/images/figures/language-virus-sprint.png" alt="" decoding="async">Burroughs radicaliza la hip&oacute;tesis: el lenguaje mismo es una entidad parasitaria que coloniz&oacute; al <em>Homo sapiens</em>. No inventamos el lenguaje; el lenguaje nos infect&oacute;. Hablamos porque somos hu&eacute;spedes de un c&oacute;digo que se replica a trav&eacute;s nuestro.</p>
 
       <ol>
         <li><strong>&ldquo;Soy hablado&rdquo; = &ldquo;estoy infectado.&rdquo;</strong> La tesis estructuralista (el sujeto es efecto del lenguaje) se reformula en clave virol&oacute;gica. No es que el lenguaje me constituya como sujeto &mdash; es que el lenguaje me <em>usa</em> como medio de replicaci&oacute;n. El sujeto es el s&iacute;ntoma de la infecci&oacute;n, no su causa.</li>
@@ -686,20 +715,64 @@
   <p class="inline-note-reference">Ver: <a href="https://doi.org/10.26754/ojs_jos/jos.201812082" target="_blank" rel="noopener noreferrer">Barr&oacute;n Pastor, J. C., &amp; Cardiel Herrera, J. (2018). <em>Critical Sociocybernetics: Developing the Concept of Dispositif for an Analysis of Steering Processes Between Social Systems</em>. <em>Journal of Sociocybernetics, 15</em>(1).</a></p>
 </div>
 
+<div class="inline-note-popover" id="lamella-popover" role="dialog" aria-modal="false" aria-labelledby="lamella-title">
+  <span class="inline-note-title" id="lamella-title">Como este texto vivo</span>
+  <p>Este pasaje no queda impreso de una vez por todas: se actualiza cada vez que el navegador lo renderiza. Persiste como patr&oacute;n ejecutable, no como forma final.</p>
+  <p>Pensada con Whitehead, la lamella roza la figura de una &ldquo;entidad actual&rdquo;: menos una sustancia estable que una actualizaci&oacute;n que acontece de nuevo en cada instancia.</p>
+  <p>Bajo la condici&oacute;n digital, adem&aacute;s, esa insistencia ya no necesita &ldquo;imprimirse&rdquo; para ser: basta con renderizarse, copiarse, circular como patr&oacute;n operativo sin fijarse de una vez por todas en un soporte.</p>
+</div>
+
 <script>
   var html = document.documentElement;
   var heteronomiaTrigger = document.getElementById('heteronomia-trigger');
   var heteronomiaPopover = document.getElementById('heteronomia-popover');
+  var lamellaTrigger = document.getElementById('lamella-trigger');
+  var lamellaPopover = document.getElementById('lamella-popover');
   var commentsBtn = document.getElementById('comments-btn');
   var commentsPanel = document.getElementById('comments-panel');
   var commentsBackdrop = document.getElementById('comments-backdrop');
   var commentsClose = document.getElementById('comments-close');
   var commentsThread = document.getElementById('cusdis_thread');
+  var lamellaPopoverCloseTimer = null;
 
   function closeHeteronomiaPopover() {
     if (!heteronomiaPopover.classList.contains('active')) return;
     heteronomiaPopover.classList.remove('active');
     heteronomiaTrigger.setAttribute('aria-expanded', 'false');
+  }
+
+  function closeLamellaPopover() {
+    if (lamellaPopoverCloseTimer) {
+      window.clearTimeout(lamellaPopoverCloseTimer);
+      lamellaPopoverCloseTimer = null;
+    }
+    if (!lamellaPopover.classList.contains('active')) return;
+    lamellaPopover.classList.remove('active');
+    lamellaTrigger.setAttribute('aria-expanded', 'false');
+  }
+
+  function closeInlinePopovers() {
+    closeHeteronomiaPopover();
+    closeLamellaPopover();
+  }
+
+  function positionInlinePopover(trigger, popover) {
+    var rect = trigger.getBoundingClientRect();
+    var width = Math.min(416, window.innerWidth - 32);
+    var left = Math.min(rect.left, window.innerWidth - width - 16);
+    var belowTop;
+    var aboveTop;
+    var maxTop;
+    var top;
+    left = Math.max(16, left);
+
+    popover.style.width = width + 'px';
+    popover.style.left = left + 'px';
+    belowTop = rect.bottom + 12;
+    aboveTop = rect.top - popover.offsetHeight - 12;
+    maxTop = window.innerHeight - popover.offsetHeight - 16;
+    top = belowTop <= maxTop ? belowTop : Math.max(16, aboveTop);
+    popover.style.top = top + 'px';
   }
 
   function ensureCommentsLoaded() {
@@ -727,7 +800,7 @@
   }
 
   function openCommentsPanel() {
-    closeHeteronomiaPopover();
+    closeInlinePopovers();
     ensureCommentsLoaded();
     commentsPanel.classList.add('active');
     commentsBackdrop.classList.add('active');
@@ -738,24 +811,26 @@
   }
 
   function openHeteronomiaPopover() {
-    var rect = heteronomiaTrigger.getBoundingClientRect();
-    var width = Math.min(416, window.innerWidth - 32);
-    var left = Math.min(rect.left, window.innerWidth - width - 16);
-    var belowTop;
-    var aboveTop;
-    var maxTop;
-    var top;
-    left = Math.max(16, left);
-
-    heteronomiaPopover.style.width = width + 'px';
-    heteronomiaPopover.style.left = left + 'px';
-    belowTop = rect.bottom + 12;
-    aboveTop = rect.top - heteronomiaPopover.offsetHeight - 12;
-    maxTop = window.innerHeight - heteronomiaPopover.offsetHeight - 16;
-    top = belowTop <= maxTop ? belowTop : Math.max(16, aboveTop);
-    heteronomiaPopover.style.top = top + 'px';
+    closeLamellaPopover();
+    positionInlinePopover(heteronomiaTrigger, heteronomiaPopover);
     heteronomiaPopover.classList.add('active');
     heteronomiaTrigger.setAttribute('aria-expanded', 'true');
+  }
+
+  function openLamellaPopover() {
+    if (lamellaPopoverCloseTimer) {
+      window.clearTimeout(lamellaPopoverCloseTimer);
+      lamellaPopoverCloseTimer = null;
+    }
+    closeHeteronomiaPopover();
+    positionInlinePopover(lamellaTrigger, lamellaPopover);
+    lamellaPopover.classList.add('active');
+    lamellaTrigger.setAttribute('aria-expanded', 'true');
+  }
+
+  function queueLamellaPopoverClose() {
+    if (lamellaPopoverCloseTimer) window.clearTimeout(lamellaPopoverCloseTimer);
+    lamellaPopoverCloseTimer = window.setTimeout(closeLamellaPopover, 120);
   }
 
   heteronomiaTrigger.addEventListener('click', function(e) {
@@ -768,6 +843,21 @@
   });
 
   heteronomiaPopover.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+
+  lamellaTrigger.addEventListener('mouseenter', openLamellaPopover);
+  lamellaTrigger.addEventListener('mouseleave', queueLamellaPopoverClose);
+  lamellaTrigger.addEventListener('focus', openLamellaPopover);
+  lamellaTrigger.addEventListener('blur', queueLamellaPopoverClose);
+  lamellaTrigger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    openLamellaPopover();
+  });
+
+  lamellaPopover.addEventListener('mouseenter', openLamellaPopover);
+  lamellaPopover.addEventListener('mouseleave', queueLamellaPopoverClose);
+  lamellaPopover.addEventListener('click', function(e) {
     e.stopPropagation();
   });
 
@@ -789,7 +879,7 @@
   var large = false;
   var sizeBtn = document.getElementById('size-btn');
   sizeBtn.addEventListener('click', function() {
-    closeHeteronomiaPopover();
+    closeInlinePopovers();
     large = !large;
     html.classList.toggle('large', large);
     sizeBtn.textContent = large ? 'A\u2212' : 'A+';
@@ -901,7 +991,7 @@
   }
 
   function goToSpread(n) {
-    closeHeteronomiaPopover();
+    closeInlinePopovers();
     currentSpread = Math.max(0, Math.min(n, totalSpreads - 1));
     binr.style.transform = 'translateX(-' + (currentSpread * window.innerWidth) + 'px)';
     updateNav();
@@ -918,7 +1008,7 @@
 
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-      closeHeteronomiaPopover();
+      closeInlinePopovers();
       closeCommentsPanel();
     }
     if (commentsPanel.classList.contains('active')) return;
@@ -928,9 +1018,16 @@
   });
 
   document.addEventListener('click', function(e) {
-    if (!heteronomiaPopover.classList.contains('active')) return;
-    if (e.target === heteronomiaTrigger || heteronomiaTrigger.contains(e.target)) return;
-    closeHeteronomiaPopover();
+    if (heteronomiaPopover.classList.contains('active')) {
+      if (e.target !== heteronomiaTrigger && !heteronomiaTrigger.contains(e.target) && e.target !== heteronomiaPopover && !heteronomiaPopover.contains(e.target)) {
+        closeHeteronomiaPopover();
+      }
+    }
+    if (lamellaPopover.classList.contains('active')) {
+      if (e.target !== lamellaTrigger && !lamellaTrigger.contains(e.target) && e.target !== lamellaPopover && !lamellaPopover.contains(e.target)) {
+        closeLamellaPopover();
+      }
+    }
   });
 
   var touchStartX = 0;
@@ -945,7 +1042,7 @@
 
   BOOK_MQ.addEventListener('change', initBook);
   window.addEventListener('resize', function() {
-    closeHeteronomiaPopover();
+    closeInlinePopovers();
     if (bookActive) setTimeout(initBook, 80);
   });
 
