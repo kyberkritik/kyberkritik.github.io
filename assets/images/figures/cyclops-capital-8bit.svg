@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 224" shape-rendering="crispEdges">
+  <style>
+    #cyclops-iris {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: cyclops-pulse 2.8s ease-in-out infinite alternate;
+    }
+
+    #cyclops-pupil {
+      animation: cyclops-scan 3.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes cyclops-pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.08); }
+    }
+
+    @keyframes cyclops-scan {
+      0% { transform: translateX(0px); }
+      45% { transform: translateX(4px); }
+      100% { transform: translateX(-4px); }
+    }
+  </style>
+
+  <g fill="#1a1218" opacity="0.22">
+    <rect x="64" y="192" width="128" height="8"/>
+    <rect x="80" y="200" width="96" height="8"/>
+  </g>
+
+  <g fill="#4c2b3d">
+    <rect x="72" y="40" width="16" height="8"/>
+    <rect x="168" y="40" width="16" height="8"/>
+    <rect x="64" y="48" width="24" height="8"/>
+    <rect x="168" y="48" width="24" height="8"/>
+    <rect x="64" y="56" width="128" height="8"/>
+    <rect x="56" y="64" width="144" height="8"/>
+    <rect x="48" y="72" width="160" height="16"/>
+    <rect x="40" y="88" width="176" height="24"/>
+    <rect x="32" y="112" width="192" height="24"/>
+    <rect x="40" y="136" width="176" height="16"/>
+    <rect x="48" y="152" width="160" height="16"/>
+    <rect x="64" y="168" width="128" height="8"/>
+    <rect x="80" y="176" width="32" height="8"/>
+    <rect x="144" y="176" width="32" height="8"/>
+  </g>
+
+  <g fill="#6a4056">
+    <rect x="88" y="56" width="64" height="8"/>
+    <rect x="72" y="64" width="96" height="8"/>
+    <rect x="64" y="72" width="112" height="8"/>
+    <rect x="56" y="80" width="56" height="8"/>
+    <rect x="56" y="88" width="40" height="8"/>
+    <rect x="48" y="96" width="32" height="16"/>
+    <rect x="48" y="112" width="24" height="16"/>
+    <rect x="56" y="128" width="24" height="8"/>
+    <rect x="64" y="136" width="32" height="8"/>
+    <rect x="72" y="144" width="40" height="8"/>
+    <rect x="88" y="152" width="48" height="8"/>
+    <rect x="160" y="88" width="40" height="8"/>
+    <rect x="176" y="96" width="24" height="16"/>
+    <rect x="184" y="112" width="24" height="16"/>
+    <rect x="176" y="128" width="24" height="8"/>
+    <rect x="160" y="136" width="32" height="8"/>
+    <rect x="144" y="144" width="40" height="8"/>
+    <rect x="136" y="152" width="48" height="8"/>
+  </g>
+
+  <g fill="#c8a067">
+    <rect x="88" y="72" width="80" height="8"/>
+    <rect x="80" y="80" width="16" height="8"/>
+    <rect x="160" y="80" width="16" height="8"/>
+    <rect x="72" y="88" width="16" height="8"/>
+    <rect x="168" y="88" width="16" height="8"/>
+    <rect x="88" y="160" width="24" height="8"/>
+    <rect x="144" y="160" width="24" height="8"/>
+  </g>
+
+  <g fill="#24141f">
+    <rect x="80" y="72" width="96" height="8"/>
+    <rect x="72" y="80" width="16" height="8"/>
+    <rect x="168" y="80" width="16" height="8"/>
+    <rect x="64" y="88" width="16" height="8"/>
+    <rect x="176" y="88" width="16" height="8"/>
+  </g>
+
+  <g fill="#f1eadf">
+    <rect x="88" y="88" width="80" height="8"/>
+    <rect x="80" y="96" width="96" height="16"/>
+    <rect x="88" y="112" width="80" height="8"/>
+  </g>
+
+  <g id="cyclops-iris" fill="#b84473">
+    <rect x="112" y="88" width="32" height="8"/>
+    <rect x="104" y="96" width="48" height="16"/>
+    <rect x="112" y="112" width="32" height="8"/>
+  </g>
+
+  <g id="cyclops-pupil" fill="#120c10">
+    <rect x="120" y="96" width="16" height="24"/>
+  </g>
+
+  <g fill="#ffffff" opacity="0.72">
+    <rect x="104" y="96" width="8" height="8"/>
+    <rect x="112" y="88" width="8" height="8"/>
+  </g>
+
+  <g fill="#24141f">
+    <rect x="96" y="128" width="64" height="8"/>
+    <rect x="104" y="136" width="48" height="8"/>
+  </g>
+
+  <g fill="#f1eadf">
+    <rect x="104" y="136" width="8" height="8"/>
+    <rect x="120" y="136" width="8" height="8"/>
+    <rect x="136" y="136" width="8" height="8"/>
+  </g>
+
+  <g fill="#9f334f">
+    <rect x="112" y="144" width="32" height="8"/>
+  </g>
+
+  <g fill="#24141f">
+    <rect x="72" y="168" width="24" height="8"/>
+    <rect x="160" y="168" width="24" height="8"/>
+  </g>
+</svg>
