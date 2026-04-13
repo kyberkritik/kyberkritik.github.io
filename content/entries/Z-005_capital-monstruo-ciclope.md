@@ -83,4 +83,4 @@ Ese resto no queda fuera del sistema como una exterioridad pura. Permanece más 
 
 <p class="clave">Si en <a href="es.html">Z-004</a> la pregunta era por la agencia sin sujeto, aquí el problema es su endurecimiento histórico: la forma en que esa agencia aprende a ver, medir y capturar sin dejar de ser impersonal.</p>
 
-<p class="source">Vínculo inverso: <a href="es.html">volver a Z-004</a>.</p>
+
