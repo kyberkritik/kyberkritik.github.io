@@ -98,7 +98,7 @@ Y hay un giro casi levinasiano, invertido: para Levinas la ética nace del rostr
   </table>
 </div>
 
-Lo decisivo es la simetría inversa entre la fila de arriba y la de abajo: la película pasa dos horas dándole mundo-propio a un extraterrestre sin rostro, mientras la retórica del *illegal alien* dedica su energía a retirárselo a un vecino con rostro. Reconocer no depende de la semejanza ni de la carne; depende de la disposición a no procesar al otro, a dejarle su Umwelt.
+Lo decisivo es la simetría inversa entre la fila de arriba y la de abajo: la película pasa dos horas dándole mundo-propio a un extraterrestre sin rostro, mientras la retórica del *illegal alien* dedica su energía a retirárselo a un vecino con rostro. Reconocer no depende de la semejanza ni de la carne; depende de la disposición a no procesar al otro, a dejarle-ser en su *Umwelt*.
 
 <hr>
 
@@ -106,7 +106,7 @@ Lo decisivo es la simetría inversa entre la fila de arriba y la de abajo: la pe
 
 - **El borde del sistema.** Si la película define lo vivo por autoorganización y no por sustrato, ¿reabre o clausura la frontera sistema/entorno de <a href="capital-monstruo-ciclope.html">Z-005</a>? Rocky podría ser tanto un argumento a favor del cierre autopoiético como su exhibición ya descompuesta en *patchwork*.
 - **El Umwelt acústico.** Rocky percibe por tono: la sincronía-sin-tocarse de dos Umwelten tiene una contraparte musical —dos voces que se afinan sin compartir registro.
-- **El díptico uexkülliano.** *Umwelt sin caminante* frente a *caminante que carga su Umwelt*: ¿dos caras de una misma figura del mundo-propio sin medio común, o se oponen?
+- **El díptico uexkülliano.** *Umwelt sin caminante* (LLMs) frente a *caminante que carga su Umwelt*: ¿dos caras de una misma figura del mundo-propio sin medio común, o se oponen?
 - **El rostro sin ojos.** Desarrollar el cruce Levinas / Uexküll: ética del rostro cuando se sustrae la mirada.
 
-<p class="clave">Si en <a href="capital-monstruo-ciclope.html">Z-005</a> la agencia impersonal aprendía a ver para convertir, aquí dos mundos-propios aprenden a tocarse sin convertirse: la amistad como la única transición que no captura.</p>
+<p class="clave">Si en <a href="capital-monstruo-ciclope.html">Z-005</a> la agencia impersonal aprendía a ver para convertir, aquí dos mundos-propios aprenden a tocarse sin convertirse: <strong>la amistad como la única transición que no captura</strong>: <em>Mitwerden</em>.</p>
