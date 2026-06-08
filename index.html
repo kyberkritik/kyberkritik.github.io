@@ -4,6 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mercurio en los engranajes — Jorge Cardiel</title>
+<script>
+  /* Tema según la hora local (día/noche), salvo elección manual previa.
+     Se aplica antes de pintar para evitar parpadeo. */
+  (function () {
+    try {
+      var manual = localStorage.getItem('readerThemeManual') === 'true';
+      var saved = localStorage.getItem('readerTheme');
+      var valid = ['mercurio', 'night', 'ballard', 'paper'].indexOf(saved) !== -1;
+      var theme;
+      if (manual && valid) {
+        theme = saved;
+      } else {
+        var h = new Date().getHours();
+        theme = (h >= 7 && h < 19) ? 'mercurio' : 'night';
+      }
+      document.documentElement.dataset.theme = theme;
+    } catch (e) {}
+  })();
+</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@300;400&family=Inter:wght@300;400;500;600&display=swap');
 
@@ -2753,47 +2772,66 @@ const ENTRY_IDS = [
   'Z-002_el-muzak'
 ];
 let ZETTELS = [];
-const DEFAULT_THEME = 'mercurio';
+const DAY_THEME = 'mercurio';
+const NIGHT_THEME = 'night';
+const DEFAULT_THEME = DAY_THEME;
 const THEME_STORAGE_KEY = 'readerTheme';
-const THEME_STORAGE_VERSION_KEY = 'readerThemeVersion';
-const THEME_STORAGE_VERSION = 'mercurio-default-v1';
+const THEME_MANUAL_KEY = 'readerThemeManual';
 const READER_THEMES = new Set(['mercurio', 'night', 'ballard', 'paper']);
 
-function getSavedTheme() {
+/* Día: 07:00–18:59 → tema claro; resto → tema nocturno. */
+function timeBasedTheme() {
+  const hour = new Date().getHours();
+  return (hour >= 7 && hour < 19) ? DAY_THEME : NIGHT_THEME;
+}
+
+/* Tema elegido manualmente por el usuario, o null si nunca lo eligió. */
+function getManualTheme() {
   try {
-    const savedVersion = localStorage.getItem(THEME_STORAGE_VERSION_KEY);
-    if (savedVersion !== THEME_STORAGE_VERSION) return DEFAULT_THEME;
+    if (localStorage.getItem(THEME_MANUAL_KEY) !== 'true') return null;
     const saved = localStorage.getItem(THEME_STORAGE_KEY);
-    return READER_THEMES.has(saved) ? saved : DEFAULT_THEME;
+    return READER_THEMES.has(saved) ? saved : null;
   } catch {
-    return DEFAULT_THEME;
+    return null;
   }
 }
 
-function storeTheme(theme) {
+function storeManualTheme(theme) {
   try {
     localStorage.setItem(THEME_STORAGE_KEY, theme);
-    localStorage.setItem(THEME_STORAGE_VERSION_KEY, THEME_STORAGE_VERSION);
+    localStorage.setItem(THEME_MANUAL_KEY, 'true');
   } catch {
     // Ignore storage failures and keep the session theme only.
   }
 }
 
-function applyTheme(theme) {
+function applyTheme(theme, manual) {
   const nextTheme = READER_THEMES.has(theme) ? theme : DEFAULT_THEME;
   document.documentElement.dataset.theme = nextTheme;
   document.querySelectorAll('.theme-pixel').forEach(button => {
     button.setAttribute('aria-pressed', button.dataset.readerTheme === nextTheme ? 'true' : 'false');
   });
-  storeTheme(nextTheme);
+  if (manual) storeManualTheme(nextTheme);
 }
 
 function initThemeSelector() {
-  applyTheme(getSavedTheme());
+  const manualTheme = getManualTheme();
+  applyTheme(manualTheme || timeBasedTheme(), false);
+
   document.querySelectorAll('.theme-pixel').forEach(button => {
     button.addEventListener('click', () => {
-      applyTheme(button.dataset.readerTheme);
+      applyTheme(button.dataset.readerTheme, true);
     });
+  });
+
+  // Mientras no haya elección manual, seguir la hora del día con la pestaña abierta.
+  function followClock() {
+    if (getManualTheme()) return;
+    applyTheme(timeBasedTheme(), false);
+  }
+  setInterval(followClock, 10 * 60 * 1000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) followClock();
   });
 }
 
