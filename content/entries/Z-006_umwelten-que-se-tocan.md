@@ -71,9 +71,9 @@ Lo decisivo es que esto ya no se presenta como crueldad, sino como *consumo*, y 
 
 ## Rocky: rana de piedra, simetría, sin ojos
 
-<p class="constellation-item"><img class="constellation-sprite constellation-sprite-left constellation-sprite-wide" src="assets/images/figures/rocky.png" alt="Rocky 8-bit" decoding="async">La imagen final merece desarrollo propio. Rocky como casi una rana de piedra que toma distintas formas: cinco apéndices, simetría, sin ojos —percibe por sonido. La ausencia de ojos no es un detalle de diseño: <strong>destituye el privilegio de la vista</strong>, el ocularcentrismo que organiza todo el sensorio occidental y su metafísica de la luz, la evidencia, la teoría como <em>theoría</em> (mirar). El <em>Umwelt</em> de Rocky es acústico, vibratorio, táctil; su mundo está hecho de tonos, no de imágenes.</p>
+<p class="constellation-item"><img class="constellation-sprite constellation-sprite-left constellation-sprite-wide" src="assets/images/figures/rocky.png" alt="Rocky 8-bit" decoding="async">Rocky como casi una rana de piedra que toma distintas formas: cinco apéndices, simetría, sin ojos —percibe por sonido. La ausencia de ojos <strong>destituye el privilegio de la vista</strong>, el ocularcentrismo que organiza todo el sensorio occidental y su metafísica de la luz, la evidencia, la teoría como <em>theoría</em> (mirar). El <em>Umwelt</em> de Rocky es acústico, vibratorio, táctil; su mundo de sentido está hecho de sucesiones de tonos como palabras.</p>
 
-Y hay un giro casi levinasiano, invertido: para Levinas la ética nace del rostro del otro, y el rostro es por excelencia la mirada que me interpela. Rocky es **un rostro sin ojos** —una cara que no devuelve la mirada— y sin embargo interpela, ordena, obliga. La película sostiene que se le puede responder éticamente a algo que no nos ve. El mandato del rostro sobrevive a la sustracción del ojo. Esa rana de piedra sin mirada que aun así nos vincula es, quizá, la imagen más exacta de lo que significa aproximarse a lo no-humano sin domesticarlo.
+Y hay un giro casi levinasiano, pero invertido: para Levinas la ética nace del rostro del otro, y el rostro es por excelencia la mirada que interpela. Rocky es **un rostro sin ojos** —una cara que no devuelve la mirada— y sin embargo interpela, ordena, obliga. La película sostiene que se le puede responder éticamente a algo que no nos ve. El mandato del rostro sobrevive a la sustracción del ojo. Esa rana de piedra sin mirada que aun así nos vincula es, quizá, la imagen más exacta de lo que significa aproximarse a lo no-humano sin domesticarlo.
 
 <hr>
 
@@ -109,4 +109,4 @@ Lo decisivo es la simetría inversa entre la fila de arriba y la de abajo: la pe
 - **El díptico uexkülliano.** *Umwelt sin caminante* (LLMs) frente a *caminante que carga su Umwelt*: ¿dos caras de una misma figura del mundo-propio sin medio común, o se oponen?
 - **El rostro sin ojos.** Desarrollar el cruce Levinas / Uexküll: ética del rostro cuando se sustrae la mirada.
 
-<p class="clave">Si en <a href="capital-monstruo-ciclope.html">Z-005</a> la agencia impersonal aprendía a ver para convertir, aquí dos mundos-propios aprenden a tocarse sin convertirse: <strong>la amistad como la única transición que no captura</strong>: <em>Mitwerden</em>.</p>
+<p class="clave">Si en <a href="capital-monstruo-ciclope.html">Z-005</a> la agencia impersonal aprendía a ver para convertir, aquí dos mundos-propios aprenden a tocarse sin convertirse: la amistad como la única transición que no captura.</p>
